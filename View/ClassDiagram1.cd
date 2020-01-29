@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="View.SPCore.DS.GraphicsSettingsDataBase" Collapsed="true">
+    <Position X="8" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABABAAAAAAAAAAAAAAAAABAAAAAAAAAACAA=</HashCode>
+      <FileName>SPCore\DS\GraphicsSettingsDataBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="View.SPCore.AppViewBase" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAgIAAEAAAIAAAAAERAAAAEEAgAAAABAgAAAiEAI=</HashCode>
+      <FileName>SPCore\AppViewBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="View.SPCore.DS.EAppFramerateLockType" Collapsed="true">
+    <Position X="6.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAABAAAAAAAAAkAQAAAAAAAACAAA=</HashCode>
+      <FileName>SPCore\DS\EAppFramerateLockType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

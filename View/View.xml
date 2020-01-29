@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>View</name>
+    </assembly>
+    <members>
+        <member name="T:View.SPCore.AppViewBase">
+            <summary>
+            Базовый класс для компонента отображения приложения MVC
+            </summary>
+        </member>
+        <member name="F:View.SPCore.AppViewBase.InputSyncObj">
+            <summary>
+            Объект для синхронизации обработки событий ввода многопоточного приложения
+            </summary>
+        </member>
+        <member name="P:View.SPCore.AppViewBase.ViewAvailable">
+            <summary>
+            Является ли отображение сейчас доступным и активным
+            </summary>
+        </member>
+        <member name="P:View.SPCore.AppViewBase.GraphicalSettingsPath">
+            <summary>
+            Путь к настройкам графики и отображения
+            </summary>
+        </member>
+        <member name="P:View.SPCore.AppViewBase.CurrentGraphicsSettings">
+            <summary>
+            Данные текущих настроек графики и отображения
+            </summary>
+        </member>
+        <member name="P:View.SPCore.AppViewBase.App">
+            <summary>
+            Прикрепленная модель приложения
+            </summary>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.#ctor(Model.SPCore.AppModel,System.String)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parApp">Прикрепляемая модель приложения</param>
+            <param name="parGraphicalSettingsPath">Путь к настройкам графики и отображения</param>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.CreateDefaultGraphicalSettings">
+            <summary>
+            Создает файл со стандартными настройками отображения
+            </summary>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.LoadSettings">
+            <summary>
+            Осуществляет загрузку настроек отображения
+            </summary>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.InitializeView">
+            <summary>
+            Осуществляет первоначальную инициализацию
+            </summary>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.CleanView">
+            <summary>
+            Производит очистку отображения
+            </summary>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.Render">
+            <summary>
+            Передает команду на рендеринг отображения модели
+            </summary>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.ViewReset">
+            <summary>
+            Полностью сбрасывает компонент вида MVC
+            </summary>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.ApplyGraphicsSettings">
+            <summary>
+            Применяет установленные настройки графики
+            </summary>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.ViewUpdateSignal(System.Double)">
+            <summary>
+            Сигнал обновления компонентов вида
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.ProvideAppFpsInfo(System.String)">
+            <summary>
+            Сигнал об обновлении предоставленной информации о количестве
+            обработанных кадров за секунду приложением
+            </summary>
+            <param name="parFps">Количество кадров за секунду</param>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.PerformModelBindings">
+            <summary>
+            Производит все необходимые привязки специальных обработчиков и наблюдателей
+            к модели
+            </summary>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.GetSoundManagerColleague">
+            <summary>
+            Получает "коллегу" для аудио менеджера
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:View.SPCore.AppViewBase.GetViewProviderColleague">
+            <summary>
+            Получает "коллегу" для посредника модели и отображения
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:View.SPCore.DS.EAppFramerateLockType">
+            <summary>
+            Тип настройки закрепления количества кадров в секунду
+            </summary>
+        </member>
+        <member name="F:View.SPCore.DS.EAppFramerateLockType.Unlocked">
+            <summary>
+            Количество кадров неограничено
+            </summary>
+        </member>
+        <member name="F:View.SPCore.DS.EAppFramerateLockType.Locked24">
+            <summary>
+            Количество кадров закреплено не более 24
+            </summary>
+        </member>
+        <member name="F:View.SPCore.DS.EAppFramerateLockType.Locked30">
+            <summary>
+            Количество кадров закреплено не более 30
+            </summary>
+        </member>
+        <member name="F:View.SPCore.DS.EAppFramerateLockType.Locked50">
+            <summary>
+            Количество кадров закреплено не более 50
+            </summary>
+        </member>
+        <member name="F:View.SPCore.DS.EAppFramerateLockType.Locked60">
+            <summary>
+            Количество кадров закреплено не более 60
+            </summary>
+        </member>
+        <member name="F:View.SPCore.DS.EAppFramerateLockType.Locked120">
+            <summary>
+            Количество кадров закреплено не более 120
+            </summary>
+        </member>
+        <member name="F:View.SPCore.DS.EAppFramerateLockType.Locked240">
+            <summary>
+            Количество кадров закреплено не более 240
+            </summary>
+        </member>
+        <member name="T:View.SPCore.DS.GraphicsSettingsDataBase">
+            <summary>
+            Базовый класс настроек отображения игры
+            </summary>
+        </member>
+        <member name="F:View.SPCore.DS.GraphicsSettingsDataBase._currentFixedFramerateLockType">
+            <summary>
+            Тип настройки закрепления максимального количества кадров в секунду
+            </summary>
+        </member>
+        <member name="P:View.SPCore.DS.GraphicsSettingsDataBase.CurrentFixedFramerateLockType">
+            <summary>
+            Тип настройки закрепления максимального количества кадров в секунду
+            </summary>
+        </member>
+        <member name="P:View.SPCore.DS.GraphicsSettingsDataBase.FramerateTimestamp">
+            <summary>
+            Временной шаг для текущей настройки закрепления максимального количества кадров в секунду
+            </summary>
+        </member>
+        <member name="M:View.SPCore.DS.GraphicsSettingsDataBase.#ctor(View.SPCore.DS.EAppFramerateLockType)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parCurrentFixedFramerateLockType">Выбранный тип настройки закрепления максимального количества кадров в секунду</param>
+        </member>
+        <member name="M:View.SPCore.DS.GraphicsSettingsDataBase.#ctor">
+            <summary>
+            Конструктор для установки значений по умолчанию
+            </summary>
+        </member>
+        <member name="M:View.SPCore.DS.GraphicsSettingsDataBase.SetDefaultSettings">
+            <summary>
+            Установка значений настроек по умолчанию
+            </summary>
+        </member>
+    </members>
+</doc>

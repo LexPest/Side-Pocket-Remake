@@ -1,0 +1,453 @@
+{
+  "metadata_type" : "font_sprite_sheet",
+  "sprites_info" : [
+    {
+    "sprite_name" : "font_letter SPACE",
+    "x" : 1,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter !",
+    "x" : 9,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter \"",
+    "x" : 17,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter DATAEAST_D",
+    "x" : 25,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter DATAEAST_E",
+    "x" : 33,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter @",
+    "x" : 41,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter &",
+    "x" : 49,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter '",
+    "x" : 57,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter (",
+    "x" : 65,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter )",
+    "x" : 73,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter *",
+    "x" : 81,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter +",
+    "x" : 89,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter ,",
+    "x" : 97,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter -",
+    "x" : 105,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter .",
+    "x" : 113,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter /",
+    "x" : 121,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter 0",
+    "x" : 129,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter 1",
+    "x" : 137,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter 2",
+    "x" : 145,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter 3",
+    "x" : 153,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter 4",
+    "x" : 161,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter 5",
+    "x" : 169,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter 6",
+    "x" : 177,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter 7",
+    "x" : 185,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter 8",
+    "x" : 193,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter 9",
+    "x" : 201,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter :",
+    "x" : 209,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter ;",
+    "x" : 217,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter TM_T.",
+    "x" : 225,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter =",
+    "x" : 233,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter TM_M.",
+    "x" : 241,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter ?",
+    "x" : 249,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter COPYRIGHT",
+    "x" : 257,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter A",
+    "x" : 265,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter B",
+    "x" : 273,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter C",
+    "x" : 281,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter D",
+    "x" : 289,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter E",
+    "x" : 297,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter F",
+    "x" : 305,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter G",
+    "x" : 313,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter H",
+    "x" : 321,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter I",
+    "x" : 329,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter J",
+    "x" : 337,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter K",
+    "x" : 345,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter L",
+    "x" : 353,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter M",
+    "x" : 361,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter N",
+    "x" : 369,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter O",
+    "x" : 377,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter P",
+    "x" : 385,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter Q",
+    "x" : 393,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter R",
+    "x" : 401,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter S",
+    "x" : 409,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter T",
+    "x" : 417,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter U",
+    "x" : 425,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter V",
+    "x" : 433,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter W",
+    "x" : 441,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter X",
+    "x" : 449,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter Y",
+    "x" : 457,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter Z",
+    "x" : 465,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter SPACE_1",
+    "x" : 473,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter SPACE_2",
+    "x" : 481,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter SPACE_3",
+    "x" : 489,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter KING_1",
+    "x" : 497,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    },
+    {
+    "sprite_name" : "font_letter KING_2",
+    "x" : 505,
+    "y" : 1,
+    "width" : 8,
+    "height" : 8
+    }
+  ]
+}

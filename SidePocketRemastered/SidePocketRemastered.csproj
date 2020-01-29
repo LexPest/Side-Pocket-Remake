@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net471</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ControllerOpenTK\ControllerOpenTK.csproj" />
+      <ProjectReference Include="..\Controller\Controller.csproj" />
+      <ProjectReference Include="..\Model\Model.csproj" />
+      <ProjectReference Include="..\ViewOpenTK\ViewOpenTK.csproj" />
+      <ProjectReference Include="..\View\View.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Content Include="packs/*">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="packs/*/**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        
+        <None Remove="OpenTK.dll.config" />
+        <Content Include="OpenTK.dll.config">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <None Remove="OpenTK.dll" />
+        <Content Include="OpenTK.dll">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="OpenTK" Version="3.0.1" />
+      <PackageReference Include="OpenTKWithOpenAL" Version="1.1.1589.5941" />
+    </ItemGroup>
+
+</Project>

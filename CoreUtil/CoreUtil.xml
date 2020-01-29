@@ -1,0 +1,849 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoreUtil</name>
+    </assembly>
+    <members>
+        <member name="T:CoreUtil.APIExtensions.CollectionsExtensions">
+            <summary>
+            Расширения работы с коллекциями
+            </summary>
+        </member>
+        <member name="M:CoreUtil.APIExtensions.CollectionsExtensions.AddRange``2(System.Collections.Generic.Dictionary{``0,``1},System.Collections.Generic.Dictionary{``0,``1})">
+            <summary>
+            Добавить коллекцию к коллекции
+            </summary>
+            <param name="parSource">Исходная коллекция</param>
+            <param name="parCollection">Добавляемая коллекция</param>
+            <typeparam name="T">Тип исходной коллекции</typeparam>
+            <typeparam name="TS">Тип добавляемой коллекции</typeparam>
+            <exception cref="T:System.ArgumentNullException">Нельзя добавить Null</exception>
+            <exception cref="T:System.ArgumentException">Одинаковые ключи не поддерживаются</exception>
+        </member>
+        <member name="T:CoreUtil.APIExtensions.InspectionIgnore">
+            <summary>
+            Вспомогательный атрибут-маркер: данное поле или свойство обрабатывать не нужно
+            </summary>
+        </member>
+        <member name="T:CoreUtil.APIExtensions.ObjectExtensions">
+            <summary>
+            Расширения для работы с непосредственно объектами, активно использует механизм рефлексии
+            </summary>
+        </member>
+        <member name="M:CoreUtil.APIExtensions.ObjectExtensions.GetAllSubscribedMethodsInfo(System.Type)">
+            <summary>
+            Получить все метаданные о MulticastDelegates объекта
+            </summary>
+            <param name="parT">Тип объекта</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.APIExtensions.ObjectExtensions.RemoveSubscribedMethods``1(``0,System.Collections.Generic.IEnumerable{System.Reflection.FieldInfo})">
+            <summary>
+            Удалить все сведения о подписках на MulticastDelegates объекта
+            </summary>
+            <param name="parTarget">Целевой объект</param>
+            <param name="parSubscribedMethodsInfo">Кэшированная информация о MulticastDelegates</param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:CoreUtil.APIExtensions.ObjectExtensions.GetAllFields(System.Type)">
+            <summary>
+            Получить все поля класса
+            </summary>
+            <param name="parType">Целевой тип</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.APIExtensions.ObjectExtensions.RemoveAllFields``1(``0,System.Collections.Generic.IEnumerable{System.Reflection.FieldInfo})">
+            <summary>
+            Сбросить все поля класса
+            </summary>
+            <param name="parTarget">Целеовой объект</param>
+            <param name="parFieldsInfo">Кэшированная информация о полях класса</param>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:CoreUtil.APIExtensions.ObjectExtensions.GetAllProperties(System.Type)">
+            <summary>
+            Получить все свойства класса
+            </summary>
+            <param name="parType">Целевой тип</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.APIExtensions.ObjectExtensions.GetDefault(System.Type)">
+            <summary>
+            Получить значение по-умолчанию для типа
+            </summary>
+            <param name="parType">Целевой тип</param>
+            <returns></returns>
+        </member>
+        <member name="T:CoreUtil.Coroutine.CoroutineManager">
+            <summary>
+            Менеджер короутин
+            </summary>
+        </member>
+        <member name="F:CoreUtil.Coroutine.CoroutineManager._runningCoroutines">
+            <summary>
+            Запущенные короутины
+            </summary>
+        </member>
+        <member name="F:CoreUtil.Coroutine.CoroutineManager._shouldRunAfterTimes">
+            <summary>
+            Короутины, которые должны быть запущены спустя некоторое время
+            </summary>
+        </member>
+        <member name="F:CoreUtil.Coroutine.CoroutineManager._shouldRunAtEndOfFrame">
+            <summary>
+            Короутины, которые должны быть запущены в конце кадра
+            </summary>
+        </member>
+        <member name="F:CoreUtil.Coroutine.CoroutineManager._stopwatch">
+            <summary>
+            Сверхточный счетчик времени
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Coroutine.CoroutineManager.ProcessOnTheEndOfFrame">
+            <summary>
+            Обработчик события конца кадра, должен быть вызван из модели в конце каждого кадра
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Coroutine.CoroutineManager.StartCoroutine(System.Collections.IEnumerator)">
+            <summary>
+            Запускает исполнение короутины
+            </summary>
+            <param name="parCoroutine">Короутина</param>
+        </member>
+        <member name="M:CoreUtil.Coroutine.CoroutineManager.PerformNextCoroutineStep(System.Collections.IEnumerator)">
+            <summary>
+            Производит стандартное продолжение работы короутины
+            </summary>
+            <param name="parCoroutine">Короутина</param>
+            <returns>False если короутина полностью закончила свою работу</returns>
+        </member>
+        <member name="M:CoreUtil.Coroutine.CoroutineManager.ProcessCoroutineDecision(System.Collections.IEnumerator)">
+            <summary>
+            Решение о продолжении работы короутины
+            </summary>
+            <param name="parCoroutine">Короутина</param>
+        </member>
+        <member name="M:CoreUtil.Coroutine.CoroutineManager.StopCoroutine(System.Collections.IEnumerator)">
+            <summary>
+            Останавливает исполнение короутины
+            </summary>
+            <param name="parCoroutine">Короутина</param>
+        </member>
+        <member name="T:CoreUtil.Coroutine.RunAfterTimeInfo">
+            <summary>
+            Информация о запуске по истечению времени
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Coroutine.RunAfterTimeInfo.#ctor(System.Double,System.Collections.IEnumerator)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parTime">Время</param>
+            <param name="parCoroutine">Короутина</param>
+        </member>
+        <member name="P:CoreUtil.Coroutine.RunAfterTimeInfo.Time">
+            <summary>
+            Время
+            </summary>
+        </member>
+        <member name="P:CoreUtil.Coroutine.RunAfterTimeInfo.Coroutine">
+            <summary>
+            Короутина
+            </summary>
+        </member>
+        <member name="T:CoreUtil.Coroutine.WaitForEndOfFrame">
+            <summary>
+            Инструкция Yield: подождать конца кадра
+            </summary>
+        </member>
+        <member name="T:CoreUtil.Coroutine.WaitForSeconds">
+            <summary>
+            Инструкция Yield: подождать определенное количество секунд
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Coroutine.WaitForSeconds.#ctor(System.Double)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parTimeInSeconds">Время в секундах</param>
+        </member>
+        <member name="P:CoreUtil.Coroutine.WaitForSeconds.TimeInSeconds">
+            <summary>
+            Время в секундах
+            </summary>
+        </member>
+        <member name="T:CoreUtil.Coroutine.YieldInstruction">
+            <summary>
+            Базовый класс инструкций о приостановке текущего шага работы короутины и возвращения управления потоку
+            </summary>
+        </member>
+        <member name="T:CoreUtil.GlobDefinitions.GlobalDefinitionsConsts">
+            <summary>
+            Некоторые глобальные константы для любого из типов приложений
+            </summary>
+        </member>
+        <member name="F:CoreUtil.GlobDefinitions.GlobalDefinitionsConsts.FloatingPointCompTolerance">
+            <summary>
+            Предлагаемая точность для сравнения чисел с плавающей точкой
+            </summary>
+        </member>
+        <member name="T:CoreUtil.Math.Angle">
+            <summary>
+            Работа с углами
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Math.Angle.DegreesToRadians(System.Double)">
+            <summary>
+            Из градусов в радианы
+            </summary>
+            <param name="parDegrees">Угол в градусах</param>
+            <returns>Угол в радианах</returns>
+        </member>
+        <member name="M:CoreUtil.Math.Angle.RadiansToVector(System.Double)">
+            <summary>
+            От радиан к вектору
+            </summary>
+            <param name="parRadians">Угол в радианах</param>
+            <returns>Пространственный вектор</returns>
+        </member>
+        <member name="M:CoreUtil.Math.Angle.RotateAroundPivot(System.Double,CoreUtil.Math.SpVector3[]@,CoreUtil.Math.SpVector3)">
+            <summary>
+            Повернуть точки вокруг опоры
+            </summary>
+            <param name="parRotationDegreesAngle">Величина поворота в градусах</param>
+            <param name="refPoints">Точки для поворота</param>
+            <param name="parOrigin">Точка опоры</param>
+        </member>
+        <member name="M:CoreUtil.Math.CustomLerp.GetInterpolatedValue(System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Получить интерполированное значение из одного периода в другой
+            </summary>
+            <param name="parKnownValue">Значение из первого периода</param>
+            <param name="parKnownValuePeriodStart">Начало первого периода</param>
+            <param name="parKnownValuePeriodEnd">Конец первого периода</param>
+            <param name="parNeededValuePeriodStart">Начало второго периода</param>
+            <param name="parNeededValuePeriodEnd">Конец второго периода</param>
+            <returns></returns>
+        </member>
+        <member name="T:CoreUtil.Math.SpVector3">
+            <summary>
+            Пространственный вектор с тремя компонентами
+            </summary>
+        </member>
+        <member name="F:CoreUtil.Math.SpVector3._x">
+            <summary>
+            Компонента вектора
+            </summary>
+        </member>
+        <member name="F:CoreUtil.Math.SpVector3._y">
+            <summary>
+            Компонента вектора
+            </summary>
+        </member>
+        <member name="F:CoreUtil.Math.SpVector3._z">
+            <summary>
+            Компонента вектора
+            </summary>
+        </member>
+        <member name="P:CoreUtil.Math.SpVector3.Z">
+            <summary>
+            Компонента апликат
+            </summary>
+        </member>
+        <member name="P:CoreUtil.Math.SpVector3.Y">
+            <summary>
+            Компонента ординат
+            </summary>
+        </member>
+        <member name="P:CoreUtil.Math.SpVector3.X">
+            <summary>
+            Компонента абсцисс
+            </summary>
+        </member>
+        <!-- Проигнорирован некорректный комментарий XML для члена "M:CoreUtil.Math.SpVector3.#ctor(System.Double,System.Double,System.Double)" -->
+        <member name="M:CoreUtil.Math.SpVector3.#ctor(System.Double,System.Double)">
+            <summary>
+            Конструктор, принимающий 2 компоненты
+            </summary>
+            <param name="parX">Компонента абсцисс</param>
+            <param name="parY">Компонента ординат</param>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.Normalize">
+            <summary>
+            Получить нормализованный вектор
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.#ctor(CoreUtil.Math.SpVector3)">
+            <summary>
+            Конструктор, принимающий другой вектор
+            </summary>
+            <param name="parV">Другой вектор</param>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.Length">
+            <summary>
+            Длина вектора
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.Equal(CoreUtil.Math.SpVector3)">
+            <summary>
+            Равен ли вектор другому
+            </summary>
+            <param name="parV2">Другой вектор</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.DotProduct(CoreUtil.Math.SpVector3)">
+            <summary>
+            Скалярное произведение векторов
+            </summary>
+            <param name="parV2">Второй вектор</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.CrossProduct(CoreUtil.Math.SpVector3)">
+            <summary>
+            Перекрестное произведение векторов
+            </summary>
+            <param name="parV2">Второй вектор</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.ParralelComponent(CoreUtil.Math.SpVector3)">
+            <summary>
+            Компонент переноса
+            </summary>
+            <param name="parV2">Второй вектор</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.PerpendicularComponent(CoreUtil.Math.SpVector3)">
+            <summary>
+            Компонент перпендикуляра
+            </summary>
+            <param name="parV2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.Scale(System.Double)">
+            <summary>
+            Умножить на скаляр
+            </summary>
+            <param name="parScale">Скаляр</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.op_Multiply(System.Double,CoreUtil.Math.SpVector3)">
+            <summary>
+            Оператор умножения числа на вектор
+            </summary>
+            <param name="parK">Число</param>
+            <param name="parV1">Вектор</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.op_Multiply(CoreUtil.Math.SpVector3,System.Double)">
+            <summary>
+            Оператор умножения вектора на число
+            </summary>
+            <param name="parV1">Вектор</param>
+            <param name="parK">Число</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.op_Addition(CoreUtil.Math.SpVector3,CoreUtil.Math.SpVector3)">
+            <summary>
+            Оператор сложения векторов
+            </summary>
+            <param name="parV1">Вектор 1</param>
+            <param name="parV2">Вектор 2</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.op_Subtraction(CoreUtil.Math.SpVector3,CoreUtil.Math.SpVector3)">
+            <summary>
+            Оператор вычитания векторов
+            </summary>
+            <param name="parV1">Вектор 1</param>
+            <param name="parV2">Вектор 2</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.GetNormal2DOnly(CoreUtil.Math.SpVector3,CoreUtil.Math.SpVector3,System.Boolean)">
+            <summary>
+            Получить нормаль к линии в двухмерном пространстве
+            </summary>
+            <param name="parStart">Точка начала линии</param>
+            <param name="parEnd">Точка конца линии</param>
+            <param name="parIsClockwise">Нормаль нужна по часовой стрелке?</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Math.SpVector3.op_UnaryNegation(CoreUtil.Math.SpVector3)">
+            <summary>
+            Унарный оператор "минус" для вектора
+            </summary>
+            <param name="parV1">Вектор</param>
+            <returns></returns>
+        </member>
+        <member name="T:CoreUtil.Pool.ObjectPoolSupportData">
+            <summary>
+            Содержит информацию о работающим с механизмом пулинга объектом
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Pool.ObjectPoolSupportData.#ctor(CoreUtil.Pool.PoolManager,System.Type)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parLinkedPoolManager">Связанный пул-менеджер</param>
+            <param name="parTargetType">Целевой тип объекта</param>
+        </member>
+        <member name="P:CoreUtil.Pool.ObjectPoolSupportData.LinkedPoolManager">
+            <summary>
+            Связанный пул-менеджер
+            </summary>
+        </member>
+        <member name="P:CoreUtil.Pool.ObjectPoolSupportData.EventsMetaInfo">
+            <summary>
+            Метаданные о событиях класса
+            </summary>
+        </member>
+        <member name="P:CoreUtil.Pool.ObjectPoolSupportData.FieldsMetaInfo">
+            <summary>
+            Метаданные о полях класса
+            </summary>
+        </member>
+        <member name="P:CoreUtil.Pool.ObjectPoolSupportData.PropsMetaInfo">
+            <summary>
+            Метаданные о свойствах класса
+            </summary>
+        </member>
+        <member name="T:CoreUtil.Pool.PoolManager">
+            <summary>
+            Менеджер пула объектов
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Pool.PoolManager.#ctor">
+            <summary>
+            Стандартный конструктор без параметров
+            </summary>
+        </member>
+        <member name="P:CoreUtil.Pool.PoolManager.PoolContents">
+            <summary>
+            Содержимое пула
+            </summary>
+        </member>
+        <member name="P:CoreUtil.Pool.PoolManager.TypesSupportData">
+            <summary>
+            Кэшированные метаданных о типах
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Pool.PoolManager.GetObject``1(System.Type)">
+            <summary>
+            Получить из пула объект определенного типа
+            </summary>
+            <param name="parT">Желаемый преобразованный тип</param>
+            <typeparam name="T">Реальный тип объекта</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Pool.PoolManager.GetObject(System.Type)">
+            <summary>
+            Получить из пула объект определенного типа
+            </summary>
+            <param name="parT">Реальный тип объекта</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Pool.PoolManager.ProduceNewObject(System.Type)">
+            <summary>
+            Создать новый экземпляр класса запрошенного типа
+            </summary>
+            <param name="parT">Запрошенный тип</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.Pool.PoolManager.StoreObject``1(``0)">
+            <summary>
+            Сохранить объект в пуле для последующего использования
+            </summary>
+            <param name="parObjectToStore">Объект, который будет утилизирован</param>
+            <typeparam name="T">Тип утилизируемого объекта</typeparam>
+        </member>
+        <member name="T:CoreUtil.Pool.PoolSupportedObject">
+            <summary>
+            Базовый тип для всех объектов, поддерживающих механизм пулинга
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Pool.PoolSupportedObject.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Обязательный конструктор
+            </summary>
+            <param name="parSupportData">Информация о работе с пулом</param>
+        </member>
+        <member name="P:CoreUtil.Pool.PoolSupportedObject.ActualLinkedObjectPoolSupportData">
+            <summary>
+            Объект, содержащий информацию о работе с механизмом пулинга для данного объекта
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Pool.PoolSupportedObject.DisableAndSendToPool">
+            <summary>
+            Сброс объекта и отправка обратно в пул
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Pool.PoolSupportedObject.OnBeforeResetPerform">
+            <summary>
+            В переопределении должны быть размещены действия перед отправкой в пул
+            </summary>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.AssetData.AssetDatabaseUpdateStrategies.AssetDatabaseUpdateDiffByExtensionStrategy">
+            <summary>
+            Реализация стратегии обновления базы ресурсов и ассетов, обновляющая их по признаку расширения файлов
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.AssetDatabaseUpdateStrategies.AssetDatabaseUpdateDiffByExtensionStrategy.#ctor(System.Collections.Generic.Dictionary{System.String,CoreUtil.ResourceManager.EAssetType})">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parExtensionToActualAssetType">Словарь соответствия расширения файла и типа ассета</param>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.AssetData.AssetDatabaseUpdateStrategies.AssetDatabaseUpdateDiffByExtensionStrategy.ExtensionToActualAssetType">
+            <summary>
+            Текущий словарь соответствия расширения файла и типа ассета
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.AssetDatabaseUpdateStrategies.AssetDatabaseUpdateDiffByExtensionStrategy.GetAssetsDatabase(System.String)">
+            <summary>
+            Составить базу данных ассетов и ресурсов из директории
+            </summary>
+            <param name="parDatabaseDir">Целевая директория для анализа</param>
+            <returns>База данных ассетов</returns>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.AssetDatabaseUpdateStrategies.AssetDatabaseUpdateDiffByExtensionStrategy.DirSearch(System.String)">
+            <summary>
+            Рекурсивный алгоритм поиска файла по вложенным директориям
+            </summary>
+            <param name="parDirPath">Путь к директории поиска</param>
+            <returns>Список найденных файлов</returns>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.AssetDatabaseUpdateStrategies.AssetDatabaseUpdateDiffByExtensionStrategy.AddAssetMetadataToPack(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,CoreUtil.ResourceManager.AssetMetadata})">
+            <summary>
+            Вспомогательный метод для добавления информации об ассете к пакету ресурсов
+            </summary>
+            <param name="parFilePath">Путь к файлу ассета</param>
+            <param name="parDirectory">Директория ассета</param>
+            <param name="parFileExtension">Расширение файла</param>
+            <param name="parAvailableAssetsInPack">Текущая база данных ассетов</param>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.AssetData.AssetDatabaseUpdateStrategies.IAssetDatabaseUpdateStrategy">
+            <summary>
+            Интерфейс стратегии обновления базы данных игровых ассетов
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.AssetDatabaseUpdateStrategies.IAssetDatabaseUpdateStrategy.GetAssetsDatabase(System.String)">
+            <summary>
+            Метод для получения базы данных ассетов определенной директории
+            </summary>
+            <param name="parDatabaseDir">Корневая директория будущей базы</param>
+            <returns></returns>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.AssetData.Builders.AssetDataAbstractBuilder">
+            <summary>
+            Абстрактный класс для "строителей"-загрузчиков игровых ресурсов
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.Builders.AssetDataAbstractBuilder.LoadAssetData``1(CoreUtil.ResourceManager.AssetMetadata)">
+            <summary>
+            Загрузить и подготовить данные игрового ресурса
+            </summary>
+            <param name="parAssetMetadata">Метаданные ресурса</param>
+            <typeparam name="T">Тип ресурса</typeparam>
+            <returns>Обработчик данных игрового ресурса</returns>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.AssetData.Builders.AssetDataStandardBuilder">
+            <summary>
+            Реализация стандартного "строителя"-загрузчика игровых ресурсов
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.Builders.AssetDataStandardBuilder.LoadAssetData``1(CoreUtil.ResourceManager.AssetMetadata)">
+            <summary>
+            Загрузить и подготовить данные игрового ресурса
+            </summary>
+            <param name="parAssetMetadata">Метаданные ресурса</param>
+            <typeparam name="T">Тип ресурса</typeparam>
+            <returns>Обработчик данных игрового ресурса</returns>
+            <exception cref="T:System.NotImplementedException">Неизвестный тип ресурса</exception>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataBinary">
+            <summary>
+            Игровой ресурс, содержащий бинарные данные
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataBinary.#ctor(CoreUtil.ResourceManager.AssetMetadata,System.Byte[])">
+            <summary>
+            Конструктор ресурса
+            </summary>
+            <param name="parAssetMetadata">Метаданные ассета</param>
+            <param name="parBinaryData">Бинарные данные</param>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataBinary.BinaryData">
+            <summary>
+            Бинарные данные
+            </summary>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataParent">
+            <summary>
+            Родительский класс для всех классов, представляющих различные типы игровых ресурсов
+            </summary>
+        </member>
+        <member name="F:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataParent.IsDisposed">
+            <summary>
+            Флаг-признак уничтожения
+            </summary>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataParent.ActualAssetMetadata">
+            <summary>
+            Связанные метаданные ассета
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataParent.#ctor(CoreUtil.ResourceManager.AssetMetadata)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="parActualAssetMetadata">Связанные метаданные ассета</param>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataParent.Dispose">
+            <summary>
+            Деструктор
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataParent.Dispose(System.Boolean)">
+            <summary>
+            Обработчик освобождения занятой ресурсом памяти
+            </summary>
+            <param name="parDisposing"></param>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataText">
+            <summary>
+            Игровой ресурс с текстовыми данными
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataText.#ctor(CoreUtil.ResourceManager.AssetMetadata,System.String[])">
+            <summary>
+            Конструктор ресурса
+            </summary>
+            <param name="parAssetMetadata">Метаданные ассета</param>
+            <param name="parTextData">Текстовые данные</param>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataText.TextData">
+            <summary>
+            Текстовые данные
+            </summary>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.AssetMetadata">
+            <summary>
+            Метаданные ресурса
+            </summary>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.AssetMetadata.AssetType">
+            <summary>
+            Основной тип ассета
+            </summary>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.AssetMetadata.FilePath">
+            <summary>
+            Путь к файлу ассета
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetMetadata.#ctor(CoreUtil.ResourceManager.EAssetType,System.String)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parAssetType">Основной тип ассета</param>
+            <param name="parFilePath">Путь к файлу ассета</param>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.AssetPack">
+            <summary>
+            Пакет ресурсов
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetPack.#ctor(System.Collections.Generic.Dictionary{System.String,CoreUtil.ResourceManager.AssetMetadata})">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parContent">Содержимое пакета ресурсов</param>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.AssetPack.Content">
+            <summary>
+            Содержимое пакета ресурсов
+            </summary>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.AssetPackLoadedData">
+            <summary>
+            Данные о загруженном в память пакете ресурсов
+            </summary>
+        </member>
+        <member name="F:CoreUtil.ResourceManager.AssetPackLoadedData.IsDisposed">
+            <summary>
+            Флаг-признак уничтожения
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetPackLoadedData.#ctor(System.Collections.Generic.Dictionary{System.String,CoreUtil.ResourceManager.AssetData.DataTypes.AssetDataParent})">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parContent">Содержимое пакета ресурсов</param>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetPackLoadedData.Dispose">
+            <summary>
+            Деструктор
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.AssetPackLoadedData.Dispose(System.Boolean)">
+            <summary>
+            Обработчик освобождения занятой ресурсом памяти
+            </summary>
+            <param name="parDisposing"></param>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.AssetPackLoadedData.Content">
+            <summary>
+            Содержимое пакета ресурсов
+            </summary>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.EAssetType">
+            <summary>
+            Основной тип ресурса
+            </summary>
+        </member>
+        <member name="F:CoreUtil.ResourceManager.EAssetType.Binary">
+            <summary>
+            Ресурс данных бинарного типа
+            </summary>
+        </member>
+        <member name="F:CoreUtil.ResourceManager.EAssetType.Text">
+            <summary>
+            Ресурс данных текстового типа
+            </summary>
+        </member>
+        <member name="T:CoreUtil.ResourceManager.ResourceManager">
+            <summary>
+            Менеджер ресурсов
+            </summary>
+        </member>
+        <member name="F:CoreUtil.ResourceManager.ResourceManager.StandardExtensionToAssetType">
+            <summary>
+            Стандартный словарь сопоставления расширения файла и типа ассета
+            </summary>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.ResourceManager.#ctor(System.String,CoreUtil.ResourceManager.AssetData.Builders.AssetDataAbstractBuilder,CoreUtil.ResourceManager.AssetData.AssetDatabaseUpdateStrategies.IAssetDatabaseUpdateStrategy)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parAssetDatabaseDir">Директория для составления начальной базы данных ассетов</param>
+            <param name="parInitialAssetBuilder">"Строитель"-загрузчик ресурсов</param>
+            <param name="parAssetDatabaseUpdateStrategy">Стратегия составления начальной базы данных ассетов</param>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.ResourceManager.UpdateAssetsAvailableDatabase(CoreUtil.ResourceManager.AssetData.AssetDatabaseUpdateStrategies.IAssetDatabaseUpdateStrategy)">
+            <summary>
+            Обновление базы данных доступных ассетов
+            </summary>
+            <param name="parAssetDatabaseUpdateStrategy"></param>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.ResourceManager.LoadAssetPack(System.String,CoreUtil.ResourceManager.AssetData.Builders.AssetDataAbstractBuilder)">
+            <summary>
+            Загружает пакет ресурсов в память
+            </summary>
+            <param name="parAssetPackName">Имя пакета ресурсов</param>
+            <param name="parCustomAssetBuilder">Определенный строитель-загрузчик</param>
+            <exception cref="T:System.ArgumentException">Пакет ресурсов не был найден</exception>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.ResourceManager.LoadAssetPack(CoreUtil.ResourceManager.AssetPack,CoreUtil.ResourceManager.AssetData.Builders.AssetDataAbstractBuilder,System.String)">
+            <summary>
+            Загружает пакет ресурсов в память
+            </summary>
+            <param name="parAssetPack">Пакет ресурсов</param>
+            <param name="parCustomAssetBuilder">Определенный строитель-загрузчик</param>
+            <param name="parAssetPackName">Имя пакета ресурсов</param>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.ResourceManager.UnloadAssetPack(System.String)">
+            <summary>
+            Выгрузить пакет ресурсов из памяти
+            </summary>
+            <param name="parAssetPackName">Название пакета ресурсов</param>
+            <exception cref="T:System.ArgumentException">Пакет ресурсов не был загружен</exception>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.ResourceManager.UnloadAssetPack(CoreUtil.ResourceManager.AssetPackLoadedData,System.String)">
+            <summary>
+            Выгрузить пакет ресурсов из памяти
+            </summary>
+            <param name="parAssetPackLoadedData">Данные о загруженном в память пакете ресурсов</param>
+            <param name="parAssetPackName">Название пакета ресурсов</param>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.ResourceManager.GetAssetData``1(System.String,System.String)">
+            <summary>
+            Получить данные ресурса
+            </summary>
+            <param name="parAssetPackName">Название пакета ресурсов</param>
+            <param name="parAssetName">Название нужного ресурса</param>
+            <typeparam name="T">Желаемый преобразованный тип ресурса</typeparam>
+            <returns>Данные ресурса</returns>
+            <exception cref="T:System.ArgumentException">Ресурс не может быть найден в базе загруженных ресурсов</exception>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.ResourceManager.GetAssetData``1(CoreUtil.ResourceManager.AssetMetadata)">
+            <summary>
+            Получить данные ресурса
+            </summary>
+            <param name="parAssetMetadata">Метаданные ассета</param>
+            <typeparam name="T">Желаемый преобразованный тип ресурса</typeparam>
+            <returns>Данные ресурса</returns>
+            <exception cref="T:System.ArgumentException">Ресурс не может быть найден в базе загруженных ресурсов</exception>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.ResourceManager.GetAssetMetadata(System.String,System.String)">
+            <summary>
+            Получить метаданные об ассете
+            </summary>
+            <param name="parAssetPackName">Имя пакета ресурсов нужного ассета</param>
+            <param name="parAssetName">Имя нужного ассета</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.ResourceManager.GetAssetInfo(CoreUtil.ResourceManager.AssetMetadata,System.String@,System.String@)">
+            <summary>
+            Получить данные о ресурсе
+            </summary>
+            <param name="parAssetMetadata">Метаданные об ассете</param>
+            <param name="outAssetPack">Название пакета ресурсов</param>
+            <param name="outAssetName">Название ресурса</param>
+        </member>
+        <member name="M:CoreUtil.ResourceManager.ResourceManager.GetLoadedAssetPackContent(System.String)">
+            <summary>
+            Возвращает загруженные данные ресурсов пакета, загружает пакет если необходимо
+            </summary>
+            <param name="parAssetPackKey">Имя пакета ресурсов</param>
+            <returns></returns>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.ResourceManager.AvailableAssetPacks">
+            <summary>
+            Доступные для загрузки пакеты ресурсов
+            </summary>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.ResourceManager.LoadedAssetPacks">
+            <summary>
+            Загруженные в память пакеты ресурсов
+            </summary>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.ResourceManager.StandardAssetBuilder">
+            <summary>
+            Строитель-загрузчик ресурсов по умолчанию
+            </summary>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.ResourceManager.StandardAssetDatabaseUpdateStrategy">
+            <summary>
+            Стратегия обновления базы данных ресурсов по умолчанию
+            </summary>
+        </member>
+        <member name="P:CoreUtil.ResourceManager.ResourceManager.AssetDatabaseDir">
+            <summary>
+            Корневая директория ресурсов игры по умолчанию
+            </summary>
+        </member>
+        <member name="T:CoreUtil.Time.Time">
+            <summary>
+            Операции со временем
+            </summary>
+        </member>
+        <member name="M:CoreUtil.Time.Time.MillisecondsToSeconds(System.Double)">
+            <summary>
+            Преобразовать миллисекунды в секунды
+            </summary>
+            <param name="parMilliseconds">Время в миллисекундах</param>
+            <returns>Время в секундах</returns>
+        </member>
+    </members>
+</doc>

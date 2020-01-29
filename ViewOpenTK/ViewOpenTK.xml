@@ -1,0 +1,3118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ViewOpenTK</name>
+    </assembly>
+    <members>
+        <member name="T:ViewOpenTK.AssetData.AssetDatabaseUpdateStrategies.AssetDatabaseUpdateDiffByExtensionOpenTkStrategy">
+            <summary>
+            Класс реализует стратегию обновления базы данных ресурсов приложения, базирующейся
+            на разделении на типы ассетов по расширению файлов
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.AssetDatabaseUpdateStrategies.AssetDatabaseUpdateDiffByExtensionOpenTkStrategy.#ctor(System.Collections.Generic.Dictionary{System.String,CoreUtil.ResourceManager.EAssetType},System.Collections.Generic.Dictionary{System.String,ViewOpenTK.AssetData.EOpenTkAssetType})">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parExtensionToActualAssetType">Словарь соответствия расширение-основной ассета приложения</param>
+            <param name="parAssetExtensionToActualOpenTkAssetType">Словарь соответствия расширение-тип ассета OpenTK</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.AssetDatabaseUpdateStrategies.AssetDatabaseUpdateDiffByExtensionOpenTkStrategy.AddAssetMetadataToPack(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,CoreUtil.ResourceManager.AssetMetadata})">
+            <summary>
+            Переопределенная процедура добавления метаданных ресурса в пакет ресурсов 
+            </summary>
+            <param name="parFilePath">Путь к файлу ресурса</param>
+            <param name="parDirectory">Директория ресурса</param>
+            <param name="parFileExtension">Расширение файла</param>
+            <param name="parAvailableAssetsInPack">Ссылка на словарь текущих доступных пакетов ресурсов для заполнения</param>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.AssetDatabaseUpdateStrategies.AssetDatabaseUpdateDiffByExtensionOpenTkStrategy.AssetExtensionToActualOpenTkAssetType">
+            <summary>
+            Текущий установленный словарь соответствия расширение-тип ассета OpenTK
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.AssetDataRelatedConsts">
+            <summary>
+            Константы, относящиеся к ассетам/ресурсам
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.AssetDataRelatedConsts.FONT_ASSET_SYMBOL_DEFINITION_PREFIX">
+            <summary>
+            Префикс обозначения символа шрифтового ассета
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.AssetDataRelatedConsts.AssetFileExtensionToOpenTkAssetType">
+            <summary>
+            Словарь соответствия расширений файлов и типам ассетов OpenTK
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.AssetMetadataOpenTk">
+            <summary>
+            Метаданные об ассете OpenTK
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.AssetMetadataOpenTk.#ctor(CoreUtil.ResourceManager.EAssetType,System.String,ViewOpenTK.AssetData.EOpenTkAssetType)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parAssetType">Базовый тип ассета</param>
+            <param name="parFilePath">Путь к файлу ассета</param>
+            <param name="parOpenTkAssetType">Тип ассета OpenTK</param>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.AssetMetadataOpenTk.OpenTkAssetType">
+            <summary>
+            Тип ассета OpenTK
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.Builders.AssetDataOpenTkBuilder">
+            <summary>
+            Класс для реализации шаблона "строитель" для обработки ассетов OpenTK
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.Builders.AssetDataOpenTkBuilder.LoadAssetData``1(CoreUtil.ResourceManager.AssetMetadata)">
+            <summary>
+            Переопределение процесса загрузки данных ресурсов для ассетов OpenTK
+            </summary>
+            <param name="parAssetMetadata">Метаданные загружаемого ассета</param>
+            <typeparam name="T">Приведенный тип результирующего объекта загруженного ресурса</typeparam>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException">Тип ассета не поддерживается этим загрузчиком</exception>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkParent">
+            <summary>
+            Базовый абстрактный класс для всех данных ассетов OpenTK
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkParent.#ctor(CoreUtil.ResourceManager.AssetMetadata)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parActualAssetMetadata">Метаданные об ассете</param>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkTexture">
+            <summary>
+            Данные ассета типа текстуры OpenTK
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkTexture.#ctor(CoreUtil.ResourceManager.AssetMetadata,System.Byte[])">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parActualAssetMetadata">Метаданные об ассете</param>
+            <param name="parBinaryData">Данные текстуры в бинарном виде</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkTexture.Dispose(System.Boolean)">
+            <summary>
+            Переопределение деструктора
+            </summary>
+            <param name="parDisposing">Флаг-признак уничтожения (формальный параметр)</param>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkTexture.GlTextureId">
+            <summary>
+            Идентификатор текстуры в памяти OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkTexture.LinkedBitmap">
+            <summary>
+            Связанный сгенерированный Bitmap
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkTexture.Width">
+            <summary>
+            Ширина текстуры
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkTexture.Height">
+            <summary>
+            Высота текстуры
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound">
+            <summary>
+            Данные ассета аудио типа OpenTK
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound.AudioFormatProvider">
+            <summary>
+            Реализация интерфейса для поддержки формата аудио файла
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound.#ctor(ViewOpenTK.AssetData.AssetMetadataOpenTk,System.Byte[])">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parAssetMetadata">Метаданные об ассете</param>
+            <param name="parBinaryData">Аудио данные в бинарном формате</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound.Dispose(System.Boolean)">
+            <summary>
+            Переопределение деструктора
+            </summary>
+            <param name="parDisposing">Флаг-признак уничтожения (формальный параметр)</param>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg">
+            <summary>
+            Реализация работы с форматом аудио OGG Vorbis
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg._loopTaskEnded">
+            <summary>
+            Флаг-признак окончания задачи зацикленного воспроизведения
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.InitAudioData(ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound)">
+            <summary>
+            Инициализация и первоначальная загрузка аудио данных
+            </summary>
+            <param name="parLinkedOpenTkSound">Аудио данные OpenTK</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.Play(System.Boolean)">
+            <summary>
+            Воспроизведение
+            </summary>
+            <param name="parIsLooped">Зациклить воспроизведение?</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.Pause">
+            <summary>
+            Приостановить воспроизведение
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.Stop">
+            <summary>
+            Остановить воспроизведение
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.Reset">
+            <summary>
+            Сбросить воспроизведение
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.IsPlaying">
+            <summary>
+            Воспроизводится ли сейчас?
+            </summary>
+            <returns>True, если воспроизводится</returns>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.IsPaused">
+            <summary>
+            На паузе ли сейчас?
+            </summary>
+            <returns>True, если на паузе</returns>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.SetIsLooped(System.Boolean)">
+            <summary>
+            Установка параметра зацикленности воспроизведения
+            </summary>
+            <param name="parIsLooped">Значение параметра зацикленности воспроизведения</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.Dispose">
+            <summary>
+            Деструктор
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.UpdateLoopedTask">
+            <summary>
+            Обновить состояние задачи по зацикливанию воспроизведения трека
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.OggPlayerInstance">
+            <summary>
+            Ссылка на текущий плеер OGG Vorbis
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.TaskCancellationFlag">
+            <summary>
+            Флаг-признак отмены выполнения задачи по зацикливанию воспроизведения
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.LoopTask">
+            <summary>
+            Текущий экземпляр задачи по зацикливанию воспроизведения
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderOgg.IsLooped">
+            <summary>
+            Зациклено ли воспроизведение?
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav">
+            <summary>
+            Реализация работы с форматом аудио WAVE
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav._linkedAssetData">
+            <summary>
+            Связанные данные аудио ассета OpenTK
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.#ctor(System.Byte[])">
+            <summary>
+            Конструктор по умолчанию
+            </summary>
+            <param name="parAudioBinaryData">Бинарные данные аудио</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.InitAudioData(ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound)">
+            <summary>
+            Инициализация и первоначальная загрузка аудио данных
+            </summary>
+            <param name="parLinkedOpenTkSound">Аудио данные OpenTK</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.Play(System.Boolean)">
+            <summary>
+            Воспроизведение
+            </summary>
+            <param name="parIsLooped">Зациклить воспроизведение?</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.Pause">
+            <summary>
+            Приостановить воспроизведение
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.Stop">
+            <summary>
+            Остановить воспроизведение
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.Reset">
+            <summary>
+            Сбросить воспроизведение
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.IsPlaying">
+            <summary>
+            Воспроизводится ли сейчас?
+            </summary>
+            <returns>True, если воспроизводится</returns>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.IsPaused">
+            <summary>
+            На паузе ли сейчас?
+            </summary>
+            <returns>True, если на паузе</returns>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.SetIsLooped(System.Boolean)">
+            <summary>
+            Установка параметра зацикленности воспроизведения
+            </summary>
+            <param name="parIsLooped">Значение параметра зацикленности воспроизведения</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.Dispose">
+            <summary>
+            Деструктор
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.GetSoundFormat(System.Int32,System.Int32)">
+            <summary>
+            Получить данные о формате аудио OpenAL контейнера WAVE
+            </summary>
+            <param name="parChannels">Количество каналов</param>
+            <param name="parBits">Битность</param>
+            <returns></returns>
+            <exception cref="T:System.NotSupportedException">Формат не поддерживается</exception>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.AlBuffer">
+            <summary>
+            Буфер OpenAL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.AlSource">
+            <summary>
+            Источник OpenAL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.Channels">
+            <summary>
+            Количество аудио каналов
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.BitsPerSample">
+            <summary>
+            Битность
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.SampleRate">
+            <summary>
+            Частота дискретизации
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.AudioFormatProviderWav.AudioBinaryData">
+            <summary>
+            Аудио данные в бинарном виде
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.IAudioFormatProvider">
+            <summary>
+            Интерфейс для реализаций работы с различными форматами аудио
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.IAudioFormatProvider.InitAudioData(ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound)">
+            <summary>
+            Инициализация и первоначальная загрузка аудио данных
+            </summary>
+            <param name="parLinkedOpenTkSound">Аудио данные OpenTK</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.IAudioFormatProvider.Play(System.Boolean)">
+            <summary>
+            Воспроизведение
+            </summary>
+            <param name="parIsLooped">Зациклить воспроизведение?</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.IAudioFormatProvider.Pause">
+            <summary>
+            Приостановить воспроизведение
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.IAudioFormatProvider.Stop">
+            <summary>
+            Остановить воспроизведение
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.IAudioFormatProvider.Reset">
+            <summary>
+            Сбросить воспроизведение
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.IAudioFormatProvider.IsPlaying">
+            <summary>
+            Воспроизводится ли сейчас?
+            </summary>
+            <returns>True, если воспроизводится</returns>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.IAudioFormatProvider.IsPaused">
+            <summary>
+            На паузе ли сейчас?
+            </summary>
+            <returns>True, если на паузе</returns>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.AudioFormatProviders.IAudioFormatProvider.SetIsLooped(System.Boolean)">
+            <summary>
+            Установка параметра зацикленности воспроизведения
+            </summary>
+            <param name="parIsLooped">Значение параметра зацикленности воспроизведения</param>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.IUpdateCollectionLibraryStrategy">
+            <summary>
+            Интерфейс для стратегии обновления внутренней библиотеки ресурсов OpenTK
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.IUpdateCollectionLibraryStrategy.UpdateCollectionLibrary(CoreUtil.ResourceManager.ResourceManager,System.Collections.Generic.Dictionary{System.String,ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite}@,System.Collections.Generic.Dictionary{System.String,ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataAnimation}@,System.Collections.Generic.Dictionary{System.String,ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataFont}@)">
+            <summary>
+            Контрактный метод обновления коллекций ресурсов библиотеки
+            </summary>
+            <param name="parResManager">Менеджер ресурсов приложения</param>
+            <param name="outDataSprites">Выходная коллекция спрайтов</param>
+            <param name="outDataAnimations">Выходная коллекция анимаций</param>
+            <param name="outDataFonts">Выходная коллекция шрифтов</param>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy">
+            <summary>
+            Стандартная реализация стратегии обновления внутренней библиотеки ресурсов OpenTK
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SpriteSheetInfo">
+            <summary>
+            Внутренняя структура данных с шаблоном информации о спрайте в спрайтовом атласе
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SpriteSheetInfo.SpriteName">
+            <summary>
+            Имя спрайта
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SpriteSheetInfo.X">
+            <summary>
+            Позиция X в атласе
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SpriteSheetInfo.Y">
+            <summary>
+            Позиция Y в атласе
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SpriteSheetInfo.Width">
+            <summary>
+            Ширина в атласе
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SpriteSheetInfo.Height">
+            <summary>
+            Высота в атласе
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SpriteSheetDataTuple">
+            <summary>
+            Внутренняя структура данных с шаблоном представления спрайтового атласа 
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SpriteSheetDataTuple.Metadata">
+            <summary>
+            Метаданные атласа
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SpriteSheetDataTuple.Sprites">
+            <summary>
+            Спрайты в атласе
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.METADATATYPE_KEY">
+            <summary>
+            Ключ значения метаданных (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.METADATATYPE_ANIM_SHEET">
+            <summary>
+            Метаданные типа атласа спрайтовой анимации (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.METADATATYPE_SPRITE_SHEET">
+            <summary>
+            Метаданные типа спрайтового атласа (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.METADATATYPE_FONT_SPRITE_SHEET">
+            <summary>
+            Метаданные типа шрифтового спрайтового атласа (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.METADATA_ANIM_WIDTH">
+            <summary>
+            Метаданные ширины кадра анимации (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.METADATA_ANIM_HEIGHT">
+            <summary>
+            Метаданные высоты кадра анимации (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.METADATA_ANIM_FRAMESCOUNT">
+            <summary>
+            Метаданные об общем числе кадров анимации (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.ANIMATION_POSTFIX">
+            <summary>
+            Постфикс для имен внутренних ресурсов, связанных со спрайтовыми анимациями (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SPRITESHEET_ARRAY">
+            <summary>
+            Метаданные о спрайтах в атласе (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SPRITESHEET_SPRITE_NAME">
+            <summary>
+            Метаданные об имени спрайта (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SPRITESHEET_X">
+            <summary>
+            Метаданные о позиции спрайта в атласе X (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SPRITESHEET_Y">
+            <summary>
+            Метаданные о позиции спрайта в атласе Y (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SPRITESHEET_WIDTH">
+            <summary>
+            Метаданные о ширине спрайта в атласе (ключ)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.SPRITESHEET_HEIGHT">
+            <summary>
+            Метаданные о высоте спрайта в атласе (ключ)
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.#ctor(System.String)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parAssetPackName">Имя пакета ресурсов для обработки</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.UpdateCollectionLibrary(CoreUtil.ResourceManager.ResourceManager,System.Collections.Generic.Dictionary{System.String,ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite}@,System.Collections.Generic.Dictionary{System.String,ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataAnimation}@,System.Collections.Generic.Dictionary{System.String,ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataFont}@)">
+            <summary>
+            Реализация метода обновления коллекций ресурсов библиотеки
+            </summary>
+            <param name="parResManager">Менеджер ресурсов приложения</param>
+            <param name="outDataSprites">Выходная коллекция спрайтов</param>
+            <param name="outDataAnimations">Выходная коллекция анимаций</param>
+            <param name="outDataFonts">Выходная коллекция шрифтов</param>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.Standard.StandardSpUpdateCollectionLibraryStrategy.AssetPackName">
+            <summary>
+            Имя связанного с коллекцией пакета ресурсов
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetData">
+            <summary>
+            Базовый класс для данных производных ресурсов ассетов
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataAnimation">
+            <summary>
+            Производный ассет - анимация
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataAnimation.#ctor(System.Collections.Generic.List{ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite})">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parSpriteFramesInAnimation">Данные о кадрах в анимации</param>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataAnimation.SpriteFramesInAnimation">
+            <summary>
+            Данные о кадрах в анимации
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataAnimation.FramesCount">
+            <summary>
+            Получить общее количество кадров анимации
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataFont">
+            <summary>
+            Производный ассет - шрифт
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataFont.#ctor(System.Collections.Generic.Dictionary{System.String,ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite})">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parSymbolsToSprites">Словарь соответствия символам спрайтов</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataFont.GetSymbolsSprites(System.String)">
+            <summary>
+            Получить спрайты для текстовой строки
+            </summary>
+            <param name="parText">Целевая текстовая строка</param>
+            <returns></returns>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataFont.SymbolsToSprites">
+            <summary>
+            Словарь соответствия символам спрайтов
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite">
+            <summary>
+            Производный ассет - спрайт
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite.#ctor(ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkTexture,System.Drawing.Rectangle)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parLinkedAssetDataTexture">Данные об ассете текстуры OpenTK</param>
+            <param name="parSpriteRect">Область спрайта на текстуре</param>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite.LinkedAssetDataTexture">
+            <summary>
+            Данные об ассете текстуры OpenTK
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite.SpriteRect">
+            <summary>
+            Прямоуголная область спрайта на текстуре
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite.OpenTkTextureRect">
+            <summary>
+            Прямоуголная область спрайта на текстуре в координатах OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite.Width">
+            <summary>
+            Ширина спрайта
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite.Height">
+            <summary>
+            Высота спрайта
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetsDataLibrary">
+            <summary>
+            Библиотека производных ассетов OpenTK
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetsDataLibrary.#ctor">
+            <summary>
+            Стандартный конструктор без параметров
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetsDataLibrary.UpdateCollectionsData(ViewOpenTK.AssetData.DataTypes.Subassets.Strategies.IUpdateCollectionLibraryStrategy,CoreUtil.ResourceManager.ResourceManager)">
+            <summary>
+            Обновить коллекции библиотеки
+            </summary>
+            <param name="parUpdateCollectionLibraryStrategy">Реализация стратегии обновления коллекции</param>
+            <param name="parResManager">Менеджер ресурсов</param>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetsDataLibrary.GetSprite(System.String)">
+            <summary>
+            Получить спрайт из коллекции
+            </summary>
+            <param name="parKey">Идентификатор-название спрайта</param>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetsDataLibrary.GetAnimation(System.String)">
+            <summary>
+            Получить анимацию из коллекции
+            </summary>
+            <param name="parKey">Идентификатор-название анимации</param>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetsDataLibrary.GetFont(System.String)">
+            <summary>
+            Получить шрифт из коллекции
+            </summary>
+            <param name="parKey">Идентификатор-название шрифта</param>
+            <returns></returns>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetsDataLibrary.SpritesCollection">
+            <summary>
+            Коллекция спрайтов
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetsDataLibrary.AnimationsCollection">
+            <summary>
+            Коллекция анимаций
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.AssetData.DataTypes.Subassets.SubassetsDataLibrary.FontsCollection">
+            <summary>
+            Коллекция шрифтов
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.AssetData.EOpenTkAssetType">
+            <summary>
+            Тип ассета OpenTK
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.EOpenTkAssetType.NotSpecial">
+            <summary>
+            Не является специальным ассетом OpenTK
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.EOpenTkAssetType.Texture">
+            <summary>
+            Текстура
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.EOpenTkAssetType.WaveSound">
+            <summary>
+            Аудио данные
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.AssetData.EOpenTkAssetType.TextMetadata">
+            <summary>
+            Текстовые метаданные
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.OpenAL.BasicManager.OpenAlManager">
+            <summary>
+            Менеджер-обертка OpenAL
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.BasicManager.OpenAlManager.#ctor">
+            <summary>
+            Приватный конструктор
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.BasicManager.OpenAlManager.CheckForError(System.String,System.String)">
+            <summary>
+            Проверить на ошибочное состояние OpenAL
+            </summary>
+            <param name="parMessageErr">Префикс сообщения в случае ошибки</param>
+            <param name="parMessageOk">Сообщение в случае отсутствия ошибки</param>
+            <returns>True, если ошибка отсутствует</returns>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.BasicManager.OpenAlManager.Play(ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound,System.Boolean)">
+            <summary>
+            Воспроизвести
+            </summary>
+            <param name="parWaveSound">Аудио ассет OpenTK</param>
+            <param name="parIsLooped">Зациклить воспроизведение?</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.BasicManager.OpenAlManager.Pause(ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound)">
+            <summary>
+            Приостановить воспроизведение
+            </summary>
+            <param name="parWaveSound">Аудио ассет OpenTK</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.BasicManager.OpenAlManager.Stop(ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound)">
+            <summary>
+            Остановить воспроизведение
+            </summary>
+            <param name="parWaveSound">Аудио ассет OpenTK</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.BasicManager.OpenAlManager.Rewind(ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound)">
+            <summary>
+            Сбросить и перемотать воспроизведение
+            </summary>
+            <param name="parWaveSound">Аудио ассет OpenTK</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.BasicManager.OpenAlManager.IsPlaying(ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound)">
+            <summary>
+            Воспроизводится ли сейчас?
+            </summary>
+            <param name="parWaveSound">Аудио ассет OpenTK</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.BasicManager.OpenAlManager.IsPaused(ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound)">
+            <summary>
+            На паузе ли сейчас воспроизведение?
+            </summary>
+            <param name="parWaveSound">Аудио ассет OpenTK</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.BasicManager.OpenAlManager.SetIsLooped(ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkWaveSound,System.Boolean)">
+            <summary>
+            Установить флаг-признак зацикливания воспроизведения
+            </summary>
+            <param name="parWaveSound">Аудио ассет OpenTK</param>
+            <param name="parIsLooped">Значение признака зацикливания воспроизведения</param>
+        </member>
+        <member name="P:ViewOpenTK.OpenAL.BasicManager.OpenAlManager.AudioContext">
+            <summary>
+            Аудио контекст OpenAL
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.OpenAL.OpenAlSoundManagerColleague">
+            <summary>
+            Реализация "сотрудника" со стороны отображения и использующего OpenTK
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.OpenAlSoundManagerColleague.#ctor">
+            <summary>
+            Стандартный конструктор без параметров
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.OpenAlSoundManagerColleague.#ctor(Model.SPCore.Managers.Sound.Mediators.SoundManagerMediator)">
+            <summary>
+            Конструктор с параметром посредника
+            </summary>
+            <param name="parMediator">Посредник аудио менеджера</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.OpenAlSoundManagerColleague.ProcessMessage(Model.SPCore.Managers.Sound.Messages.SoundManagerMessage)">
+            <summary>
+            Обработать сообщение
+            </summary>
+            <param name="parSoundManagerMessage">Сообщение</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.OpenAlSoundManagerColleague.ProcessRequest(Model.SPCore.Managers.Sound.Requests.SoundManagerRequest)">
+            <summary>
+            Обработать запрос
+            </summary>
+            <param name="parSoundManagerRequest">Запрос</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenAL.OpenAlSoundManagerColleague.GetWaveSoundAssetData(CoreUtil.ResourceManager.ResourceManager,CoreUtil.ResourceManager.AssetMetadata)">
+            <summary>
+            Получить ассет аудио данных OpenTK
+            </summary>
+            <param name="parResourceManager">Менеджер ресурсов</param>
+            <param name="parAssetMetadata">Метаданные получаемого ассета</param>
+            <returns></returns>
+        </member>
+        <member name="T:ViewOpenTK.OpenGL.DisplayUpdateStrategy.IDisplayUpdateStrategy">
+            <summary>
+            Интерфейс стратегии обновления дисплея для отрисовки OpenGL
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.DisplayUpdateStrategy.IDisplayUpdateStrategy.GetDisplayData(System.Double,System.Double,System.Double,System.Double,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Получить полную информацию о дисплее приложения для отрисовки OpenGL
+            </summary>
+            <param name="parWindowWidth">Ширина окна</param>
+            <param name="parWindowHeight">Высота окна</param>
+            <param name="parViewportWidth">Ширина вида</param>
+            <param name="parViewportHeight">Высота вида</param>
+            <param name="outDisplayViewportGlUnitsX1">Выходной параметр координаты экрана OpenGL для дисплея X1</param>
+            <param name="outDisplayViewportGlUnitsY1">Выходной параметр координаты экрана OpenGL для дисплея Y1</param>
+            <param name="outDisplayViewportGlUnitsX2">Выходной параметр координаты экрана OpenGL для дисплея X2</param>
+            <param name="outDisplayViewportGlUnitsY2">Выходной параметр координаты экрана OpenGL для дисплея Y2</param>
+            <param name="outGlobalRescale">Выходной параметр фактора масштабирования</param>
+        </member>
+        <member name="T:ViewOpenTK.OpenGL.DisplayUpdateStrategy.StandardCenteredDisplayUpdateStrategy">
+            <summary>
+            Реализация стандартной стратегии обновления дисплея приложения с упором на рендеринг в центре экрана
+            не растянутого изображения
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.DisplayUpdateStrategy.StandardCenteredDisplayUpdateStrategy.#ctor(System.Boolean)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parShouldRescaleBeWholeNumber">Должен ли фактор масштабирования быть обязательно целочисленным (для Pixel-Perfect)</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.DisplayUpdateStrategy.StandardCenteredDisplayUpdateStrategy.GetDisplayData(System.Double,System.Double,System.Double,System.Double,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Получить полную информацию о дисплее приложения для отрисовки OpenGL
+            </summary>
+            <param name="parWindowWidth">Ширина окна</param>
+            <param name="parWindowHeight">Высота окна</param>
+            <param name="parViewportWidth">Ширина вида</param>
+            <param name="parViewportHeight">Высота вида</param>
+            <param name="outDisplayViewportGlUnitsX1">Выходной параметр координаты экрана OpenGL для дисплея X1</param>
+            <param name="outDisplayViewportGlUnitsY1">Выходной параметр координаты экрана OpenGL для дисплея Y1</param>
+            <param name="outDisplayViewportGlUnitsX2">Выходной параметр координаты экрана OpenGL для дисплея X2</param>
+            <param name="outDisplayViewportGlUnitsY2">Выходной параметр координаты экрана OpenGL для дисплея Y2</param>
+            <param name="outGlobalRescale">Выходной параметр фактора масштабирования</param>
+        </member>
+        <member name="T:ViewOpenTK.OpenGL.EOpenGlAppRenderingMode">
+            <summary>
+            Режим рендеринга приложения OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.EOpenGlAppRenderingMode.UsingFramebuffer">
+            <summary>
+            Используя кадровый буфер
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.EOpenGlAppRenderingMode.UsingGlobalRescale">
+            <summary>
+            Используя технику фактора масштабирования
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.OpenGL.OpenGlCommandsInternalHandler">
+            <summary>
+            Класс, предназначенный для управления очередью системных или служебных команд OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlCommandsInternalHandler._openGlActionsQueue">
+            <summary>
+            Очередь команд
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlCommandsInternalHandler.AddGlCommand(System.Action)">
+            <summary>
+            Добавить команду в очередь
+            </summary>
+            <param name="parCommand">Делегат команды</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlCommandsInternalHandler.GetNextGlAction">
+            <summary>
+            Получить следующую команду из очереди
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlCommandsInternalHandler.AreAllActionsPerformed">
+            <summary>
+            Все ли служебные команды из очереди выполнены?
+            </summary>
+            <returns>True, если все команды из очереди были выполнены</returns>
+        </member>
+        <member name="T:ViewOpenTK.OpenGL.OpenGlScreenNormalizedRect">
+            <summary>
+            Структура данных с информацией о прямоугольных нормальзованных координатах OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlScreenNormalizedRect.X1">
+            <summary>
+            Нормализованная координата OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlScreenNormalizedRect.Y1">
+            <summary>
+            Нормализованная координата OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlScreenNormalizedRect.X2">
+            <summary>
+            Нормализованная координата OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlScreenNormalizedRect.Y2">
+            <summary>
+            Нормализованная координата OpenGL
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.OpenGL.OpenGlTexRect">
+            <summary>
+            Данные о текстурных координатах OpenGL
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlTexRect.#ctor(System.Drawing.Rectangle,ViewOpenTK.AssetData.DataTypes.AssetDataOpenTkTexture)">
+            <summary>
+            Стандартный конструктор, расчитывающий текстурные координаты
+            </summary>
+            <param name="parRect">Прямоугольник в обычной системе координат</param>
+            <param name="parTex">Ассет текстуры</param>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlTexRect.X1">
+            <summary>
+            Нормализованная текстурная координата OpenGL X1
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlTexRect.Y1">
+            <summary>
+            Нормализованная текстурная координата OpenGL Y1
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlTexRect.X2">
+            <summary>
+            Нормализованная текстурная координата OpenGL X2
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlTexRect.Y2">
+            <summary>
+            Нормализованная текстурная координата OpenGL Y2
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.OpenGL.OpenGlUtil">
+            <summary>
+            Утилитарный вспомогательный класс OpenGL
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlUtil.GetOpenGlCoordX(System.Double,System.Double)">
+            <summary>
+            Получить координату X в пространстве OpenGL
+            </summary>
+            <param name="parX">X в обычной системе координат</param>
+            <param name="parWidth">Ширина</param>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlUtil.GetOpenGlCoordY(System.Double,System.Double)">
+            <summary>
+            Получить координату Y в пространстве OpenGL
+            </summary>
+            <param name="parY">Y в обычной системе координат</param>
+            <param name="parHeight">Высота</param>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlUtil.GetNormalizedWidthCoordValue(System.Double,System.Double)">
+            <summary>
+            Получить нормализованное значение величины ширины OpenGL
+            </summary>
+            <param name="parWidth">Величина ширины в обычной системе координат</param>
+            <param name="parViewportWidth">Ширина вида</param>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlUtil.GetNormalizedHeightCoordValue(System.Double,System.Double)">
+            <summary>
+            Получить нормализованное значение величины высоты OpenGL
+            </summary>
+            <param name="parWidth">Величина высоты в обычной системе координат</param>
+            <param name="parViewportWidth">Высота вида</param>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlUtil.GetNormalizedTextureCoordX(System.Double,System.Double)">
+            <summary>
+            Получить координату X в пространстве текстуры OpenGL
+            </summary>
+            <param name="parX">X в обычной системе текстурных координат</param>
+            <param name="parWidth">Ширина</param>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlUtil.GetNormalizedTextureCoordY(System.Double,System.Double)">
+            <summary>
+            Получить координату Y в пространстве текстуры OpenGL
+            </summary>
+            <param name="parY">Y в обычной системе текстурных координат</param>
+            <param name="parHeight">Ширина</param>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlUtil.GetLeftXCoordBasedOnHorizontalAlign(System.Double,System.Double,ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EHorizontalAlign,System.Double)">
+            <summary>
+            Получить координату X в пространстве OpenGL с учетом выбранного горизонтального выравнивания
+            </summary>
+            <param name="parX">X в обычной системе координат</param>
+            <param name="parWidth">Ширина</param>
+            <param name="parHAlign">Выбранное горизонтальное выравнивание</param>
+            <param name="parScale">Величина масштабирования</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Неподдерживаемый формат выравнивания</exception>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlUtil.GetTopYCoordBasedOnVerticalAlign(System.Double,System.Double,ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EVerticalAlign,System.Double)">
+            <summary>
+            Получить координату Y в пространстве OpenGL с учетом выбранного вертикального выравнивания
+            </summary>
+            <param name="parY">Y в обычной системе координат</param>
+            <param name="parHeight">Высота</param>
+            <param name="parVAlign">Выбранное вертикальное выравнивание</param>
+            <param name="parScale">Величина масштабирования</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Неподдерживаемый формат выравнивания</exception>
+        </member>
+        <member name="T:ViewOpenTK.OpenGL.OpenGlWindowDisplay">
+            <summary>
+            Информация о дисплее приложения в окне OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlWindowDisplay.DefaultDisplayUpdateStrategy">
+            <summary>
+            Стандартная стратегия обновления информации о дисплее приложения
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlWindowDisplay._appRenderingMode">
+            <summary>
+            Режим рендеринга приложения
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlWindowDisplay._displayViewportGlUnitsX1">
+            <summary>
+            X1 координата дисплея приложения в системе координат OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlWindowDisplay._displayViewportGlUnitsX2">
+            <summary>
+            X2 координата дисплея приложения в системе координат OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlWindowDisplay._displayViewportGlUnitsY1">
+            <summary>
+            Y1 координата дисплея приложения в системе координат OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlWindowDisplay._displayViewportGlUnitsY2">
+            <summary>
+            Y2 координата дисплея приложения в системе координат OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlWindowDisplay._globalRescale">
+            <summary>
+            Фактор масштабирования дисплея приложения
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenGL.OpenGlWindowDisplay.CurrentDisplayUpdateStrategy">
+            <summary>
+            Текущая выбранная стратегия обновления информации о дисплее приложения
+            </summary>
+        </member>
+        <member name="E:ViewOpenTK.OpenGL.OpenGlWindowDisplay.RenderDisplayChanged">
+            <summary>
+            Событие изменения настроек рендеринга дисплея приложения
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlWindowDisplay.UpdateViewport(System.Double,System.Double)">
+            <summary>
+            Обновить дисплей-вид приложения
+            </summary>
+            <param name="parWidth">Новая ширина</param>
+            <param name="parHeight">Новая высота</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlWindowDisplay.UpdateDisplay(System.Double,System.Double,ViewOpenTK.OpenGL.DisplayUpdateStrategy.IDisplayUpdateStrategy)">
+            <summary>
+            Обновить дисплей-вид приложения
+            </summary>
+            <param name="parWidth">Новая ширина</param>
+            <param name="parHeight">Новая высота</param>
+            <param name="parDisplayUpdateStrategy">Новая стратегия обновления дисплея приложения</param>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlWindowDisplay.GetCurrentRenderingModeNormalizedRect(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Получить данные о границах дисплея в нормализованном пространстве OpenGL
+            </summary>
+            <param name="parPosX">Позиция X</param>
+            <param name="parPosY">Позиция Y</param>
+            <param name="parWidth">Ширина</param>
+            <param name="parHeight">Высота</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlWindowDisplay.GetCurrentDisplayNormalizedRect(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            (Устаревшее) Получить информацию о позиции объекта на дисплее, обновляемым с помощью фактора масштабирования
+            </summary>
+            <param name="parPosX">Позиция X</param>
+            <param name="parPosY">Позиция Y</param>
+            <param name="parWidth">Ширина</param>
+            <param name="parHeight">Высота</param>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.OpenGL.OpenGlWindowDisplay.GetCurrentViewportNormalizedRect(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Получить информацию о позиции объекта на дисплее, обновляемым с помощью буфера кадров
+            </summary>
+            <param name="parPosX">Позиция X</param>
+            <param name="parPosY">Позиция Y</param>
+            <param name="parWidth">Ширина</param>
+            <param name="parHeight">Высота</param>
+            <returns></returns>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.GlobalRescale">
+            <summary>
+            Фактор масштабирования дисплея
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.WindowWidth">
+            <summary>
+            Ширина окна OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.WindowHeight">
+            <summary>
+            Высота окна OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.ViewportWidth">
+            <summary>
+            Ширина вида-дисплея
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.ViewportHeight">
+            <summary>
+            Высота вида-дисплея
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.DisplayViewportGlUnitsX1">
+            <summary>
+            X1 координата дисплея приложения в системе координат OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.DisplayViewportGlUnitsY1">
+            <summary>
+            Y1 координата дисплея приложения в системе координат OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.DisplayViewportGlUnitsWidth">
+            <summary>
+            Ширина дисплея в системе координат OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.DisplayViewportGlUnitsHeight">
+            <summary>
+            Высота дисплея в системе координат OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.DisplayViewportGlUnitsX2">
+            <summary>
+            X2 координата дисплея приложения в системе координат OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.DisplayViewportGlUnitsY2">
+            <summary>
+            Y2 координата дисплея приложения в системе координат OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenGL.OpenGlWindowDisplay.AppRenderingMode">
+            <summary>
+            Текущий режим рендеринга приложения
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.OpenTKInput.DeviceType">
+            <summary>
+            Тип устройства ввода
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenTKInput.DeviceType.Keyboard">
+            <summary>
+            Клавиатура
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenTKInput.DeviceType.Mouse">
+            <summary>
+            Мышь
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.OpenTKInput.DeviceType.Gamepad">
+            <summary>
+            Геймпад
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.OpenTKInput.StateRequest">
+            <summary>
+            Содержит информацию о запросе состояния устройства ввода
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.OpenTKInput.StateRequest.#ctor(ViewOpenTK.OpenTKInput.DeviceType,System.Action{System.Object},System.Int32)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parRequestedDeviceType">Тип устройства</param>
+            <param name="parOnStateArrived">Действие с полученным состоянием для выполнения</param>
+            <param name="parDeviceNumId">Числовой идентификатор устройства</param>
+        </member>
+        <member name="P:ViewOpenTK.OpenTKInput.StateRequest.RequestedDeviceType">
+            <summary>
+            Тип устройства
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenTKInput.StateRequest.OnStateArrived">
+            <summary>
+            Действие с полученным состоянием для выполнения
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.OpenTKInput.StateRequest.DeviceNumId">
+            <summary>
+            Числовой идентификатор устройства
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.AppViewOpenTk">
+            <summary>
+            Реализация компонента отображения приложения MVC OpenTK
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.AppViewOpenTk.WindowName">
+            <summary>
+            Название окна
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.AppViewOpenTk._currentGameWindow">
+            <summary>
+            Текущее окно OpenTK
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.AppViewOpenTk._actualOpenAlSoundManagerColleague">
+            <summary>
+            "Сотрудник" аудио менеджера со стороны OpenTK
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.#ctor(Model.SPCore.AppModel,System.String)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parApp">Прикрепляемая модель приложения</param>
+            <param name="parGraphicalSettingsPath">Путь к настройкам отображения</param>
+        </member>
+        <member name="E:ViewOpenTK.SPCore.AppViewOpenTk.KeyboardLetterKeyPressed">
+            <summary>
+            События изменения последней нажатой текстовой кнопки на клавиатуре
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.InvokeLetterKeyPressed(System.String)">
+            <summary>
+            Вызов события изменения последней нажатой текстовой кнопки на клавиатуре
+            </summary>
+            <param name="parLetterKey">Данные нажатой текстовой кнопки на клавиатуре</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.ProvideAppFpsInfo(System.String)">
+            <summary>
+            Сигнал об обновлении предоставленной информации о количестве
+            обработанных кадров за секунду приложением
+            </summary>
+            <param name="parFps">Количество кадров за секунду</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.RequestDeviceState(ViewOpenTK.OpenTKInput.StateRequest)">
+            <summary>
+            Запрос состояния устройства
+            </summary>
+            <param name="parRequest">Объект запроса</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.LoadSettings">
+            <summary>
+            Осуществляет загрузку настроек отображения
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.InitializeView">
+            <summary>
+            Осуществляет первоначальную инициализацию
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.ApplyGraphicsSettings">
+            <summary>
+            Применяет установленные настройки графики
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.CreateDefaultGraphicalSettings">
+            <summary>
+            Создает файл со стандартными настройками отображения
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.CleanView">
+            <summary>
+            Производит очистку отображения
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.Render">
+            <summary>
+            Передает команду на рендеринг отображения модели
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.ViewReset">
+            <summary>
+            Полностью сбрасывает компонент вида MVC
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.UpdateViewport">
+            <summary>
+            Обновляет дисплей и окно приложения, в случае необходимости создает новое окно
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.PerformModelBindings">
+            <summary>
+            Производит все необходимые привязки специальных обработчиков и наблюдателей
+            к модели
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.GetSoundManagerColleague">
+            <summary>
+            Получает "коллегу" для аудио менеджера
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.GetViewProviderColleague">
+            <summary>
+            Получает "коллегу" для посредника модели и отображения
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.AppViewOpenTk.ViewUpdateSignal(System.Double)">
+            <summary>
+            Сигнал обновления компонентов вида
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.AppViewOpenTk.StateRequests">
+            <summary>
+            Очередь запросов состояний устройств
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.AppViewOpenTk.ActualViewEventsHandler">
+            <summary>
+            Обработчик данных для рендеринга и событий OpenTK
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.DS.GraphicsSettingsDataOpenTk">
+            <summary>
+            Настройки, относящиеся только к графической составляющей (отображению)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.DS.GraphicsSettingsDataOpenTk._isFullscreen">
+            <summary>
+            Включен ли полноэкранный режим
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.DS.GraphicsSettingsDataOpenTk._settingScreenResolution">
+            <summary>
+            Текущее разрешение окна
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.DS.GraphicsSettingsDataOpenTk.#ctor(View.SPCore.DS.EAppFramerateLockType,ViewOpenTK.SPCore.DS.ScreenResolutionOpenTk,System.Boolean)">
+            <summary>
+            Конструктор, устанавливающий предоставляемые параметры отображения
+            </summary>
+            <param name="parCurrentFixedFramerateLockType">Тип настройки закрепления количества кадров в секунду</param>
+            <param name="parSettingScreenResolution">Текущее разрешение окна</param>
+            <param name="parIsFullscreen">Включен ли полноэкранный режим</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.DS.GraphicsSettingsDataOpenTk.#ctor">
+            <summary>
+            Устанавливает стандартные настройки. Считается, что
+            разрешение экрана будет определено по стандарту согласно
+            размерам дисплея.
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.DS.GraphicsSettingsDataOpenTk.SetDefaultSettings">
+            <summary>
+            Устанавливает стандартные настройки
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.DS.GraphicsSettingsDataOpenTk.GetHighestAvailableScreenResolution">
+            <summary>
+            Получить максимальное доступное разрешение экрана
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.DS.GraphicsSettingsDataOpenTk.SettingScreenResolution">
+            <summary>
+            Текущее разрешение окна
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.DS.GraphicsSettingsDataOpenTk.IsFullscreen">
+            <summary>
+            Включен ли полноэкранный режим
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.DS.ScreenResolutionOpenTk">
+            <summary>
+            Разрешение экрана
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.DS.ScreenResolutionOpenTk.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parWidth">Ширина</param>
+            <param name="parHeight">Высота</param>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.DS.ScreenResolutionOpenTk.Width">
+            <summary>
+            Ширина в пикселях
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.DS.ScreenResolutionOpenTk.Height">
+            <summary>
+            Высота в пикселях
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.GlAppWindow">
+            <summary>
+            Реализация окна приложения OpenTK
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.GlAppWindow._nextRenderingTasks">
+            <summary>
+            Следующие задачи для рендеринга
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.GlAppWindow._viewApp">
+            <summary>
+            Связанный объект вида MVC
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.GlAppWindow.AtLeastOneRenderOpPerformed">
+            <summary>
+            Флаг: по крайней мере одна операция рендеринга успешно произведена (необходимо для инициализации)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.GlAppWindow.WaitingForUpdateFlag">
+            <summary>
+            Флаг ожидания обновления
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.GlAppWindow.AddTask(ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingTask)">
+            <summary>
+            Добавить задачу для рендеринга
+            </summary>
+            <param name="parTask">Объект задачи для рендеринга</param>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.GlAppWindow.NextRenderTaskLock">
+            <summary>
+            Объект блокировки для синхронизации потоков при рендеринге
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.GlAppWindow._renderNeed">
+            <summary>
+            Флаг необходимости перерисовки
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.GlAppWindow.RenderReady">
+            <summary>
+            Флаг успошного выполнения операций рендеринга
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.GlAppWindow.GlSurfaceTextureId">
+            <summary>
+            Идентификатор текстуры для кадрового буфера OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.GlAppWindow.GlSurfaceFramebuffer">
+            <summary>
+            Идентификатор кадрового буфера OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.GlAppWindow._glSurfaceDrawBuffers">
+            <summary>
+            Режим отрисовки OpenGL
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.GlAppWindow.#ctor(System.Int32,System.Int32,System.String,OpenTK.GameWindowFlags,ViewOpenTK.SPCore.AppViewOpenTk)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parWidth">Ширина окна</param>
+            <param name="parHeight">Высота окна</param>
+            <param name="parTitle">Заголовок окна</param>
+            <param name="parOptions">Настройки окна</param>
+            <param name="parViewApp">Представление MVC</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.GlAppWindow.CheckSurfaceTexture">
+            <summary>
+            Проверить текстуру кадрового буфера
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.GlAppWindow.OnRenderFrame(OpenTK.FrameEventArgs)">
+            <summary>
+            Действия при рендеринге кадра
+            </summary>
+            <param name="parE">Аргументы события рендеринга кадра</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Режим рендеринга не поддерживается</exception>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.GlAppWindow.RenderTasks">
+            <summary>
+            Выполнить задачи рендеринга
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Тип задачи не поддерживается</exception>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.GlAppWindow.ExecuteInternalGlActions">
+            <summary>
+            Исполнить служебные и системные команды из очереди OpenGL
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.GlAppWindow.OnResize(System.EventArgs)">
+            <summary>
+            Действия при изменении размеров окна
+            </summary>
+            <param name="parE">Аргументы события изменения размеров окна</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.GlAppWindow.OnUpdateFrame(OpenTK.FrameEventArgs)">
+            <summary>
+            Действия при обновлении состояния окна OpenTK
+            </summary>
+            <param name="parE">Аргументы события обновления состояния окна OpenTK</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Тип устройства не поддерживается</exception>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.GlAppWindow.OnKeyDown(OpenTK.Input.KeyboardKeyEventArgs)">
+            <summary>
+            Действия при событии нажатия клавиши
+            </summary>
+            <param name="parE">Аргументы события нажатия клавиши</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.GlAppWindow.OnClosed(System.EventArgs)">
+            <summary>
+            Действия при закрытии окна
+            </summary>
+            <param name="parE">Аргументы события при закрытии окна</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.GlAppWindow.OnLoad(System.EventArgs)">
+            <summary>
+            Действия после успешной загрузки окна
+            </summary>
+            <param name="parE">Аргументы события после успешной загрузки окна</param>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EHorizontalAlign">
+            <summary>
+            Тип горизонтального выравнивания
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EHorizontalAlign.Left">
+            <summary>
+            Выравнивание по левому краю
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EHorizontalAlign.Middle">
+            <summary>
+            Выравнивание по середине
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EHorizontalAlign.Right">
+            <summary>
+            Выравнивание по правому краю
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EVerticalAlign">
+            <summary>
+            Тип вертикального выравнивания
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EVerticalAlign.Top">
+            <summary>
+            Выравнивание по верхнему краю
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EVerticalAlign.Middle">
+            <summary>
+            Выравнивание по середине
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EVerticalAlign.Bottom">
+            <summary>
+            Выравнивание по нижнему краю
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.PlayableAnimationObject">
+            <summary>
+            Класс объекта, хранящего состояние о проигрываемой анимации
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.PlayableAnimationObject.#ctor(ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataAnimation,System.Double)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parTargetAnimationSubasset">Производный ассет с данными анимации</param>
+            <param name="parFramesPerSecondSpeed">Скорость: кадров анимации в секунду</param>
+        </member>
+        <member name="E:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.PlayableAnimationObject.EventFullAnimCompleted">
+            <summary>
+            Событие окончания проигрывания анимации
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.PlayableAnimationObject.ProceedAnimationStep(System.Double,System.Boolean)">
+            <summary>
+            Расчитать текущий шаг анимации
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+            <param name="parIsForward">Направление анимации вперед?</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.PlayableAnimationObject.GetCurrentAnimSpriteFrame">
+            <summary>
+            Получить спрайт текущего кадра анимации
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.PlayableAnimationObject.TargetAnimationSubasset">
+            <summary>
+            Производный ассет с данными анимации
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.PlayableAnimationObject.FrameCount">
+            <summary>
+            Общее количество кадров анимации
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.PlayableAnimationObject.CurrentFrame">
+            <summary>
+            Номер текущего кадра
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.PlayableAnimationObject.FramesPerSecondSpeed">
+            <summary>
+            Скорость: кадров анимации в секунду
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.RenderingData.ERenderingTaskType">
+            <summary>
+            Тип задания на рендеринг OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.RenderingData.ERenderingTaskType.Primitive">
+            <summary>
+            Примитив
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.RenderingData.ERenderingTaskType.Sprite">
+            <summary>
+            Спрайт
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingData">
+            <summary>
+            Структура, хранящая данные о рендеринге для OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingData.RenderingTasks">
+            <summary>
+            Задания для рендеринга OpenGL
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingData.Depth">
+            <summary>
+            Параметр глубины (меньше - ближе)
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingData.#ctor(System.Double,System.Double,System.Double,System.Double,System.Drawing.Color,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Конструктор данных о рендеринге для примитива
+            </summary>
+            <param name="parRectX">Координата X</param>
+            <param name="parRectY">Координата Y</param>
+            <param name="parRectWidth">Ширина</param>
+            <param name="parRectHeight">Высота</param>
+            <param name="parColor">Цвет</param>
+            <param name="parDepth">Глубина</param>
+            <param name="parRotationDegreesAngle">Поворот в градусах</param>
+            <param name="parPivotX">Точка опоры для поворота, координата X</param>
+            <param name="parPivotY">Точка опоры для поворота, координата Y</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingData.#ctor(ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite)">
+            <summary>
+            Конструктор данных о рендеринге для спрайта
+            </summary>
+            <param name="parRenderingSprite">Спрайт</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingData.#ctor(ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingString)">
+            <summary>
+            Конструктор данных о рендеринге для текстовой строки
+            </summary>
+            <param name="parRenderingString">Данные о строке для рендеринга</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingData.#ctor(ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingFillColorScreen)">
+            <summary>
+            Конструктор данных о рендеринге для заполняющего экран одноцветного примитива
+            </summary>
+            <param name="parRenderingFillColorScreen">Заполняющий экран одноцветный примитив</param>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingFillColorScreen">
+            <summary>
+            Данные о заполняющем экран одноцветном примитиве
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingFillColorScreen.Depth">
+            <summary>
+            Глубина
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingFillColorScreen.Color">
+            <summary>
+            Цвет
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingFillColorScreen.#ctor(System.Double,System.Drawing.Color)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parDepth">Глубина</param>
+            <param name="parColor">Цвет</param>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite">
+            <summary>
+            Данные о спрайте для рендеринга
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite.Depth">
+            <summary>
+            Глубина
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite.Sprite">
+            <summary>
+            Производный ассет спрайта
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite.X">
+            <summary>
+            Координата X
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite.Y">
+            <summary>
+            Координата Y
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite.RotationDegrees">
+            <summary>
+            Поворот в градусах
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite.BlendColor">
+            <summary>
+            Цвет
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite.ScaleX">
+            <summary>
+            Масштабирование по X
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite.ScaleY">
+            <summary>
+            Масштабирование по Y
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite.PivotX">
+            <summary>
+            Точка опоры для поворота, координата X
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite.PivotY">
+            <summary>
+            Точка опоры для поворота, координата Y
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingSprite.#ctor(ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataSprite,System.Double,System.Double,System.Double,System.Drawing.Color,System.Double,System.Double,System.Double,ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EHorizontalAlign,ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EVerticalAlign,System.Double,System.Double)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parSprite">Производный ассет спрайта</param>
+            <param name="parX">Координата X</param>
+            <param name="parY">Координата Y</param>
+            <param name="parRotationDegrees">Поворот в градусах</param>
+            <param name="parBlendColor">Цвет</param>
+            <param name="parDepth">Глубина</param>
+            <param name="parScaleX">Масштабирование по X</param>
+            <param name="parScaleY">Масштабирование по Y</param>
+            <param name="parHAlign">Горизонтальное выравнивание</param>
+            <param name="parVAlign">Вертикальное выравнивание</param>
+            <param name="parRotationPivotX">Точка опоры для поворота, координата X</param>
+            <param name="parRotationPivotY">Точка опоры для поворота, координата Y</param>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingString">
+            <summary>
+            Данные о текстовой строке для рендеринга
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingString.SpritesToRender">
+            <summary>
+            Спрайты из шрифта для рендеринга
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingString.Depth">
+            <summary>
+            Глубина
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingString.X">
+            <summary>
+            Координата X
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingString.Y">
+            <summary>
+            Координата Y
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingString.#ctor(System.Double,System.Double,System.Double,System.String,ViewOpenTK.AssetData.DataTypes.Subassets.SubassetDataFont,System.Drawing.Color,System.Double,System.Double,ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EHorizontalAlign,ViewOpenTK.SPCore.ViewProvider.InternalGraphicalDataStructures.EVerticalAlign)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parDepth">Глубина</param>
+            <param name="parX">Координата X</param>
+            <param name="parY">Координата Y</param>
+            <param name="parStringToRender">Текстовая строка</param>
+            <param name="parFont">Шрифт</param>
+            <param name="parColor">Цвет</param>
+            <param name="parScaleX">Масштабирование по X</param>
+            <param name="parScaleY">Масштабирование по Y</param>
+            <param name="parHAlign">Горизонтальное выравнивание</param>
+            <param name="parVAlign">Вертикальное выравнивание</param>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingTask">
+            <summary>
+            Структура, хранящая информацию задачи рендеринга OpenGL
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingTask.RenderingDataType">
+            <summary>
+            Тип задачи для рендеринга
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingTask.Vertices">
+            <summary>
+            Вершины
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingTask.TexVertices">
+            <summary>
+            Текстурные вершины
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingTask.BlendColor">
+            <summary>
+            Цвет
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.RenderingData.RenderingTask.GlTexture">
+            <summary>
+            Связанный идентификатор текстуры OpenGL
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewAppStrings">
+            <summary>
+            Некоторые строки для рендеринга
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewAppStrings.SegaScreenNotice">
+            <summary>
+            Строка о копирайте SEGA
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewAppStrings.DataEastScreenNotice">
+            <summary>
+            Строка о копирайте DATA EAST
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewAppStrings.PressStartScreenCopyright">
+            <summary>
+            Строка о копирайте автора
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts">
+            <summary>
+            Некоторые константы отображения
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts.BASE_SURFACE_WIDTH">
+            <summary>
+            Основной размер дисплея игры (ширина)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts.BASE_SURFACE_HEIGHT">
+            <summary>
+            Основной размер дисплея игры (высота)
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts.ESCAPE_CHARACTER_SEQUENCE_START">
+            <summary>
+            Начало escape-последовательности в шрифтах
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts.ESCAPE_CHARACTER_SEQUENCE_END">
+            <summary>
+            Конец escape-последовательности в шрифтах
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts.SPECIAL_SYMBOL_SPACE">
+            <summary>
+            Специальный символ "пробел" в шрифтах
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts.DEFAULT_SYMBOL">
+            <summary>
+            Стандартный символ-заменитель в шрифтах
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts.DEFAULT_APP_FONT">
+            <summary>
+            Шрифт приложения по умолчанию
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts.RED_SHADOW_APP_FONT">
+            <summary>
+            Шрифт с красным затенением
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts.MENU_DARK_INACTIVE_APP_FONT">
+            <summary>
+            Шрифт для неактивных пунктов меню
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts.DefaultUpdatingSubassetsLibStrategy">
+            <summary>
+            Стандартная стратегия для обновления внутренней библиотеки ресурсов OpenTK
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourConsts.StandardViewProviderComponentsModelToView">
+            <summary>
+            Стандартные привязки типов компонентов модели к соответствующим типам компонентов отображения
+            </summary> 
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourOpenTkHandlersLinker">
+            <summary>
+            Класс объекта, реализующего функционал связывания компонентов модели и отображения
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourOpenTkHandlersLinker.#ctor(System.Collections.Generic.Dictionary{System.Type,System.Type})">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parLinkageData">Данные о типах для связывания</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourOpenTkHandlersLinker.GetLinkedModelComponentType(System.Type)">
+            <summary>
+            Получить тип компонента модели для типа компонента отображения
+            </summary>
+            <param name="parViewComponentType">Тип компонента отображения</param>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourOpenTkHandlersLinker.GetLinkedViewComponentType(System.Type)">
+            <summary>
+            Получить тип компонента отображения для типа компонента модели
+            </summary>
+            <param name="parModelComponentType">Тип компонента модели</param>
+            <returns></returns>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.ViewBehaviourOpenTkHandlersLinker.LinkageComponentMetaDataModelToView">
+            <summary>
+            Данные о типах для связывания
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.BallGraphicsBind">
+            <summary>
+            Данные для рендеринга бильярдного шара
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.BallGraphicsBind.BlendColor">
+            <summary>
+            Цвет
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.BallGraphicsBind.StillSpriteKey">
+            <summary>
+            Имя спрайта шара
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.BallGraphicsBind.#ctor(System.Drawing.Color,System.String)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parBlendColor">Цвет</param>
+            <param name="parStillSpriteKey">Имя спрайта шара</param>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.GameFieldViewConsts">
+            <summary>
+            Константы, связанные с отображением игрового поля-стола
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.GameFieldViewConsts.FIELD_MODEL_RENDER_LEFT_TOP_OFFSET_X">
+            <summary>
+            Смещение по оси X
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.GameFieldViewConsts.FIELD_MODEL_RENDER_LEFT_TOP_OFFSET_Y">
+            <summary>
+            Смещение по оси Y
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.GameFieldViewConsts.FIELD_WIDTH">
+            <summary>
+            Ширина поля
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.GameFieldViewConsts.FIELD_HEIGHT">
+            <summary>
+            Высота поля
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.GameFieldViewConsts.BALLS_ALL_PREFIX">
+            <summary>
+            Префикс названия спрайтов шаров
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.GameFieldViewConsts.BallGraphicsBinds">
+            <summary>
+            Словарь соответствия типа шара и данных для рендеринга
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent">
+            <summary>
+            Компонент для рендеринга данных игровой сессии
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.NORMAL_GAMEFIELD_BG_SPRITE">
+            <summary>
+            Название спрайта игрового поля
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.ANIM_INFOBAR_SHOT">
+            <summary>
+            Название анимации выбора силы удара кием
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.LIFE_INDICATOR">
+            <summary>
+            Название спрайта индикатора жизни игрока
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.LIFE_INDICATOR_HALF">
+            <summary>
+            Название спрайта индикатора половинки жизни игрока
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.SHOT_HAND_CUE_ANIM">
+            <summary>
+            Название анимации удара кием по шару
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.ANGLE_ADJUST_TOLERANCE">
+            <summary>
+            Коэффициент подстройки отображения угла удара
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.LIFECOUNTER_LINE1_START_MIDDLE_X">
+            <summary>
+            Позиция X первой линии счетчика жизней
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.LIFECOUNTER_LINE1_START_MIDDLE_Y">
+            <summary>
+            Позиция Y первой линии счетчика жизней
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.LIFECOUNTER_X_ELEM_OFFSET">
+            <summary>
+            Расстояние между элементами счетчика жизней по оси X
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.LIFECOUNTER_Y_ELEM_OFFSET">
+            <summary>
+            Расстояние между элементами счетчика жизней по оси Y
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.LIFES_ON_ONE_LINE">
+            <summary>
+            Количество элементов счетчика жизней на одной линии
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.SCORE_RIGHT_X_OFFSET">
+            <summary>
+            Позиция X счетчика очков
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.SCORE_TOP_Y_OFFSET">
+            <summary>
+            Позиция Y счетчика очков
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.ANIM_INFOBAR_MAX_FRAME">
+            <summary>
+            Максимальный кадр анимации выбора силы удара
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.ANIM_HANDSHOT_CUE_MAX_FRAME">
+            <summary>
+            Максимальный кадр анимации удара кием по шару
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent._ballsRenderingData">
+            <summary>
+            Данные рендеринга шаров
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent._choosingShotAnimationInfobar">
+            <summary>
+            Данные о проигрываемой анимации выбора силы удара
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent._choosingShotPlayerCueAnimation">
+            <summary>
+            Данные о проигрываемой анимации удара кием по шару
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent._currentRenderingBg">
+            <summary>
+            Данные рендеринга заднего фона
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent._modelProviderComponent">
+            <summary>
+            Компонент на стороне модели
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent._playerCueRenderingData">
+            <summary>
+            Данные рендеринга кия и прицела игрока
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent._playerScoreAndLifeCounter">
+            <summary>
+            Данные рендеринга данных об игроке
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent._upperShotChoosePanelOverlay">
+            <summary>
+            Данные для рендеринга панели с выбором силы удара игроком (оверлей)
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.InitAndLink(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent,ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента отображения
+            </summary>
+            <param name="parModelSideProviderComponent">Связанный компонент на стороне модели</param>
+            <param name="parLinkedEventsHandler">Связанный обработчик событий отображения</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.IsUpdatable">
+            <summary>
+            Является ли компонент автоматически обновляемым?
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.ViewUpdate(System.Double)">
+            <summary>
+            Обновление данных компонента отображения
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+            <returns>Флаг необходимости перерисовки</returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.UpdateRenderingData">
+            <summary>
+            Обновить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Game.PocketGameViewRenderableComponent.GetRenderingData">
+            <summary>
+            Получить данные для рендеринга
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent">
+            <summary>
+            Компонент для рендеринга данных стартовой заставки игры
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.ANIM_NAME_INTRO_CUTSCENE_START">
+            <summary>
+            Название префикса анимации стартовой заставки
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.ANIM_NAME_INTRO_CUTSCENE_INDEX_FROM">
+            <summary>
+            Стартовый индекс номера анимации
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.ANIM_NAME_INTRO_CUTSCENE_INDEX_TO">
+            <summary>
+            Конечный индекс номера анимации
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.ANIM_NAME_INTRO_CUTSCENE_END">
+            <summary>
+            Постфикс названия анимации стартовой заставки
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.FRAME_SEGA_START">
+            <summary>
+            Кадр начала экрана "SEGA"
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.FRAME_SEGA_END">
+            <summary>
+            Кадр конца экрана "SEGA"
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.FRAME_DATA_EAST_FULL_START">
+            <summary>
+            Кадр начала экрана "DATA EAST"
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.FRAME_DATA_EAST_FULL_END">
+            <summary>
+            Кадр конца экрана "DATA EAST"
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.FRAME_DATA_PRESS_START_BUTTON_START">
+            <summary>
+            Кадр начала экрана "PRESS START BUTTON"
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.BASE_COPYRIGHT_NOTICE_Y_BOTTOM_OFFSET">
+            <summary>
+            Y-смещение позиции текста копирайта
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.PRESS_START_COPYRIGHT_NOTICE_X_FROM_LEFT">
+            <summary>
+            X-смещение позиции текста PRESS START BUTTOn
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.PRESS_START_COPYRIGHT_NOTICE_Y_FROM_BOTTOM">
+            <summary>
+            Y-смещение позиции текста PRESS START BUTTOn
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent._currentAnimSheetIndex">
+            <summary>
+            Текущий индекс анимации
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent._currentFrameTotal">
+            <summary>
+            Количество кадров в текущей анимации
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent._currentSpriteRenderingData">
+            <summary>
+            Текущие данные для рендеринга спрайтов
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent._currentStringsRenderingData">
+            <summary>
+            Текущие данные для рендеринга текста
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent._introCutsceneAnimation">
+            <summary>
+            Текущая анимация стартовой заставки
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent._isAnimInProgress">
+            <summary>
+            Воспроизводится ли анимация
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent._modelProviderComponent">
+            <summary>
+            Компонент на стороне модели
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.IsUpdatable">
+            <summary>
+            Является ли компонент автоматически обновляемым?
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.InitAndLink(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent,ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента отображения
+            </summary>
+            <param name="parModelSideProviderComponent">Связанный компонент на стороне модели</param>
+            <param name="parLinkedEventsHandler">Связанный обработчик событий отображения</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.ProcessNextAnimationSheet">
+            <summary>
+            Обработать следующую анимацию
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.ViewUpdate(System.Double)">
+            <summary>
+            Обновление данных компонента отображения
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+            <returns>Флаг необходимости перерисовки</returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.UpdateRenderingData">
+            <summary>
+            Обновить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.IntroViewRenderableComponent.GetRenderingData">
+            <summary>
+            Получить данные для рендеринга
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent">
+            <summary>
+            Компонент для рендеринга данных подменю прослушивания саундтрека
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.JUKEBOX_MENU_BG">
+            <summary>
+            Название спрайта заднего фона
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.JUKEBOX_MENU_FG">
+            <summary>
+            Название спрайта наложения переднего плана
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.BUTTONS_MIDDLE_X">
+            <summary>
+            Позиция X для кнопок
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.BUTTON_MUSIC_MIDDLE_Y">
+            <summary>
+            Позиция Y для кнопки смены композиции
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.BUTTON_BACK_MIDDLE_Y">
+            <summary>
+            Позиция Y для кнопки возврата назад
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent._currentMenuElements">
+            <summary>
+            Данные для рендеринга элементов меню
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent._modelProviderComponent">
+            <summary>
+            Компонент на стороне модели
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.IsUpdatable">
+            <summary>
+            Является ли компонент автоматически обновляемым?
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.InitAndLink(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent,ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента отображения
+            </summary>
+            <param name="parModelSideProviderComponent">Связанный компонент на стороне модели</param>
+            <param name="parLinkedEventsHandler">Связанный обработчик событий отображения</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.OnActivatedPerform">
+            <summary>
+            Действия при активации меню
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.OnDeactivatedPerform">
+            <summary>
+            Действия при деактвации меню
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.ViewUpdate(System.Double)">
+            <summary>
+            Обновление данных компонента отображения
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+            <returns>Флаг необходимости перерисовки</returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.ProcessUiElementsList">
+            <summary>
+            Обработка состояния элементов интерфейса
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.UpdateRenderingData">
+            <summary>
+            Обновить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.GetRenderingData">
+            <summary>
+            Получить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.JukeboxMenuControlComponentViewRenderableComponent.OnBeforeResetPerform">
+            <summary>
+            Выполнить действия перед отправкой в пул
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent">
+            <summary>
+            Компонент для рендеринга данных главного меню
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.BLACK_SCREEN_APPEAR_TIME">
+            <summary>
+            Время анимации черного экрана
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.MAIN_MENU_BG">
+            <summary>
+            Название спрайта заднего фона главного меню
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.X_CENTERED_OFFSET_MENU">
+            <summary>
+            Позиция X для кнопок
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.Y_OFFSET_MENU_START">
+            <summary>
+            Стартовая позиция Y для кнопок
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.Y_OFFSET_MENU_ELEMENTS">
+            <summary>
+            Позиция смещения по Y для кнопок
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent._currentBlackScreen">
+            <summary>
+            Данные для рендеринга черного экрана
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent._currentMenuElements">
+            <summary>
+            Данные для рендеринга элементов меню
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent._modelProviderComponent">
+            <summary>
+            Компонент на стороне модели
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent._updateByBlackScreenAnimRequested">
+            <summary>
+            Флаг-признак, что запрошено обновление анимацией черного экрана
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.IsUpdatable">
+            <summary>
+            Является ли компонент автоматически обновляемым?
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.InitAndLink(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent,ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента отображения
+            </summary>
+            <param name="parModelSideProviderComponent">Связанный компонент на стороне модели</param>
+            <param name="parLinkedEventsHandler">Связанный обработчик событий отображения</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.RunAppearFromBlackScreen">
+            <summary>
+            Запуск анимации появления меню из черного экрана
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.AppearAnimation">
+            <summary>
+            Короутина анимации появления меню из черного экрана
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.OnActivatedPerform">
+            <summary>
+            Действия при активации меню
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.OnDeactivatedPerform">
+            <summary>
+            Действия при деактвации меню
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.ViewUpdate(System.Double)">
+            <summary>
+            Обновление данных компонента отображения
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+            <returns>Флаг необходимости перерисовки</returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.ProcessUiElementsList">
+            <summary>
+            Обработка состояния элементов интерфейса
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.UpdateRenderingData">
+            <summary>
+            Обновить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.GetRenderingData">
+            <summary>
+            Получить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.MainMenuControlComponentViewRenderableComponent.OnBeforeResetPerform">
+            <summary>
+            Выполнить действия перед отправкой в пул
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent">
+            <summary>
+            Компонент для рендеринга данных меню настроек
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.MENU_LEFT_SIDE_X_OFFSET">
+            <summary>
+            Позиция для смещения меню по левому краю по X
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.MENU_RIGHT_SIDE_X_OFFSET">
+            <summary>
+            Позиция для смещения меню по правому краю по X
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent._currentMenuElements">
+            <summary>
+            Данные для рендеринга элементов меню
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent._modelProviderComponent">
+            <summary>
+            Компонент на стороне модели
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.IsUpdatable">
+            <summary>
+            Является ли компонент автоматически обновляемым?
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.InitAndLink(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent,ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента отображения
+            </summary>
+            <param name="parModelSideProviderComponent">Связанный компонент на стороне модели</param>
+            <param name="parLinkedEventsHandler">Связанный обработчик событий отображения</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.OnActivatedPerform">
+            <summary>
+            Действия при активации меню
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.OnDeactivatedPerform">
+            <summary>
+            Действия при деактвации меню
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.ViewUpdate(System.Double)">
+            <summary>
+            Обновление данных компонента отображения
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+            <returns>Флаг необходимости перерисовки</returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.ProcessUiElementsList">
+            <summary>
+            Обработка состояния элементов интерфейса
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.OnScreenModeChanged">
+            <summary>
+            Действия при изменении режима отображения
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.UpdateRenderingData">
+            <summary>
+            Обновить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.GetRenderingData">
+            <summary>
+            Получить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.OptionsMenuControlComponentViewRenderableComponent.OnBeforeResetPerform">
+            <summary>
+            Выполнить действия перед отправкой в пул
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent">
+            <summary>
+            Компонент для рендеринга данных меню таблицы рекордов
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent._currentMenuElements">
+            <summary>
+            Данные для рендеринга элементов меню
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent._modelProviderComponent">
+            <summary>
+            Компонент на стороне модели
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent.IsUpdatable">
+            <summary>
+            Является ли компонент автоматически обновляемым?
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent.InitAndLink(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent,ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента отображения
+            </summary>
+            <param name="parModelSideProviderComponent">Связанный компонент на стороне модели</param>
+            <param name="parLinkedEventsHandler">Связанный обработчик событий отображения</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent.OnActivatedPerform">
+            <summary>
+            Действия при активации меню
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent.OnDeactivatedPerform">
+            <summary>
+            Действия при деактвации меню
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent.ViewUpdate(System.Double)">
+            <summary>
+            Обновление данных компонента отображения
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+            <returns>Флаг необходимости перерисовки</returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent.ProcessUiElementsList">
+            <summary>
+            Обработка состояния элементов интерфейса
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent.UpdateRenderingData">
+            <summary>
+            Обновить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent.GetRenderingData">
+            <summary>
+            Получить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.RecordsMenuControlComponentViewRenderableComponent.OnBeforeResetPerform">
+            <summary>
+            Выполнить действия перед отправкой в пул
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent">
+            <summary>
+            Компонент для рендеринга данных подменю выбора параметров одиночной игры
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.LOBBY_MENU_BG">
+            <summary>
+            Название спрайта заднего фона
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.BUTTONS_MIDDLE_X">
+            <summary>
+            Позиция X для кнопок
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.BUTTON_LEVEL_SELECT_MIDDLE_Y">
+            <summary>
+            Позиция Y для кнопки выбора уровня
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.BUTTON_RETURN_BACK_MIDDLE_Y">
+            <summary>
+            Позиция Y для кнопки возврата назад
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent._currentBlackScreen">
+            <summary>
+            Данные рендеринга анимации черного экрана
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent._currentMenuElements">
+            <summary>
+            Данные для рендеринга элементов меню
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent._modelProviderComponent">
+            <summary>
+            Компонент на стороне модели
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.IsUpdatable">
+            <summary>
+            Является ли компонент автоматически обновляемым?
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.InitAndLink(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent,ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента отображения
+            </summary>
+            <param name="parModelSideProviderComponent">Связанный компонент на стороне модели</param>
+            <param name="parLinkedEventsHandler">Связанный обработчик событий отображения</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.OnActivatedPerform">
+            <summary>
+            Действия при активации меню
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.OnDeactivatedPerform">
+            <summary>
+            Действия при деактвации меню
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.ViewUpdate(System.Double)">
+            <summary>
+            Обновление данных компонента отображения
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+            <returns>Флаг необходимости перерисовки</returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.ProcessUiElementsList">
+            <summary>
+            Обработка состояния элементов интерфейса
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.ProcessTransitionToTheGameStageViaBlackScreen">
+            <summary>
+            Начать воспроизведение анимации начала игры через затемнение
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.BlackScreenOnAnimation(System.Action)">
+            <summary>
+            Короутина анимации затемнения
+            </summary>
+            <param name="parAfterBlackScreenPerform">Действия после затемнения</param>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.UpdateRenderingData">
+            <summary>
+            Обновить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.GetRenderingData">
+            <summary>
+            Получить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.Menus.SinglePlayerLobbyMenuControlComponentViewRenderableComponent.OnBeforeResetPerform">
+            <summary>
+            Выполнить действия перед отправкой в пул
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.GameOverViewRenderableComponent">
+            <summary>
+            Компонент для рендеринга данных экрана проигрыша
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.GameOverViewRenderableComponent.RENDERING_TEXT_X_MIDDLE">
+            <summary>
+            Позиция X для рендеринга текста
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.GameOverViewRenderableComponent.RENDERING_TEXT_Y_MIDDLE">
+            <summary>
+            Позиция Y для рендеринга текста
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.GameOverViewRenderableComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.GameOverViewRenderableComponent.InitAndLink(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent,ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента отображения
+            </summary>
+            <param name="parModelSideProviderComponent">Связанный компонент на стороне модели</param>
+            <param name="parLinkedEventsHandler">Связанный обработчик событий отображения</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.GameOverViewRenderableComponent.IsUpdatable">
+            <summary>
+            Является ли компонент автоматически обновляемым?
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.GameOverViewRenderableComponent.ViewUpdate(System.Double)">
+            <summary>
+            Обновление данных компонента отображения
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+            <returns>Флаг необходимости перерисовки</returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.GameOverViewRenderableComponent.UpdateRenderingData">
+            <summary>
+            Обновить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.GameOverViewRenderableComponent.GetRenderingData">
+            <summary>
+            Получить данные для рендеринга
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent">
+            <summary>
+            Компонент для рендеринга данных экрана результатов успешного прохождения уровня
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent.RESULTS_BG_PATH">
+            <summary>
+            Название спрайта заднего фона
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent.TEXT_MIDDLE_X">
+            <summary>
+            Позиция X для текста
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent._backgroundRenderingData">
+            <summary>
+            Данные для рендеринга заднего фона
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent._modelSideComponent">
+            <summary>
+            Компонент на стороне модели
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent._textsRenderingData">
+            <summary>
+            Данные для рендеринга текста
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent.InitAndLink(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent,ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента отображения
+            </summary>
+            <param name="parModelSideProviderComponent">Связанный компонент на стороне модели</param>
+            <param name="parLinkedEventsHandler">Связанный обработчик событий отображения</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent.IsUpdatable">
+            <summary>
+            Является ли компонент автоматически обновляемым?
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent.ViewUpdate(System.Double)">
+            <summary>
+            Обновление данных компонента отображения
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+            <returns>Флаг необходимости перерисовки</returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent.UpdateRenderingData">
+            <summary>
+            Обновить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.Binds.ResultsScreen.ResultsViewRenderableComponent.GetRenderingData">
+            <summary>
+            Получить данные для рендеринга
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewComponents.ViewRenderableComponent">
+            <summary>
+            Базовый класс компонента отображения для рендеринга
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.ViewRenderableComponent.ActualSubassetsDataLibrary">
+            <summary>
+            Доступная библиотека производных ассетов
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewComponents.ViewRenderableComponent.LinkedViewEventsHandler">
+            <summary>
+            Связанный обработчик событий отображения
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.ViewRenderableComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.ViewRenderableComponent.IsUpdatable">
+            <summary>
+            Является ли компонент автоматически обновляемым?
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.ViewRenderableComponent.InitAndLink(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent,ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента отображения
+            </summary>
+            <param name="parModelSideProviderComponent">Связанный компонент на стороне модели</param>
+            <param name="parLinkedEventsHandler">Связанный обработчик событий отображения</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.ViewRenderableComponent.ViewUpdate(System.Double)">
+            <summary>
+            Обновление данных компонента отображения
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+            <returns>Флаг необходимости перерисовки</returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.ViewRenderableComponent.UpdateRenderingData">
+            <summary>
+            Обновить данные для рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewComponents.ViewRenderableComponent.GetRenderingData">
+            <summary>
+            Получить данные для рендеринга
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler">
+            <summary>
+            Обработчик событий отображения OpenTK
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler._activeRenderableComponents">
+            <summary>
+            Активные компоненты рендеринга
+            </summary>
+        </member>
+        <member name="F:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler._updatableRenderableComponents">
+            <summary>
+            Активные обновляемые компоненты рендеринга
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.#ctor(ViewOpenTK.SPCore.ViewProvider.ViewBehaviourOpenTkHandlersLinker,Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel,ViewOpenTK.SPCore.AppViewOpenTk)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parTypesLinker">Объект для связывания компонентов модели и отображения</param>
+            <param name="parAppModel">Модель приложения</param>
+            <param name="parLinkedView">Отображение приложения</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.Dispose">
+            <summary>
+            Деструктор
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.OnComponentCreated(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Действия при создании компонента на стороне модели
+            </summary>
+            <param name="parTargetComponent">Компонент на стороне модели</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.OnComponentRemoved(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Действия при удалении компонента на стороне модели
+            </summary>
+            <param name="parTargetComponent">Компонент на стороне модели</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.OnComponentUpdated(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Действия при обновлении компонента на стороне модели
+            </summary>
+            <param name="parTargetComponent">Компонент на стороне модели</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.ViewUpdate(System.Double)">
+            <summary>
+            Сигнал обновления компонентов отображения
+            </summary>
+            <param name="parDeltaTime">Время кадра</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.CheckSubassetsDataLibrary">
+            <summary>
+            Проверка библиотеки производных ассетов
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.GetRenderingData">
+            <summary>
+            Получить данные для рендеринга
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.OnDisplayChanged">
+            <summary>
+            Действия при изменении настроек дисплея приложения
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.TypesLinker">
+            <summary>
+            Объект для связывания компонентов модели и отображения
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.ViewSideProviderColleague">
+            <summary>
+            "Сотрудник" для взаимодействия с моделью через посредника
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.OpenTkViewComponentsPoolManager">
+            <summary>
+            Пул менеджер компонентов OpenTK
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.LinkedView">
+            <summary>
+            Отображение приложения
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.AppModelRef">
+            <summary>
+            Модель приложения
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.ActualSubassetsDataLibrary">
+            <summary>
+            Текущая библиотека производных ассетов
+            </summary>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler.RendereringDataWasUpdatedFlag">
+            <summary>
+            Флаг, сигнализирующий о том, что данные для рендеринга были изменены
+            </summary>
+        </member>
+        <member name="T:ViewOpenTK.SPCore.ViewProvider.ViewProviderOpenTkViewSideColleague">
+            <summary>
+            Реализация "сотрудника" для взаимодействия между моделью и отображением
+            </summary>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewProviderOpenTkViewSideColleague.#ctor(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderMediator,ViewOpenTK.SPCore.ViewProvider.ViewEventsOpenTkHandler)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parActualViewProviderMediator">"Посредник" для осуществления взаимодействия</param>
+            <param name="parViewEventsHandler">Обработчик данных для рендеринга и событий OpenTK</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewProviderOpenTkViewSideColleague.ReceiveNotificationCreated(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Получение сообщения о создании компонента
+            </summary>
+            <param name="parTargetComponent">Созданный компонент</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewProviderOpenTkViewSideColleague.ReceiveNotificationRemoved(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Получение сообщения об удалении компонента
+            </summary>
+            <param name="parTargetComponent">Удаляемый компонент</param>
+        </member>
+        <member name="M:ViewOpenTK.SPCore.ViewProvider.ViewProviderOpenTkViewSideColleague.ReceiveNotificationUpdated(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Получение сообщения об обновлении компонента
+            </summary>
+            <param name="parTargetComponent">Обновленный компонент</param>
+        </member>
+        <member name="P:ViewOpenTK.SPCore.ViewProvider.ViewProviderOpenTkViewSideColleague.ActualViewEventsHandler">
+            <summary>
+            Обработчик данных для рендеринга и событий OpenTK
+            </summary>
+        </member>
+    </members>
+</doc>

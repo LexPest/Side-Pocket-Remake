@@ -1,0 +1,3642 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Model</name>
+    </assembly>
+    <members>
+        <member name="T:Model.SPCore.AppModel">
+            <summary>
+            Главный класс, определяющий модель приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.AppModel._appGameplaySettingsData">
+            <summary>
+            Данные об настройках игрового процесса
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.AppModel._appRecordsData">
+            <summary>
+            Данные о рекордах игроков
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.AppModel._fixedUpdatableObjects">
+            <summary>
+            Зарегистрированные фиксированно обновляемые объекты
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.AppModel._updatableObjects">
+            <summary>
+            Зарегистрированные обновляемые объекты
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.AppModel.AppGamePool">
+            <summary>
+            Главный пул-менеджер приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.AppModel.PlayersManager">
+            <summary>
+            Главный менеджер ввода от игроков
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.AppModel.#ctor">
+            <summary>
+            Стандартный конструктор без параметров
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.AppModel.#ctor(System.String)">
+            <summary>
+            Конструктор с параметром, переопределяющим стандартный путь к настройкам игры
+            </summary>
+            <param name="parSettingsPath">Переопределенный путь к настройкам игры</param>
+        </member>
+        <member name="M:Model.SPCore.AppModel.#ctor(Model.SPCore.DS.GameplaySettingsData,System.String)">
+            <summary>
+            Конструктор с параметрами, переопределяющими данные о настройках игры и пути к настройкам игры
+            </summary>
+            <param name="parAppGameplaySettingsData"></param>
+            <param name="parSettingsPath"></param>
+        </member>
+        <member name="M:Model.SPCore.AppModel.RegisterUpdatableObject(Model.SPCore.GameplayModelDefinition.ObjectModel.IUpdatable)">
+            <summary>
+            Зарегистрировать новый обновляемый объект
+            </summary>
+            <param name="parUpdatableObject">Обновляемый объект для регистрации</param>
+        </member>
+        <member name="M:Model.SPCore.AppModel.RegisterFixedUpdatableObject(Model.SPCore.GameplayModelDefinition.ObjectModel.IFixedUpdatable)">
+            <summary>
+            Зарегистрировать новый фиксированно обновляемый объект
+            </summary>
+            <param name="parFixedUpdatableObject">Фиксированно обновляемый объект для регистрации</param>
+        </member>
+        <member name="M:Model.SPCore.AppModel.UnregisterUpdatableObject(Model.SPCore.GameplayModelDefinition.ObjectModel.IUpdatable)">
+            <summary>
+            Отменить регистрацию обновляемого объекта
+            </summary>
+            <param name="parUpdatableObject">Целевой обновляемый объект</param>
+        </member>
+        <member name="M:Model.SPCore.AppModel.UnregisterFixedUpdatableObject(Model.SPCore.GameplayModelDefinition.ObjectModel.IFixedUpdatable)">
+            <summary>
+            Отменить регистрацию фиксированно обновляемого объекта
+            </summary>
+            <param name="parFixedUpdatableObject">Целевой фиксированно обновляемый объект</param>
+        </member>
+        <member name="M:Model.SPCore.AppModel.GetGameplaySettingsData">
+            <summary>
+            Получить данные о текущий настройках игрового процесса
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.AppModel.GetAppSettingsPath">
+            <summary>
+            Получить текущий путь к настройкам приложения
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.AppModel.GetPlayersManager">
+            <summary>
+            Получить менеджер ввода от игроков
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.AppModel.GetResourcesManager">
+            <summary>
+            Получить менеджер ресурсов
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.AppModel.GetViewProviderMediator">
+            <summary>
+            Получить посредника для осуществления обмена сообщениями между компонентами модели и отображения
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.AppModel.GetSoundManager">
+            <summary>
+            Получить аудио менеджер приложения
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.AppModel.GetRecordsData">
+            <summary>
+            Получить информацию о таблице рекордов игроков
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.AppModel.GetRecordsDataPath">
+            <summary>
+            Получить путь сохранения данных о таблице рекордов игроков
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.AppModel.ExitApp">
+            <summary>
+            Осуществляет полный выход из приложения
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.AppModel.TickUpdate(System.Double)">
+            <summary>
+            Сигнал обновления модели (для логики на каждый кадр)
+            </summary>
+            <param name="parDeltaTime">Время кадра в секундах</param>
+        </member>
+        <member name="M:Model.SPCore.AppModel.EndOfFrame">
+            <summary>
+            Сигнал окончания кадра
+            </summary>w
+        </member>
+        <member name="M:Model.SPCore.AppModel.TickFixedUpdate(System.Double)">
+            <summary>
+            Предназначен для обработки физики и действий
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.AppModel.AppSettingsPath">
+            <summary>
+            Получает путь к настройкам игрового процесса
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.AppModel.AppGameplaySettingsData">
+            <summary>
+            Получает данные настроек игрового процесса
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.AppModel.AppRecordsData">
+            <summary>
+            Получает данные таблицы рекордов игроков
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.AppModel.AppRecordsPath">
+            <summary>
+            Получает путь к файлу с данными таблицы рекордов игроков
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.AppModel.AppResourceManager">
+            <summary>
+            Получает менеджер ресурсов приложениея
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.AppModel.ActualSoundManager">
+            <summary>
+            Получает аудио менеджер приложения
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.AppModel.CurrentAppState">
+            <summary>
+            Текущее общее системное состояние приложения
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Consts.AppInfoConsts">
+            <summary>
+            Константы, связанные с экземпляром приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.WorkingPath">
+            <summary>
+            Рабочая директория приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.SettingsPath">
+            <summary>
+            Директория настроек приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.ResourcesAssetsDirpath">
+            <summary>
+            Директория ресурсов игры
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.PlayerdataPath">
+            <summary>
+            Директория с данными об игроках
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.GameplaySettingsPath">
+            <summary>
+            Путь к игровым настройкам
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.GraphicsSettingsPath">
+            <summary>
+            Путь к настройкам отображения и графики
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.RecordsDataPath">
+            <summary>
+            Путь к файлу рекордов
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.AppName">
+            <summary>
+            Название приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.Version">
+            <summary>
+            Версия приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.StartupTime">
+            <summary>
+            Время запуска приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.UpdatableObjectsListStartCapacity">
+            <summary>
+            Стартовая вместимость динамического массива обновляемых объектов
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.FixedupdatableObjectsListStartCapacity">
+            <summary>
+            Стартовая вместимость динамического массива фиксированно-обновляемых объектов
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.AxisDefaultValue">
+            <summary>
+            Стандартное значение оси
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.Player1DefaultName">
+            <summary>
+            Стандартное имя первого игрока
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.Player2DefaultName">
+            <summary>
+            Стандартное имя второго игрока
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.AppInfoConsts.AppRandom">
+            <summary>
+            Экземпляр генератора случайных чисел
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Consts.GameConsts">
+            <summary>
+            Константы, связанные с игровым процессом
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.GameConsts.BALLS_SETUP_BASE_DISTANCE">
+            <summary>
+            Стандартное расстояние между шарами для расстановки
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.GameConsts.DOUBLED_BALLS_SETUP_BASE_DISTANCE">
+            <summary>
+            Удвоенное стандартное расстояние между шарами для расстановки
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.GameConsts.FieldWidth">
+            <summary>
+            Ширина игрового стола
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.GameConsts.FieldHeight">
+            <summary>
+            Длина игрового стола
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.GameConsts.StartWhiteBallPlayerPos">
+            <summary>
+            Стандартная стартовая позиция белого шара игрока
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.GameConsts.StandardGameField">
+            <summary>
+            Стандартный игровой стол
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Consts.GameConsts.AvailableGameLevels">
+            <summary>
+            Доступные игровые уровни
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Consts.GameConsts.#cctor">
+            <summary>
+            Статический конструктор
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.DS.AppState">
+            <summary>
+            Состояние приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.AppState.CurrentBaseAppState">
+            <summary>
+            Определенное состояние приложения
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.DS.EBaseAppStates">
+            <summary>
+            Состояния приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.EBaseAppStates.Created">
+            <summary>
+            Создано
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.EBaseAppStates.Running">
+            <summary>
+            Запущено
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.EBaseAppStates.Suspended">
+            <summary>
+            Приостановлено
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.EBaseAppStates.Quit">
+            <summary>
+            Осуществлен выход
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.DS.GameplaySettingsData">
+            <summary>
+            Настройки, относящиеся только к геймплею
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.GameplaySettingsData._appFixedTimestamp">
+            <summary>
+            Фиксированный временной шаг для фиксированного обновления модели
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.GameplaySettingsData._isIntroDisabled">
+            <summary>
+            Выключена ли вступительная заставка
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.GameplaySettingsData._isMusicEnabled">
+            <summary>
+            Включена ли музыка
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.GameplaySettingsData._isSfxEnabled">
+            <summary>
+            Включены ли звуковые эффекты
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.DS.GameplaySettingsData.#ctor(System.Double,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parAppFixedTimestamp">Фиксированный временной шаг для фиксированного обновления модели</param>
+            <param name="parIsIntroDisabled">Выключена ли вступительная заставка</param>
+            <param name="parIsMusicEnabled">Включена ли музыка</param>
+            <param name="parIsSfxEnabled">Включены ли звуковые эффекты</param>
+        </member>
+        <member name="M:Model.SPCore.DS.GameplaySettingsData.GetDefaultSettings">
+            <summary>
+            Возвращает экземпляр со стандартными настройками
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Model.SPCore.DS.GameplaySettingsData.AppFixedTimestamp">
+            <summary>
+            Фиксированный временной шаг для фиксированного обновления модели
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.DS.GameplaySettingsData.IsIntroDisabled">
+            <summary>
+            Выключена ли вступительная заставка
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.DS.GameplaySettingsData.IsSfxEnabled">
+            <summary>
+            Включены ли звуковые эффекты
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.DS.GameplaySettingsData.IsMusicEnabled">
+            <summary>
+            Включена ли музыка
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.DS.RecordPlayerInfo">
+            <summary>
+            Сведения о рекорде игрока
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.RecordPlayerInfo.MAX_CHARS_IN_NAME">
+            <summary>
+            Максимум символов в имени
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.RecordPlayerInfo._playerName">
+            <summary>
+            Имя игрока
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.RecordPlayerInfo._pointsEarned">
+            <summary>
+            Количество заработанных очков
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.DS.RecordPlayerInfo.#ctor(System.Int64,System.String)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parPointsEarned">Заработано очков</param>
+            <param name="parPlayerName">Имя игрока</param>
+        </member>
+        <member name="M:Model.SPCore.DS.RecordPlayerInfo.NameConstraintsApply">
+            <summary>
+            Применить ограничения имени
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.DS.RecordPlayerInfo.PointsEarned">
+            <summary>
+            Количество заработанных очков
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.DS.RecordPlayerInfo.PlayerName">
+            <summary>
+            Имя игрока
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.DS.RecordsData">
+            <summary>
+            Данные о рекордах
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.RecordsData.MAXIMUM_PLAYERS_INFOS">
+            <summary>
+            Максимум позиций игроков в рекордах
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.DS.RecordsData._playerRecordsInfo">
+            <summary>
+            Текущая информация о рекордах
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.DS.RecordsData.#ctor">
+            <summary>
+            Стандартный конструктор без параметров
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.DS.RecordsData.SetDefaultValues">
+            <summary>
+            Установить стандартные значения
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.DS.RecordsData.GetStandardRecords">
+            <summary>
+            Получить информацию о рекордах по умолчанию
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.DS.RecordsData.ActualizeRecordsInfo(System.Boolean)">
+            <summary>
+            Вспомогательный метод для актуализации информации о рекордах и обновлении данных
+            </summary>
+            <param name="parNoSort">Флаг отсутствия необходимости сортировки</param>
+        </member>
+        <member name="M:Model.SPCore.DS.RecordsData.CheckAndApplyConstraints">
+            <summary>
+            Проверить и применить ограничения имени для всех игроков
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.DS.RecordsData.GetInsertIndex(System.Int64)">
+            <summary>
+            Вспомогательный метод для получения индекса вставки в динамический массив информации о рекорде
+            </summary>
+            <param name="parPointsEarned">Количество заработанных очков</param>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.DS.RecordsData.TryAddRecord(Model.SPCore.DS.RecordPlayerInfo)">
+            <summary>
+            Попробовать осуществить добавление информации о рекорде
+            </summary>
+            <param name="parPlayerInfo">Информация о рекорде игрока</param>
+            <returns>True если добавление было произведено успешно</returns>
+        </member>
+        <member name="P:Model.SPCore.DS.RecordsData.PlayerRecordsInfo">
+            <summary>
+            Текущая информация о рекордах
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.ComponentModel.Component">
+            <summary>
+            Базовый класс для игровых компонентов компонентно-ориентированной системы проектирования
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ComponentModel.Component.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ComponentModel.Component.FixedUpdate(System.Double)">
+            <summary>
+            Сигнал фиксированного обновления модели (используется преимущественно для обработки физики и ввода)
+            </summary>
+            <param name="parFixedDeltaTime">Время шага фиксированного обновления в секундах</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ComponentModel.Component.Model#SPCore#GameplayModelDefinition#ObjectModel#IFixedUpdatable#IsActive">
+            <summary>
+            Является ли активным объект
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ComponentModel.Component.Update(System.Double)">
+            <summary>
+            Сигнал обновления модели
+            </summary>
+            <param name="parDeltaTime">Время кадра в секундах</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ComponentModel.Component.Model#SPCore#GameplayModelDefinition#ObjectModel#IUpdatable#IsActive">
+            <summary>
+            Является ли активным объект
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ComponentModel.Component.OwnComponent(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Активация владения компонентом другим игровым объектом
+            </summary>
+            <param name="parGameObject"></param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ComponentModel.Component.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject,System.Boolean,System.Boolean)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+            <param name="parIsUpdatable">Будет ли получать сигналы обновления модели</param>
+            <param name="parIsFixedUpdatable">Будет ли получать сигналы фиксированного обновления модели</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ComponentModel.Component.OnBeforeResetPerform">
+            <summary>
+            Выполнить действия перед отправкой в пул
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.ComponentModel.Component.ParentGameObject">
+            <summary>
+            Родительский игровой объект
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.ComponentModel.Component.IsUpdatable">
+            <summary>
+            Получает ли сигналы обновления модели
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.ComponentModel.Component.IsFixedUpdatable">
+            <summary>
+            Получает ли сигналы фиксированного обновления модели
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.EPocketGameState">
+            <summary>
+            Состояние игровой сессии
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.EPocketGameState.Init">
+            <summary>
+            Инициализация
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.EPocketGameState.Aiming">
+            <summary>
+            Прицеливание
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.EPocketGameState.ChooseShotPower">
+            <summary>
+            Выбор силы удара
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.EPocketGameState.BallsMovingInProgress">
+            <summary>
+            Движение шаров
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.EPocketGameState.Paused">
+            <summary>
+            Пауза
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.EPocketGameState.LevelEnd">
+            <summary>
+            Уровень завершен
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent">
+            <summary>
+            Компонент, управляющий игровой сессией
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.LIVES_PER_LEVEL">
+            <summary>
+            Бонусные жизни за успешное прохождение уровня
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.LIVES_COUNT_START">
+            <summary>
+            Стартовое количество жизней у игрока
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent._actualPlayer">
+            <summary>
+            Основной игрок
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent._currentLevelGameObject">
+            <summary>
+            Текущий игровой объект текущего запущенного игрового уровня
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent._currentPocketViewProvider">
+            <summary>
+            Текущий компонент запущенного игрового уровня
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent._flagCanProceedToResultsScreen">
+            <summary>
+            Флаг: можем ли перейти к экрану результатов
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent._gameOverComponent">
+            <summary>
+            Ссылка на актуальный компонент экрана проигрыша
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent._levelStarted">
+            <summary>
+            Флаг: начат ли уровень
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent._resultsScreenComponent">
+            <summary>
+            Ссылка на актуальный компонент экрана результатов в случае прохождения уровня
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="E:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.OnGameSessionEnd">
+            <summary>
+            Событие полного завершения игровой сессии
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject,Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.GameLevel)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+            <param name="parStartLevel">Стартовый уровень для начала игры</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.FixedUpdate(System.Double)">
+            <summary>
+            Сигнал фиксированного обновления модели (используется преимущественно для обработки физики и ввода)
+            </summary>
+            <param name="parFixedDeltaTime">Время шага фиксированного обновления в секундах</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.StartLevel(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.GameLevel)">
+            <summary>
+            Осуществляет старт игрового уровня
+            </summary>
+            <param name="parLevel">Данные об игровом уровне</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.OnGameLevelEnd">
+            <summary>
+            Обработчик события окончания игрового уровня
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.PlayVictoryMusicAndProceed">
+            <summary>
+            Короутина для проигрывания музыки успешного окончания уровня
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.PerformOnLose">
+            <summary>
+            Действия в случае проигрыша
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.ProceedToResultsScreen">
+            <summary>
+            Действия по переходу к экрану результатов
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.ResultsScreenEnd">
+            <summary>
+            Обработчик окончания работы экрана результатов в случае успешного прохождения уровня
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.DestroyResultsScreen">
+            <summary>
+            Уничтожение экрана результатов в случае успешного прохождения уровня
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.ProceedToTheNextLevel">
+            <summary>
+            Переход к следующему уровню
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.GetNextLevel(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.GameLevel)">
+            <summary>
+            Получить следующий уровень из ротации
+            </summary>
+            <param name="parPrevious">Данные предыдущего уровня</param>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.BankAndEndSession">
+            <summary>
+            Действия по полному завершению игровой сессии с сохранением результата игрока
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.DestroySessionData">
+            <summary>
+            Уничтожение данных игровой сессии
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent.EndGameSession">
+            <summary>
+            Полное завершение игровой сессии для последующего перехода обратно в главное меню
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.EResultsScreenFinalChoice">
+            <summary>
+            Итоговое выбранное игроком действие после экрана прохождения уровня
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.EResultsScreenFinalChoice.None">
+            <summary>
+            Отсутствует
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.EResultsScreenFinalChoice.BankAndExit">
+            <summary>
+            Сохранить результат и закончить игровую сессию
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.EResultsScreenFinalChoice.ContinuePlaying">
+            <summary>
+            Продолжить играть рискуя
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.EResultsScreenStage">
+            <summary>
+            Состояние экрана результата при успешном прохождении уровня
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.EResultsScreenStage.ChooseNextAction">
+            <summary>
+            Выбор первоначального действия
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.EResultsScreenStage.ChooseNameForTheRecords">
+            <summary>
+            Ввод имени для таблицы рекордов
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.GameOverScreenComponent">
+            <summary>
+            Экран результата игры - проигрыш
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.GameOverScreenComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="E:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.GameOverScreenComponent.OnScreenConfirmed">
+            <summary>
+            Событие завершения работы экрана результатов
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.GameOverScreenComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.GameOverScreenComponent.FixedUpdate(System.Double)">
+            <summary>
+            Сигнал фиксированного обновления модели (используется преимущественно для обработки физики и ввода)
+            </summary>
+            <param name="parFixedDeltaTime">Время шага фиксированного обновления в секундах</param>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent">
+            <summary>
+            Экран результата игры - уровень пройден
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent.CurrentPlayerName">
+            <summary>
+            Текущая строка вводимого имени игрока
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent.CurrentStage">
+            <summary>
+            Текущее состояние экрана результатов
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent.FinalChoice">
+            <summary>
+            Выбранное игроком дальнейшее действие
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent.IsAlive">
+            <summary>
+            Активен ли экран результатов
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent.IsBankAndExitActionSelected">
+            <summary>
+            Выбрана ли сейчас опция выхода и сохранения очков
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent._mainPlayer">
+            <summary>
+            Ссылка на главного управляющейго игрока
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent.PlayerActualData">
+            <summary>
+            Текущие актуальные игровые данные игрока
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent._playersManager">
+            <summary>
+            Ссылка на менеджер игроков
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="E:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent.ResultsScreenClosing">
+            <summary>
+            Событие завершения работы экрана результатов
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject,Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Player)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent.FixedUpdate(System.Double)">
+            <summary>
+            Сигнал фиксированного обновления модели (используется преимущественно для обработки физики и ввода)
+            </summary>
+            <param name="parFixedDeltaTime">Время шага фиксированного обновления в секундах</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent.ScreenClose(Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.EResultsScreenFinalChoice)">
+            <summary>
+            Осущесвтляет закрытие экрана результатов
+            </summary>
+            <param name="parChoice">Итоговое выбранное игроком действие на выходе</param>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.ELevelEndResult">
+            <summary>
+            Результат окончания игрового уровня
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.ELevelEndResult.None">
+            <summary>
+            Отсутствует
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.ELevelEndResult.Win">
+            <summary>
+            Победа, уровень пройден
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.ELevelEndResult.Lose">
+            <summary>
+            Поражение, игрок теряет все
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.CHANGE_AIM_ANGLE_SPEED_DEFAULT">
+            <summary>
+            Стандартная скорость изменения положения прицела
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.CHANGE_AIM_ANGLE_SPEED_PRECISE">
+            <summary>
+            Скорость изменения положения прицела в режиме с повышенной точностью
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.AIM_ANGLE_UP">
+            <summary>
+            Угол вверх
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.AIM_ANGLE_LEFT">
+            <summary>
+            Угол влево
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.AIM_ANGLE_BOTTOM">
+            <summary>
+            Угол вниз
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.AIM_ANGLE_RIGHT">
+            <summary>
+            Угол вправо
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.COMPARISON_TOLERANCE">
+            <summary>
+            Погрешность при сравнении чисел с плавающей запятой
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.AIM_ANGLE_CONVERTION_THRESHOLD">
+            <summary>
+            Переходная константа угла через 360/0 градусов
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.POWER_MAX">
+            <summary>
+            Максимальная сила удара кием по шару
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.POWER_MIN">
+            <summary>
+            Минимальная сила удара кием по шару
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.POWER_CHANGE_SPEED">
+            <summary>
+            Скорость изменения силы удара кием по шару
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.ANGLE_APPROXIMATION">
+            <summary>
+            Величина округления и приближения угла
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.START_PLAYER_ANGLE">
+            <summary>
+            Начальный выбранный угол удара игроком во время прицеливания 
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider._playerCurrentAimingAngle">
+            <summary>
+            Текущий выбранный угол удара игроком во время прицеливания
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.ActualPlayer">
+            <summary>
+            Основной игрок
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.BallsInGame">
+            <summary>
+            Шары на столе
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.BallsPocketed">
+            <summary>
+            Шары в лузах
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.CurrentGameState">
+            <summary>
+            Текущее состояние игровой сессии
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.EndLevelResult">
+            <summary>
+            Результат окончания игрового уровня
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.Field">
+            <summary>
+            Игровой стол
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider._flagAtLeastOneBallIsPocketed">
+            <summary>
+            Флаг - хотя бы один шар был забит во время последнего удара
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider._forceBackwardsDirection">
+            <summary>
+            Для изменения текущей силы удара: в обратном ли направлении она сейчас меняется?
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.GameReady">
+            <summary>
+            Признак готовности игровой сессии к началу игры
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider._levelConfig">
+            <summary>
+            Стартовая конфигурация игрового уровня
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.PlayerChosenShotForce">
+            <summary>
+            Выбранная сила удара игроком
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider._playersInputManager">
+            <summary>
+            Ссылка на менеджер ввода игроков
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.PlayerWhiteBall">
+            <summary>
+            Белый шар игрока
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.GetShotForcePercent">
+            <summary>
+            Получить силу удара в процентах
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.GetAngleApproximated">
+            <summary>
+            Получить округленный, приближенный угол
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.GameLevelEnd">
+            <summary>
+            События завершения игрового уровня
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject,Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.LevelStartConfig,Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Player)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+            <param name="parLevelStartConfig">Стартовая конфигурация игрового уровня</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.StartGameLevel">
+            <summary>
+            Начать игру на уровне
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.FixedUpdate(System.Double)">
+            <summary>
+            Сигнал фиксированного обновления модели (используется преимущественно для обработки физики и ввода)
+            </summary>
+            <param name="parFixedDeltaTime">Время шага фиксированного обновления в секундах</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.UpdateGameField(System.Double)">
+            <summary>
+            Сигнал обновления модели игрового поля / стола
+            </summary>
+            <param name="parFixedDeltaTime">Время шага фиксированного обновления в секундах</param>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.MoveBall(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData,System.Double)">
+            <summary>
+            Перемещение шара
+            </summary>
+            <param name="parBall">Шар</param>
+            <param name="parFixedDeltaTime">Время шага фиксированного обновления в секундах</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.DetectCollision(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData,Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData)">
+            <summary>
+            Обнаружение столкновения между шарами
+            </summary>
+            <param name="parBall1">Шар первый</param>
+            <param name="parBall2">Шар второй</param>
+            <returns>True если есть столкновение</returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.IsPocketCollision(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData,Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Pocket)">
+            <summary>
+            Обнаружение столкновения с коллайдером лузы
+            </summary>
+            <param name="parBall">Шар</param>
+            <param name="parPocket">Луза</param>
+            <returns>True если есть столкновение</returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.CheckCollisions">
+            <summary>
+            Запуск проверки всех столкновений на всем столе
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.CheckCollisionsWithBorders(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData)">
+            <summary>
+            Проверка столкновения с бортом
+            </summary>
+            <param name="parBall">Шар</param>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.CheckCollisionsWithBalls(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData,Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData)">
+            <summary>
+            Обработка столкновения двух шаров
+            </summary>
+            <param name="parBall1">Шар 1</param>
+            <param name="parBall2">Шар 2</param>
+            <returns>True, если столкновение имело место быть</returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.ChangeVelocities(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData,Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData)">
+            <summary>
+            Вспомогательный метод для изменения векторов скоростей столкнувшихся шаров
+            </summary>
+            <param name="parBall1">Шар 1</param>
+            <param name="parBall2">Шар 2</param>
+            <returns>Новый вектор скорости для Шара 1</returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.CheckIfIsPocketed(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData)">
+            <summary>
+            Проверка, не попал ли шар в лузу
+            </summary>
+            <param name="parBall">Проверяемый шар</param>
+            <returns></returns>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider.PlayerCurrentAimingAngle">
+            <summary>
+            Текущий выбранный угол удара игроком во время прицеливания
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent">
+            <summary>
+            Компонент, отвечающий за старт приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent._currentGameSessionControlComponent">
+            <summary>
+            Ссылка на текущий компонент, управляющий игровой сессией
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent._currentGameSessionGameObject">
+            <summary>
+            Текущий игровой объект игровой сессии
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent._currentMainMenuControlComponent">
+            <summary>
+            Ссылка на текущий компонент, управляющий главным меню
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent._currentMainMenuMainGameObject">
+            <summary>
+            Текущий игровой объект главного меню
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent._gameStartSignal">
+            <summary>
+            Флаг - сигнал начала игры
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent._selectedLevel">
+            <summary>
+            Выбранный стартовый игровой уровень
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent.Update(System.Double)">
+            <summary>
+            Сигнал обновления модели
+            </summary>
+            <param name="parDeltaTime">Время кадра в секундах</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent.OnCutsceneEnd">
+            <summary>
+            Обработчик завершения стартовой заставки
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent.ToMainMenu">
+            <summary>
+            Действия по переходу в главное меню игры
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent.StartGame(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.GameLevel)">
+            <summary>
+            Действия по началу игровой сессии
+            </summary>
+            <param name="parGameLevel">Игровой уровень</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent.EndGameSession">
+            <summary>
+            Действия по завершению игровой сесиии
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent.ApplicationExit">
+            <summary>
+            Действия по выходу из приложения с помощью кнопки
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent.WatchingCutsceneProviderComponent">
+            <summary>
+            Ссылка на текущий компонент, ответственный за стартовую заставку
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent.WatchingKeyComponent">
+            <summary>
+            Ссылка на текущий компонент, ответственный за отслеживание ввода игрока
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent.IsFirstUpdate">
+            <summary>
+            Специальный флаг, обозначающий является ли текущий цикл обновления первым.
+            Необходим, чтобы начать выполнять действия на втором цикле обновления игры, т.к. на первом
+            может быть не до конца завершена инициализация.
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.ViewProviders.IntroViewProviderComponent">
+            <summary>
+            Компонент для обработки стартовой заставки игры
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.ViewProviders.IntroViewProviderComponent.OnIntroCutsceneEndedPerform">
+            <summary>
+            Делегат по завершению стартовой заставки
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.ViewProviders.IntroViewProviderComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.ViewProviders.IntroViewProviderComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Launching.ViewProviders.IntroViewProviderComponent.AfterIntroCutscenePerform">
+            <summary>
+            Дополнительное отладочное действие после игровой заставки
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent">
+            <summary>
+            Компонент, ответственный за подменю музыкального проигрывателя саундтрека
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent._enumAssetsValues">
+            <summary>
+            Вспомогательный массив, хранящий значения перечисления музыки
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent.Activate">
+            <summary>
+            Процедура активации подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent.Deactivate">
+            <summary>
+            Процедура деактивации подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent.PlayTrack">
+            <summary>
+            Начать воспроизведение музыкального трека
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent.NextTrack">
+            <summary>
+            Выбрать следующий трек
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent.PrevTrack">
+            <summary>
+            Выбрать предыдущий трек
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent.ReturnBack">
+            <summary>
+            Возврат в предыдущее меню
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent.MusicPlayerControlButton">
+            <summary>
+            Кнопка управления текущим треком
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent.ReturnBackButton">
+            <summary>
+            Кнопка "Назад"
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent.CurrentSelectedTrack">
+            <summary>
+            Текущий выбранный музыкальный трек
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent">
+            <summary>
+            Компонент, ответственный за главное меню игры
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="E:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.OnGameStart">
+            <summary>
+            Событие старта игровой сессии
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.StartGameHandle(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.GameLevel)">
+            <summary>
+            Вызов активации события старта игровой сессии
+            </summary>
+            <param name="parGameLevel"></param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.Activate">
+            <summary>
+            Процедура активации главного меню
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.Deactivate">
+            <summary>
+            Процедура деактивации подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.ExitAction">
+            <summary>
+            Вызов действия выхода из главного меню
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.SinglePlayerLobbySubMenu">
+            <summary>
+            Компонент подменю лобби одиночного режима игры
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.OptionsSubMenu">
+            <summary>
+            Компонент подменю настроек
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.RecordsSubMenu">
+            <summary>
+            Компонент подменю экрана рекордов
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.JukeboxSubMenu">
+            <summary>
+            Компонент подменю экрана музыкального проигрывателя саундтрека
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.NewGame1PPocketButton">
+            <summary>
+            Кнопка вызова подменю лобби одиночного режима игры
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.OptionsButton">
+            <summary>
+            Кнопка вызова подменю настроек
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.RecordsButton">
+            <summary>
+            Кнопка вызова подменю экрана рекордов
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.JukeboxButton">
+            <summary>
+            Кнопка вызова подменю экрана музыкального проигрывателя саундтрека
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent.ExitButton">
+            <summary>
+            Кнопка вызова команды выхода
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent">
+            <summary>
+            Компонент, ответственный за подменю настроек игры
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+        </member>
+        <member name="E:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.OnNewScreenModeSet">
+            <summary>
+            Событие установки нового графического режима экрана
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.Activate">
+            <summary>
+            Процедура активации подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.ChangeScreenMode">
+            <summary>
+            Действия по вызову смены режима экрана
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.ChangeMusicMode">
+            <summary>
+            Действия по вызову смены настройки музыки
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.ChangeSfxMode">
+            <summary>
+            Действия по вызову смены настройки звуковых эффектов
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.ChangeIntroCutsceneMode">
+            <summary>
+            Действия по вызову смены настройки стартовой заставки
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.ReturnBack">
+            <summary>
+            Возврат в предыдущее меню
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.ScreenModeButton">
+            <summary>
+            Кнопка настройки графического режима экрана
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.MusicModeButton">
+            <summary>
+            Кнопка настройки музыки
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.SfxModeButton">
+            <summary>
+            Кнопка настройки звуковых эффектов
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.IntroCutsceneModeButton">
+            <summary>
+            Кнопка настройки стартовой заставки
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent.ReturnBackButton">
+            <summary>
+            Кнопка для возврата в предыдущее меню
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent">
+            <summary>
+            Компонент, ответственный за подменю экрана рекордов
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent.Activate">
+            <summary>
+            Процедура активации подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent.RecordsClear">
+            <summary>
+            Действия для очистки таблицы рекордов
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent.ReturnBack">
+            <summary>
+            Возврат в предыдущее меню
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent.RecordOne">
+            <summary>
+            Псевдо-кнопка первого рекорда
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent.RecordTwo">
+            <summary>
+            Псевдо-кнопка второго рекорда
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent.RecordThree">
+            <summary>
+            Псевдо-кнопка третьего рекорда
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent.RecordsClearButton">
+            <summary>
+            Кнопка очистки таблицы рекордов
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent.ReturnBackButton">
+            <summary>
+            Кнопка для возврата в предыдущее меню
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent">
+            <summary>
+            Компонент, ответственный за подменю лобби старта однопользовательского режима игры
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent._currentSelectedLevel">
+            <summary>
+            Текущий выбранный игровой уровень
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent._gameLevelIndex">
+            <summary>
+            Индекс текущего выбранного игрового уровня
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="E:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.TransitionToTheGameStageStarted">
+            <summary>
+            Событие о начале подготовки к переходу на игровой уровень со стороны View
+            </summary>
+        </member>
+        <member name="E:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.ViewEndedTransitionToTheGameStage">
+            <summary>
+            Событие о завершении подготовки к переходу на игровой уровень со стороны View
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.Activate">
+            <summary>
+            Процедура активации подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.StartGameLevel">
+            <summary>
+            Действия по началу игрового уровня (с пробросом в компонент главного меню)
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.ViewNotifiesThatTransitionEnded">
+            <summary>
+            Вид сообщает, что он готов к переходу на игровой уровень
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.SelectNextLevel">
+            <summary>
+            Осуществление выбора следующего игрового уровня
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.SelectPrevLevel">
+            <summary>
+            Осуществление выбора предыдущего игрового уровня
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.ReturnBack">
+            <summary>
+            Возврат в предыдущее меню
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.SelectStartLevelButton">
+            <summary>
+            Совмещенная кнопка выбора и старта уровня
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.ReturnBackButton">
+            <summary>
+            Кнопка возврата в предыдущее меню
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.CurrentSelectedLevel">
+            <summary>
+            Текущий выбранный игровой уровень
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent.AvailableLevels">
+            <summary>
+            Список доступных для выбора игровых уровней
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MenuControlComponent">
+            <summary>
+            Базовый класс, определяющий общую функциональность и элементы контракта для меню и подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MenuControlComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="E:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MenuControlComponent.MenuClosedEvent">
+            <summary>
+            События закрытия меню или подменю
+            </summary>
+        </member>
+        <member name="E:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MenuControlComponent.OnBecomeActive">
+            <summary>
+            Событие активации меню/подменю
+            </summary>
+        </member>
+        <member name="E:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MenuControlComponent.OnDeactivated">
+            <summary>
+            Событие деактивации меню/подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MenuControlComponent.Activate">
+            <summary>
+            Процедура активации меню/подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MenuControlComponent.Deactivate">
+            <summary>
+            Процедура деактивации меню/подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MenuControlComponent.RaiseMenuClosed">
+            <summary>
+            Вызов события закрытия меню
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MenuControlComponent.IsActive">
+            <summary>
+            Является ли меню активным в данный момент
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent">
+            <summary>
+            Базовый класс, определяющий функциональность и элементы контракта
+            для меню и подменю, имеющий общий стандартизированный дизайн и тип
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.MenuHandlingControls">
+            <summary>
+            Компоненты, следящие за вводом игрока для управления меню/подменю
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.SubMenus">
+            <summary>
+            Доступные в этом меню подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.Deactivate">
+            <summary>
+            Процедура деактивации меню/подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.SelectUiElement(Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElement)">
+            <summary>
+            Выбор текущего активного элемента пользовательского интерфейса
+            </summary>
+            <param name="parSelectedElement">Новый выбранный элемент UI</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.GoToSubmenu(Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MenuControlComponent)">
+            <summary>
+            Действия по переходу во вложенное в это меню подменю
+            </summary>
+            <param name="parTargetSubmenu">Вложенное подменю для перехода</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.OnSubmenuClosed">
+            <summary>
+            Обработчик закрытия вложенного подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.CloseSubmenu">
+            <summary>
+            Закрытие меню/подменю и возврат на уровень выше
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.AddToButtonKeyListenerDataConfirmationAction(System.Collections.Generic.LinkedList{Model.SPCore.GameplayModelDefinition.GameComponents.Universal.DS.KeyListenerData},System.Action)">
+            <summary>
+            Добавление стандартных действий для обработки нажатия на кнопки в меню
+            </summary>
+            <param name="parButtonKeyListenerData">Обработчик ввода игрока</param>
+            <param name="parOnPressedAction">Действие при нажатии</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.CreateStandardButton(System.Action)">
+            <summary>
+            Создает стандартную кнопку
+            </summary>
+            <param name="parOnPressedAction">Действие при нажатии на кнопку</param>
+            <returns>Созданную кнопку</returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.StdMenuMoveUp">
+            <summary>
+            Перемещение по элементам пользовательского интерфейса меню вверх
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.StdMenuMoveDown">
+            <summary>
+            Перемещение по элементам пользовательского интерфейса меню вниз
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.DefineStdMenuHandlingControls">
+            <summary>
+            Определяет основные стандартные обработчики ввода для осуществления операций перемешения по элементам
+            пользовательского интерфейса меню
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.CurrentHoveredElement">
+            <summary>
+            Текущий выделенный активный элемент меню
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.PlayerRef">
+            <summary>
+            Управляющий меню игрок
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.MenuUiElements">
+            <summary>
+            Элементы пользовательского интерфейса меню/подменю
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent.CurrentSubMenu">
+            <summary>
+            Текущее активное для этого меню подменю (если был совершен такой переход)
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElement">
+            <summary>
+            Базовый класс для определения контракта и функциональности для
+            стандартных элементов пользовательского интерфеса в меню и подменю
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElement.Hover">
+            <summary>
+            Действия при активации
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElement.Unhover">
+            <summary>
+            Действия при деактивации
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElement.IsHovered">
+            <summary>
+            Активен ли сейчас этот элемент
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElementButton">
+            <summary>
+            Стандартный элемент пользовательского интерфейса меню кнопка
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElementButton.GeneratedKeyListener">
+            <summary>
+            Созданный обработчик ввода игрока
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElementButton.ProvidedKeyListenerData">
+            <summary>
+            Данные для обработчика ввода игрока
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElementButton.TargetGameObject">
+            <summary>
+            Целевой игровой объект
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElementButton.#ctor(System.Collections.Generic.LinkedList{Model.SPCore.GameplayModelDefinition.GameComponents.Universal.DS.KeyListenerData},Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parProvidedKeyListenerData">Данные для обработчика ввода игрока</param>
+            <param name="parTargetGameObject">Целевой игровой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElementButton.Hover">
+            <summary>
+            Действия при активации
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElementButton.Unhover">
+            <summary>
+            Действия при деактивации
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Universal.DS.KeyListenerData">
+            <summary>
+            Данные для обработчика ввода от игрока
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Universal.DS.KeyListenerData.#ctor(Model.SPCore.MGameActions.EGameActionButton,Model.SPCore.MPlayers.MPlayer,System.Action,System.Boolean)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parButtonToCheck">Игровая кнопка-действие, которое нужно проверять</param>
+            <param name="parPlayerToCheck">Игрок, которого нужно проверять</param>
+            <param name="parPerformOnSuccess">Действия при нажатии на проверяемую игровую кнопку</param>
+            <param name="parAutoRemove">Следует ли убрать действие после первого успешного выполнения</param>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Universal.DS.KeyListenerData.ButtonToCheck">
+            <summary>
+            Игровая кнопка-действие, которое нужно проверять
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Universal.DS.KeyListenerData.PlayerToCheck">
+            <summary>
+            Игрок, которого нужно проверять
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Universal.DS.KeyListenerData.PerformOnSuccess">
+            <summary>
+            Действия при нажатии на проверяемую игровую кнопку
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Universal.DS.KeyListenerData.AutoRemove">
+            <summary>
+            Следует ли убрать действие после первого успешного выполнения
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.Universal.KeyListenerComponent">
+            <summary>
+            Вспомогательный компонент, ответственный за отслеживание ввода игрока и его корректную обработку
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Universal.KeyListenerComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Universal.KeyListenerComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.Universal.KeyListenerComponent.FixedUpdate(System.Double)">
+            <summary>
+            Сигнал фиксированного обновления модели (используется преимущественно для обработки физики и ввода)
+            </summary>
+            <param name="parFixedDeltaTime">Время шага фиксированного обновления в секундах</param>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.Universal.KeyListenerComponent.WatchData">
+            <summary>
+            Данные об отслеживаемых игровых действиях и реакциях на них
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderColleague">
+            <summary>
+            "Сотрудник" для взаимодействия между моделью и отображением
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderColleague.#ctor(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderMediator)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parActualViewProviderMediator">"Посредник" для осуществления взаимодействия</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderColleague.ReceiveNotificationCreated(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Получение сообщения о создании компонента
+            </summary>
+            <param name="parTargetComponent">Созданный компонент</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderColleague.ReceiveNotificationRemoved(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Получение сообщения об удалении компонента
+            </summary>
+            <param name="parTargetComponent">Удаляемый компонент</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderColleague.ReceiveNotificationUpdated(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Получение сообщения об обновлении компонента
+            </summary>
+            <param name="parTargetComponent">Обновленный компонент</param>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderColleague.ActualViewProviderMediator">
+            <summary>
+            Текущий посредник
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent">
+            <summary>
+            Базовый класс компонента для всех компонентов, которые должны быть связаны
+            с соответствующими компонентами отображения. Они необходимы для предоставления данных
+            модели отображению и связываются автоматически.
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject,System.Boolean,System.Boolean)">
+            <summary>
+            Замена конструктора, процедура инициализации компонента
+            </summary>
+            <param name="parEntGameObject">Родительский игровой объект</param>
+            <param name="parIsUpdatable">Должен ли компонент получать сигналы обновления модели</param>
+            <param name="parIsFixedUpdatable">Должен ли компонент получать сигралы фиксированного обновления модели</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent.ViewUpdateSignal(System.Double)">
+            <summary>
+            Отправить сигнал об обновлении компонента
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent.OnBeforeResetPerform">
+            <summary>
+            Действия перед отправкой в пул
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent.ProviderColleague">
+            <summary>
+            Связанный с компонентом коллега
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderMediator">
+            <summary>
+            Класс реализует шаблон "Посредник" для взаимодействия и передачи данных между компонентами модели и отображения
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderMediator.#ctor">
+            <summary>
+            Стандартный конструктор без параметров
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderMediator.SendCreatedNotification(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderColleague,Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Отправить сообщение о создании компонента
+            </summary>
+            <param name="parColleague">Целевой "сотрудник"</param>
+            <param name="parTargetComponent">Созданный компонент</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderMediator.SendRemovedNotification(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderColleague,Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Отправить сообщение об удалении компонента
+            </summary>
+            <param name="parColleague">Целевой "сотрудник"</param>
+            <param name="parTargetComponent">Удаляемый компонент</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderMediator.SendUpdatedNotification(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderColleague,Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Отправить сообщение об обновлении компонента
+            </summary>
+            <param name="parColleague">Целевой "сотрудник"</param>
+            <param name="parTargetComponent">Обновленный компонент</param>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderMediator.ViewProviderModelSide">
+            <summary>
+            "Сотрудник" со стороны модели
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderMediator.ViewProviderViewSide">
+            <summary>
+            "Сотрудник" со стороны отображения
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderModelSideStandardColleague">
+            <summary>
+            Класс реализует "сотрудника" со стороны модели
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderModelSideStandardColleague.#ctor(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderMediator)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parActualViewProviderMediator">Посредник</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderModelSideStandardColleague.ReceiveNotificationCreated(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Получение сообщения о создании компонента (не используется в текущей версии, но необходимо в будущем)
+            </summary>
+            <param name="parTargetComponent">Созданный компонент</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderModelSideStandardColleague.ReceiveNotificationRemoved(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Получение сообщения об удалении компонента (не используется в текущей версии, но необходимо в будущем)
+            </summary>
+            <param name="parTargetComponent">Удаляемый компонент</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderModelSideStandardColleague.ReceiveNotificationUpdated(Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent)">
+            <summary>
+            Получение сообщения об обновлении компонента (не используется в текущей версии, но необходимо в будущем)
+            </summary>
+            <param name="parTargetComponent">Обновленный компонент</param>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject">
+            <summary>
+            Игровой объект, представляющий собой специальный объект, к которому прикрепляются компоненты для
+            реализации компонентно-ориентированного подхода. В конкретной реализации игровые объекты чаще используется
+            для контекстуального разделения компонентов.
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject.#ctor(CoreUtil.Pool.ObjectPoolSupportData)">
+            <summary>
+            Конструктор для поддержки системы пулинга объектов
+            </summary>
+            <param name="parSupportData">Данные для работы с пулом</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject.Init(Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel)">
+            <summary>
+            Замена конструктора, процедура инициализации игрового объекта
+            </summary>
+            <param name="parModel">Модель</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject.AddComponent(Model.SPCore.GameplayModelDefinition.ComponentModel.Component)">
+            <summary>
+            Добавить компонент к игровому объекту
+            </summary>
+            <param name="parComponent">Добавляемый компонент</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject.AddComponent``1(Model.SPCore.GameplayModelDefinition.ComponentModel.Component)">
+            <summary>
+            Добавить компонент к игровому объекту и вернуть его
+            </summary>
+            <param name="parComponent">Добавляемый компонент</param>
+            <typeparam name="T">Тип компонента</typeparam>
+            <returns>Добавленный компонент</returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject.RemoveComponent(Model.SPCore.GameplayModelDefinition.ComponentModel.Component)">
+            <summary>
+            Удалить компонент из игрового объекта
+            </summary>
+            <param name="parComponent">Удаляемый компонент</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject.GetComponent``1(System.Type)">
+            <summary>
+            Получить компонент определенного типа, который находится
+            на этом игровом объекте
+            </summary>
+            <param name="parT">Тип компонента</param>
+            <typeparam name="T">Желаемый тип преобразования</typeparam>
+            <returns>Компонент, если он был найден</returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject.GetComponents``1(System.Type)">
+            <summary>
+            Получить все компоненты определенного типа, которые находятся
+            на этом игровом объекте
+            </summary>
+            <param name="parT">Тип компонентов</param>
+            <typeparam name="T">Желаемый тип преобразования</typeparam>
+            <returns>Динамический массив компонентов</returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject.OnBeforeResetPerform">
+            <summary>
+            Действия перед отправкой объекта в пул
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject.LinkedAppModel">
+            <summary>
+            Связанная модель
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject.Components">
+            <summary>
+            Динамический массив находящийся на этом игровом объекте компонентов
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel">
+            <summary>
+            Интерфейс для доступа к основным ресурсам и данным модели
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.GetGameplaySettingsData">
+            <summary>
+            Получает путь к файлу настроек игрового процесса
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.GetAppSettingsPath">
+            <summary>
+            Получает путь к файлу настроек приложения
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.GetRecordsData">
+            <summary>
+            Получает данные о таблице рекордов
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.GetRecordsDataPath">
+            <summary>
+            Получает путь к файлу с данными таблицы рекордов
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.GetPlayersManager">
+            <summary>
+            Получает менеджера ввода игроков
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.GetResourcesManager">
+            <summary>
+            Получает менеджер ресурсов
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.GetViewProviderMediator">
+            <summary>
+            Получает посредника между моделью и отображением
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.GetSoundManager">
+            <summary>
+            Получает аудио менеджер
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.RegisterUpdatableObject(Model.SPCore.GameplayModelDefinition.ObjectModel.IUpdatable)">
+            <summary>
+            Производит регистрацию обновляемого объекта в модели для последующих отправок сигналов об обновлении
+            </summary>
+            <param name="parUpdatableObject">Целевой обновляемый объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.RegisterFixedUpdatableObject(Model.SPCore.GameplayModelDefinition.ObjectModel.IFixedUpdatable)">
+            <summary>
+            Производит регистрацию фиксированно обновляемого объекта в модели для последующих
+            отправок сигналов о фиксированных обновлениях
+            </summary>
+            <param name="parFixedUpdatableObject">Целевой фиксированно обновляемый объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.UnregisterUpdatableObject(Model.SPCore.GameplayModelDefinition.ObjectModel.IUpdatable)">
+            <summary>
+            Отменяет регистрацию обновляемого объекта в модели для последующих отправок сигналов об обновлении
+            </summary>
+            <param name="parUpdatableObject">Целевой объект</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel.UnregisterFixedUpdatableObject(Model.SPCore.GameplayModelDefinition.ObjectModel.IFixedUpdatable)">
+            <summary>
+            Отменяет регистрацию фиксированно обновляемого объекта в модели для последующих
+            отправок сигналов о фиксированных обновлениях
+            </summary>
+            <param name="parFixedUpdatableObject">Целевой объект</param>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.ObjectModel.IFixedUpdatable">
+            <summary>
+            Интерфейс фиксированно обновляемого объекта
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IFixedUpdatable.IsActive">
+            <summary>
+            Является ли активным
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IFixedUpdatable.FixedUpdate(System.Double)">
+            <summary>
+            Сигнал фиксированного обновления модели (используется преимущественно для обработки физики и ввода)
+            </summary>
+            <param name="parFixedDeltaTime">Время шага фиксированного обновления в секундах</param>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.ObjectModel.IUpdatable">
+            <summary>
+            Интерфейс обновляемого объекта
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IUpdatable.IsActive">
+            <summary>
+            Является ли активным
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.ObjectModel.IUpdatable.Update(System.Double)">
+            <summary>
+            Сигнал обновления модели
+            </summary>
+            <param name="parDeltaTime">Время кадра в секундах</param>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData">
+            <summary>
+            Данные модели шара
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData.BallType">
+            <summary>
+            Определенный тип шара
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData.Center">
+            <summary>
+            Местоположение центра шара
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData.Radius">
+            <summary>
+            Радиус шара
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData.Speed">
+            <summary>
+            Значение скорости шара
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData.Velocity">
+            <summary>
+            Вектор направления скорости шара
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData.#ctor(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parBallType">Определенный тип шара</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData.ResetMovement">
+            <summary>
+            Останавливает шар
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData.IsMoving">
+            <summary>
+            Перемещается ли шар в данный момент
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.CollisionLine">
+            <summary>
+            Линия коллизии (использует формат обычной XOY-системы координат)
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.CollisionLine.CheckCollisionFunc">
+            <summary>
+            Функция для проверки коллизии с линией
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.CollisionLine.Normal">
+            <summary>
+            Нормаль
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.CollisionLine.#ctor(CoreUtil.Math.SpVector3,System.Func{Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData,System.Boolean})">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parNormal">Нормаль</param>
+            <param name="parCheckCollisionFunc">Функция для проверки коллизии с линией</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.CollisionLine.#ctor(CoreUtil.Math.SpVector3,CoreUtil.Math.SpVector3,System.Boolean,System.Boolean)">
+            <summary>
+            Дополнительный конструктор, генерирующий нормаль и функцию проверки коллизии самостоятельно
+            </summary>
+            <param name="parStart">Стартовая точка линии</param>
+            <param name="parEnd">Конечная точка линии</param>
+            <param name="parIsClockwiseNormal">Поиск нормали должен производится по часовой стрелке?</param>
+            <param name="parIsCollisionCheckPreciseBottom">Точная проверка столкновения будет являтся пройденной,
+                                                           если точка соприкосновения окажется снизу от линии?</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.CollisionLine.GetEquationKandB(CoreUtil.Math.SpVector3,CoreUtil.Math.SpVector3,System.Double@,System.Double@)">
+            <summary>
+            Получает коэффициенты уравнения прямой y = kx + b
+            </summary>
+            <param name="parStart">Первая точка</param>
+            <param name="parEnd">Вторая точка</param>
+            <param name="parEquationK">Коэффициент уравнения k</param>
+            <param name="parEquationB">Коэффициент уравнения b</param>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.CollisionLine.IsRectCollided(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.BallModelData,CoreUtil.Math.SpVector3,CoreUtil.Math.SpVector3)">
+            <summary>
+            Проверка столкновения по модели прямоугольников AABB
+            </summary>
+            <param name="parBallData">Шар</param>
+            <param name="parStart">Стартовая точка линии</param>
+            <param name="parEnd">Конечная точка линии</param>
+            <returns>True, если столкновение возможно</returns>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.CollisionLine.GenFunctionForPocketBorder(CoreUtil.Math.SpVector3,CoreUtil.Math.SpVector3,System.Boolean,CoreUtil.Math.SpVector3)">
+            <summary>
+            Генерирует и возвращает функцию для проверки столкновения для заданной линии
+            </summary>
+            <param name="parStart">Начало линии</param>
+            <param name="parEnd">Конец линии</param>
+            <param name="parShouldCheckBottom">Точная проверка столкновения будет являтся пройденной,
+                                               если точка соприкосновения окажется снизу от линии?</param>
+            <param name="parNormal">Нормаль</param>
+            <returns></returns>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType">
+            <summary>
+            Тип шара, с внутренней нумерацией от 0 до 10
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType.WhitePlayerBall">
+            <summary>
+            Белый шар игрока
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType.Yellow">
+            <summary>
+            Желтый
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType.Blue">
+            <summary>
+            Синий
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType.Red">
+            <summary>
+            Красный
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType.Purple">
+            <summary>
+            Фиолетовый
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType.Orange">
+            <summary>
+            Оранжевый
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType.Green">
+            <summary>
+            Зеленый
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType.Brown">
+            <summary>
+            Коричневый
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType.Black">
+            <summary>
+            Черный
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType.Yellow9Ball">
+            <summary>
+            Шар-девятка
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType.Blue10Ball">
+            <summary>
+            Шар-десятка
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.GameField">
+            <summary>
+            Игровое поле-стол
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.GameField.CollisionLines">
+            <summary>
+            Линии коллизий для бортов
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.GameField.Height">
+            <summary>
+            Высота
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.GameField.Width">
+            <summary>
+            Ширина
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.GameField.Pockets">
+            <summary>
+            Лузы
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.GameField.#ctor(System.Double,System.Double,Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Pocket[],Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.CollisionLine[])">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parWidth">Ширина</param>
+            <param name="parHeight">Высота</param>
+            <param name="parPockets">Лузы</param>
+            <param name="parCollisionLines">Линии коллизий для бортов</param>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Player">
+            <summary>
+            Игрок (связан непосредственно с игровой сессией)
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Player._score">
+            <summary>
+            Набрано очков
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Player.PlayerInput">
+            <summary>
+            Связанный обработчик ввода
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Player.#ctor(Model.SPCore.MPlayers.MPlayer,System.Int32,System.Int32)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parPlayerInput">Связанный обработчик ввода</param>
+            <param name="parScore">Набрано очков</param>
+            <param name="parLifeCount">Оставшееся количество жизней</param>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Player.Score">
+            <summary>
+            Набрано очков
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Player.LifeCount">
+            <summary>
+            Оставшееся количество жизней
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Pocket">
+            <summary>
+            Луза
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Pocket.Center">
+            <summary>
+            Центр лузы
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Pocket.Radius">
+            <summary>
+            Радиус лузы
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Pocket.#ctor(CoreUtil.Math.SpVector3)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parCenter">Центр лузы</param>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.BallStartConfig">
+            <summary>
+            Стартовая конфигурация шара
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.BallStartConfig.BallType">
+            <summary>
+            Определенный тип шара
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.BallStartConfig.StartCenterPosition">
+            <summary>
+            Стартовая позиция на столе
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.BallStartConfig.#ctor(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.EBallType,CoreUtil.Math.SpVector3)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parBallType">Определенный тип шара</param>
+            <param name="parStartCenterPosition">Стартовая позиция на столе</param>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.GameLevel">
+            <summary>
+            Игровой уровень
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.GameLevel.#ctor(System.String,Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.LevelStartConfig)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parLevelName">Название игрового уровня</param>
+            <param name="parActualLevelLevelConfig">Связанная стартовая конфигурация уровня</param>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.GameLevel.LevelName">
+            <summary>
+            Название игрового уровня
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.GameLevel.ActualLevelLevelConfig">
+            <summary>
+            Связанная стартовая конфигурация уровня
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.LevelStartConfig">
+            <summary>
+            Стартовая конфигурация уровня
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.LevelStartConfig.LevelBackgroundMusic">
+            <summary>
+            Проигрываемая мелодия уровня
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.LevelStartConfig.LevelBalls">
+            <summary>
+            Стартовые конфигурации шаров на уровне
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.LevelStartConfig.LevelGameField">
+            <summary>
+            Конфигурация стола
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.LevelStartConfig.PlayerWhiteBall">
+            <summary>
+            Данные конфигурации белого шара-игрока
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.LevelStartConfig.#ctor(Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.GameField,Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.BallStartConfig[],Model.SPCore.GameplayModelDefinition.SidePocketGame.Data.Setup.BallStartConfig,Model.SPCore.Managers.Sound.Data.EAppMusicAssets)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parLevelGameField">Конфигурация стола</param>
+            <param name="parLevelBalls">Стартовые конфигурации шаров на уровне</param>
+            <param name="parPlayerWhiteBall">Данные конфигурации белого шара-игрока</param>
+            <param name="parLevelBackgroundMusic">Проигрываемая мелодия уровня</param>
+        </member>
+        <member name="T:Model.SPCore.Managers.Serialization.AppSerializationManager">
+            <summary>
+            Вспомогательный класс, который содержит методы для сериализации и десериализации данных
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Serialization.AppSerializationManager.LoadDataFromFile``1(System.String)">
+            <summary>
+            Загрузить данные из файла
+            </summary>
+            <param name="parPath">Путь к файлу</param>
+            <typeparam name="T">Тип десериализуемых данных</typeparam>
+            <returns>Данные запрошенного типа в случае успешной загрузки</returns>
+            <exception cref="T:System.ArgumentException">Путь некорректен или файл не существует</exception>
+            <exception cref="T:System.ApplicationException">Произошла ошибка во время загрузки файла</exception>
+        </member>
+        <member name="M:Model.SPCore.Managers.Serialization.AppSerializationManager.LoadDataFromFileSafe``1(System.String,``0@)">
+            <summary>
+            Безопасно загрузить данные из файла
+            </summary>
+            <param name="parPath">Путь к файлу</param>
+            <param name="outResult">Выходной результат</param>
+            <typeparam name="T">Тип десериализуемых данных</typeparam>
+            <returns>True, если загрузка была успешна</returns>
+        </member>
+        <member name="M:Model.SPCore.Managers.Serialization.AppSerializationManager.SaveDataToFile``1(``0,System.String)">
+            <summary>
+            Сохраняет/сериализует данные в файл
+            </summary>
+            <param name="parSerializationData">Данные для сохранения/сериализации</param>
+            <param name="parPath">Путь для сохранения файла</param>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.AppSoundManager">
+            <summary>
+            Аудио менеджер приложения
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.AppSoundManager.PlayingBackgroundMusicData">
+            <summary>
+            Данные о проигрываемой фоновой музыке
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.PlayingBackgroundMusicData.#ctor(Model.SPCore.Managers.Sound.Data.AppSoundAsset,Model.SPCore.Managers.Sound.Data.EAppMusicAssets)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parLinkedAppSoundAsset">Связанный аудио-ресурс</param>
+            <param name="parLinkedMusicAssetDefinition">Тип музыкальной композиции</param>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.AppSoundManager.PlayingBackgroundMusicData.LinkedAppSoundAsset">
+            <summary>
+            Связанный аудио-ресурс
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.AppSoundManager.PlayingBackgroundMusicData.LinkedMusicAssetDefinition">
+            <summary>
+            Тип музыкальной композиции
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.#ctor(CoreUtil.ResourceManager.ResourceManager,Model.SPCore.GameplayModelDefinition.ObjectModel.IAppModel)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parResourceManager">Менеджер ресурсов</param>
+            <param name="parModel">Модель</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.ManagerUpdateStep">
+            <summary>
+            Обновление данных менеджера. Предназначен для вызова каждый кадр в модели.
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.UpdateLibrary">
+            <summary>
+            Предназначен для инициализации аудио-фонотеки и первичной загрузки ресурсов
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.LoadSfxPacks">
+            <summary>
+            Загрузить пакеты ресурсов со звуковыми эффектами. Предназначен для вызова после инициализации
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.UnloadSfxPacks">
+            <summary>
+            Выгрузить из памяти пакеты ресурсов со звуковыми эффектами
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.PlaySfx(Model.SPCore.Managers.Sound.Data.EAppSfxAssets,System.Boolean)">
+            <summary>
+            Воспроизвести звуковой эффект
+            </summary>
+            <param name="parSfxAsset">Тип звукового эффекта</param>
+            <param name="parIsLooped">Зациклить воспроизведение?</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.EnsureBgMusicIsPlaying(Model.SPCore.Managers.Sound.Data.EAppMusicAssets,System.Boolean)">
+            <summary>
+            Осуществляет проверку, что требуемый тип музыки играет в данный момент, если не
+            играет, то начинает его воспроизведение.
+            </summary>
+            <param name="parMusicAsset">Требуемый тип фоновой музыки</param>
+            <param name="parIsLooped">Зациклить воспроизведение?</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.PlayBgMusic(Model.SPCore.Managers.Sound.Data.EAppMusicAssets,System.Boolean)">
+            <summary>
+            Начать воспроизведение фоновой музыки
+            </summary>
+            <param name="parMusicAsset">Тип фоновой музыки</param>
+            <param name="parIsLooped">Зациклить воспроизведение?</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.PauseSfx(Model.SPCore.Managers.Sound.Data.EAppSfxAssets)">
+            <summary>
+            Приостанавливает воспроизведение звукового эффекта
+            </summary>
+            <param name="parSfxAsset">Тип звукового эффекта</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.PauseMusic">
+            <summary>
+            Приостанавливает воспроизведение фоновой музыки
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.PauseSound(Model.SPCore.Managers.Sound.Data.AppSoundAsset)">
+            <summary>
+            Вспомогательный метод приостановки воспроизведения аудио ресурса
+            </summary>
+            <param name="parAppSoundAsset">Целевой аудио ресурс</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.ResetSfx(Model.SPCore.Managers.Sound.Data.EAppSfxAssets)">
+            <summary>
+            Сбросить процесс воспроизведения звукового эффекта
+            </summary>
+            <param name="parSfxAsset">Тип звукового эффекта</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.ResetMusic">
+            <summary>
+            Сбросить процесс воспроизведения фоновой музыки
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.ResetSound(Model.SPCore.Managers.Sound.Data.AppSoundAsset)">
+            <summary>
+            Вспомогательный метод для сброса процесса воспроизведения аудио ресурса
+            </summary>
+            <param name="parAppSoundAsset">Целевой аудио ресурс</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.StopSfx(Model.SPCore.Managers.Sound.Data.EAppSfxAssets)">
+            <summary>
+            Остановить воспроизведение звукового эффекта
+            </summary>
+            <param name="parSfxAsset">Тип звукового эффекта</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.StopMusic">
+            <summary>
+            Остановить воспроизведение фоновой музыки
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.StopSound(Model.SPCore.Managers.Sound.Data.AppSoundAsset)">
+            <summary>
+            Вспомогательный метод для остановки воспроизведения аудио ресурса
+            </summary>
+            <param name="parAppSoundAsset">Целевой аудио ресурс</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.IsSfxPlaying(Model.SPCore.Managers.Sound.Data.EAppSfxAssets)">
+            <summary>
+            Проигрывается ли сейчас данный звуковой эффект?
+            </summary>
+            <param name="parSfxAsset">Тип звукового эффекта</param>
+            <returns>True, если проигрывается</returns>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.IsMusicPlaying">
+            <summary>
+            Проигрывается ли сейчас фоновая музыка?
+            </summary>
+            <returns>True, если проигрывается</returns>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.IsSfxPaused(Model.SPCore.Managers.Sound.Data.EAppSfxAssets)">
+            <summary>
+            Приостановлено ли воспроизведение данного звукового эффекта?
+            </summary>
+            <param name="parSfxAsset">Тип звукового эффекта</param>
+            <returns>True, если воспроизведение приостановлено</returns>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.IsMusicPaused">
+            <summary>
+            Приостановлено ли воспроизведение фоновой музыки?
+            </summary>
+            <returns>True, если воспроизведение приостановлено</returns>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.IsSoundPaused(Model.SPCore.Managers.Sound.Data.AppSoundAsset)">
+            <summary>
+            Вспомогательный метод для проверки приостановки воспроизведения аудио ресурса
+            </summary>
+            <param name="parAppSoundAsset">Целевой аудио ресурс для проверки</param>
+            <returns>True, если воспроизведение приостановлено</returns>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.PauseAllSfxSounds">
+            <summary>
+            Приостановить воспроизведение всех звуковых эффектов
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.AppSoundManager.ResumeAllSfxSounds">
+            <summary>
+            Возобновить воспроизведение всех звуковых эффектов
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.AppSoundManager.AppSoundManagerMediator">
+            <summary>
+            Связанный посредник для взаимодействия с отображением
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.AppSoundManager.AppSoundManagerColleague">
+            <summary>
+            Связанный с аудио менеджером "сотрудник"
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.AppSoundManager.PlayingSfx">
+            <summary>
+            Текущие проигрываемые звуковые эффекты
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.AppSoundManager.PlayingBackgroundMusic">
+            <summary>
+            Текущая проигрываемая фоновая музыка
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.AppSoundManager.CurrentAudioLibrary">
+            <summary>
+            Текущая аудио фонотека
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.AppSoundManager.LinkedResourceManager">
+            <summary>
+            Связанный менеджер ресурсов
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.AppSoundManager.LoadedSfxAssetPacks">
+            <summary>
+            Загруженные пакеты ресурсов, содержащих звуковые эффекты
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.AppSoundManager.ActualAppModel">
+            <summary>
+            Связанная модель
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Colleagues.AppSoundManagerColleague">
+            <summary>
+            Реализация "сотрудника" для аудио менеджера со стороны модели
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Colleagues.AppSoundManagerColleague.#ctor">
+            <summary>
+            Стандартный конструктор без параметров
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Colleagues.AppSoundManagerColleague.#ctor(Model.SPCore.Managers.Sound.Mediators.SoundManagerMediator)">
+            <summary>
+            Конструктор с параметром посредника
+            </summary>
+            <param name="parMediator">Посредник</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Colleagues.AppSoundManagerColleague.ProcessMessage(Model.SPCore.Managers.Sound.Messages.SoundManagerMessage)">
+            <summary>
+            Обработать сообщение
+            </summary>
+            <param name="parSoundManagerMessage">Сообщение</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Colleagues.AppSoundManagerColleague.ProcessRequest(Model.SPCore.Managers.Sound.Requests.SoundManagerRequest)">
+            <summary>
+            Обработать запрос
+            </summary>
+            <param name="parSoundManagerRequest">Запрос</param>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Colleagues.SoundManagerColleague">
+            <summary>
+            Базовый класс для сотрудников шаблона "Посредник" для аудио менеджера
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Colleagues.SoundManagerColleague.#ctor">
+            <summary>
+            Стандартный конструктор без параметров
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Colleagues.SoundManagerColleague.#ctor(Model.SPCore.Managers.Sound.Mediators.SoundManagerMediator)">
+            <summary>
+            Конструктор с параметром посредника
+            </summary>
+            <param name="parMediator">Посредник</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Colleagues.SoundManagerColleague.ProcessMessage(Model.SPCore.Managers.Sound.Messages.SoundManagerMessage)">
+            <summary>
+            Обработать сообщение
+            </summary>
+            <param name="parSoundManagerMessage">Сообщение</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Colleagues.SoundManagerColleague.ProcessRequest(Model.SPCore.Managers.Sound.Requests.SoundManagerRequest)">
+            <summary>
+            Обработать запрос
+            </summary>
+            <param name="parSoundManagerRequest">Запрос</param>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Colleagues.SoundManagerColleague.Mediator">
+            <summary>
+            Посредник для сотрудника
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Data.AppAudioLibrary">
+            <summary>
+            Аудио фонотека
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Data.AppAudioLibrary.#ctor">
+            <summary>
+            Стандартный конструктор без параметров для создания пустой фонотеки
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Data.AppAudioLibrary.#ctor(System.Collections.Generic.Dictionary{Model.SPCore.Managers.Sound.Data.EAppMusicAssets,Model.SPCore.Managers.Sound.Data.AppSoundAsset},System.Collections.Generic.Dictionary{Model.SPCore.Managers.Sound.Data.EAppSfxAssets,Model.SPCore.Managers.Sound.Data.AppSoundAsset})">
+            <summary>
+            Дополнительный конструтор для создания заполненной фонотеки
+            </summary>
+            <param name="parMusic">Словарь с музыкой</param>
+            <param name="parSoundEffects">Словарь со звуками</param>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Data.AppAudioLibrary.Music">
+            <summary>
+            Словарь с музыкой
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Data.AppAudioLibrary.SoundEffects">
+            <summary>
+            Словарь со звуками
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Data.AppAudioLibraryConsts">
+            <summary>
+            Константы, связанные с аудио фонотекой приложения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.AppAudioLibraryConsts.SFX_SMD_PACKAGE_NAME">
+            <summary>
+            Название пакета ресурсов со звуковыми эффектами
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.AppAudioLibraryConsts.SfxAssetToAssetName">
+            <summary>
+            Стандартный словарь доступных звуковых эффектов
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.AppAudioLibraryConsts.JukeboxMusicSmdLibrary">
+            <summary>
+            Стандартный словарь доступной фоновой музыки
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.AppAudioLibraryConsts.MusicAssetToAssetInfoSmd">
+            <summary>
+            Словарь соответствия типа музыки и метаданных музыкального ресурса (будет заполнен в конструкторе)
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Data.AppAudioLibraryConsts.#cctor">
+            <summary>
+            Статический конструктор
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Data.AppSoundAsset">
+            <summary>
+            Аудио ресурс приложения
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Data.AppSoundAsset.#ctor(CoreUtil.ResourceManager.AssetMetadata)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parLinkedAssetMetadata">Связанные метаданные ассета</param>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Data.AppSoundAsset.LinkedAssetMetadata">
+            <summary>
+            Связанные метаданные ассета
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Data.EAppMusicAssets">
+            <summary>
+            Типы фоновой музыки
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.MainMenu">
+            <summary>
+            Музыка главного меню
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.LoungeBeforeLevelStart">
+            <summary>
+            Музыка экрана лобби одиночной игры перед началом сессии
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.SPLevel1">
+            <summary>
+            Музыка уровня 1
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.SPLevel2">
+            <summary>
+            Музыка уровня 2
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.SPLevel3">
+            <summary>
+            Музыка уровня 3
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.SPLevel4">
+            <summary>
+            Музыка уровня 4
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.SPLevel5">
+            <summary>
+            Музыка уровня 5
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.SPLevelEnd">
+            <summary>
+            Музыка успешного завершения уровня
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.LevelResults">
+            <summary>
+            Музыка экрана результатов завершения уровня
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.ChallengeShotLevel">
+            <summary>
+            Бонусный уровень-соревнования
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.LoungeStagePassed">
+            <summary>
+            Стадия одиночной игры пройдена
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.LoungeStageTryAgain">
+            <summary>
+            Стадия одиночной игры не пройдена
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.LoungeCouchPlayBeforeLevelStart">
+            <summary>
+            Музыка экрана лобби игры вдвоем перед началом сессии
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.CPLevel1">
+            <summary>
+            Музыка для уровня игры вдвоем
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.Credits">
+            <summary>
+            Титры
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.Victory">
+            <summary>
+            Полная победа
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.ZoneBonus">
+            <summary>
+            Бонусное ускорение
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppMusicAssets.GameOver">
+            <summary>
+            Игра окончена, игрок проиграл все
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Data.EAppSfxAssets">
+            <summary>
+            Типы звуковых эффектов
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppSfxAssets.IntroCutscene">
+            <summary>
+            Вступительная заставка
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppSfxAssets.BallCollision">
+            <summary>
+            Столкновение шаров
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppSfxAssets.BallCollisionWallSolid">
+            <summary>
+            Столкновения шара и борта стола
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppSfxAssets.BallPocketed">
+            <summary>
+            Шар закатился в лузу
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.Data.EAppSfxAssets.BallShotByCue">
+            <summary>
+            Звук удара кия о шар
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Data.MusicAssetInfo">
+            <summary>
+            Структура данных информации о музыкальном ассете
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Data.MusicAssetInfo.AssetPackName">
+            <summary>
+            Имя пакета ресурсов
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Data.MusicAssetInfo.AssetName">
+            <summary>
+            Имя ассета
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Data.MusicAssetInfo.#ctor(System.String,System.String)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parAssetPackName">Имя пакета ресурсов</param>
+            <param name="parAssetName">Имя ассета</param>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.ESoundManagerMessageType">
+            <summary>
+            Тип сообщения аудио менеджера
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.ESoundManagerMessageType.SoundPlay">
+            <summary>
+            Воспроизвести
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.ESoundManagerMessageType.SoundPause">
+            <summary>
+            Приостановить воспроизведение
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.ESoundManagerMessageType.SoundStop">
+            <summary>
+            Остановить воспроизведение
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.ESoundManagerMessageType.SoundReset">
+            <summary>
+            Сброс воспроизведения
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.ESoundManagerMessageType.SoundSetLoop">
+            <summary>
+            Установка флага зацикленности воспроизведения
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.ESoundManagerRequestType">
+            <summary>
+            Типы запросов для аудио менеджера
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.ESoundManagerRequestType.IsSoundPlaying">
+            <summary>
+            Воспроизводится ли сейчас
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.Managers.Sound.ESoundManagerRequestType.IsSoundPaused">
+            <summary>
+            Приостановлен ли сейчас
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Mediators.AppSoundManagerMediator">
+            <summary>
+            Реализация посредника для менеджера аудио для взаимосвязи аудиоподсистем модели и отображения
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Mediators.AppSoundManagerMediator.#ctor(CoreUtil.ResourceManager.ResourceManager)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parActualResourceManager">Менеджер ресурсов</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Mediators.AppSoundManagerMediator.Send(Model.SPCore.Managers.Sound.Messages.SoundManagerMessage,Model.SPCore.Managers.Sound.Colleagues.SoundManagerColleague)">
+            <summary>
+            Отправить сообщение "сотруднику"
+            </summary>
+            <param name="parSoundManagerMessage">Сообщение</param>
+            <param name="parColleague">Целевой "сотрудник"</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Mediators.AppSoundManagerMediator.Request(Model.SPCore.Managers.Sound.Requests.SoundManagerRequest,Model.SPCore.Managers.Sound.Colleagues.SoundManagerColleague)">
+            <summary>
+            Отправить запрос "сотруднику"
+            </summary>
+            <param name="parSoundManagerRequest">Запрос</param>
+            <param name="parColleague">Целевой "сотрудник"</param>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Mediators.AppSoundManagerMediator.MainAppSoundManagerColleague">
+            <summary>
+            "Сотрудник"-аудио менеджер со стороны модели
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Mediators.AppSoundManagerMediator.ViewSoundManagerColleague">
+            <summary>
+            "Сотрудник"-аудио менеджер со стороны отображения
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Mediators.SoundManagerMediator">
+            <summary>
+            Базовый класс для имплементации шаблона "посредник" для связи аудио-подсистем
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Mediators.SoundManagerMediator.#ctor(CoreUtil.ResourceManager.ResourceManager)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parActualResourceManager">Менеджер ресурсов</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Mediators.SoundManagerMediator.Send(Model.SPCore.Managers.Sound.Messages.SoundManagerMessage,Model.SPCore.Managers.Sound.Colleagues.SoundManagerColleague)">
+            <summary>
+            Отправить сообщение "сотруднику"
+            </summary>
+            <param name="parSoundManagerMessage">Сообщение</param>
+            <param name="parColleague">Целевой "сотрудник"</param>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Mediators.SoundManagerMediator.Request(Model.SPCore.Managers.Sound.Requests.SoundManagerRequest,Model.SPCore.Managers.Sound.Colleagues.SoundManagerColleague)">
+            <summary>
+            Отправить запрос "сотруднику"
+            </summary>
+            <param name="parSoundManagerRequest">Запрос</param>
+            <param name="parColleague">Целевой "сотрудник"</param>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Mediators.SoundManagerMediator.ActualResourceManager">
+            <summary>
+            Ссылка на используемый общий менеджер ресурсов
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Messages.SoundManagerMessage">
+            <summary>
+            Базовый класс сообщения "сотруднику"-аудио менеджеру
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Messages.SoundManagerMessage.#ctor(Model.SPCore.Managers.Sound.ESoundManagerMessageType,Model.SPCore.Managers.Sound.Data.AppSoundAsset)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parMessageType">Тип сообшения</param>
+            <param name="parSoundAsset">Связанный звуковой ресурс</param>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Messages.SoundManagerMessage.MessageType">
+            <summary>
+            Тип сообщения
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Messages.SoundManagerMessage.SoundAsset">
+            <summary>
+            Связанный звуковой ресурс
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Messages.SoundManagerMessageB">
+            <summary>
+            Сообщение "сотруднику"-аудио менеджеру с параметром bool
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Messages.SoundManagerMessageB.#ctor(Model.SPCore.Managers.Sound.ESoundManagerMessageType,Model.SPCore.Managers.Sound.Data.AppSoundAsset,System.Boolean)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parMessageType">Тип сообшения</param>
+            <param name="parSoundAsset">Связанный звуковой ресурс</param>
+            <param name="parAmBool">Параметр сообщения bool</param>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Messages.SoundManagerMessageB.ParamBool">
+            <summary>
+            Параметр сообщения bool
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Messages.SoundManagerMessageF">
+            <summary>
+            Сообщение "сотруднику"-аудио менеджеру с параметром float
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Messages.SoundManagerMessageF.#ctor(Model.SPCore.Managers.Sound.ESoundManagerMessageType,Model.SPCore.Managers.Sound.Data.AppSoundAsset,System.Single)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parMessageType">Тип сообшения</param>
+            <param name="parSoundAsset">Связанный звуковой ресурс</param>
+            <param name="parAmFloat">Параметр сообщения float</param>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Messages.SoundManagerMessageF.ParamFloat">
+            <summary>
+            Параметр сообщения float
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Requests.SoundManagerRequest">
+            <summary>
+            Базовый класс запроса "сотруднику"-аудио менеджеру
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Requests.SoundManagerRequest.#ctor(Model.SPCore.Managers.Sound.ESoundManagerRequestType,Model.SPCore.Managers.Sound.Data.AppSoundAsset)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parRequestType">Тип запроса</param>
+            <param name="parSoundAsset">Связанный звуковой ресурс</param>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Requests.SoundManagerRequest.RequestType">
+            <summary>
+            Тип запроса
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Requests.SoundManagerRequest.SoundAsset">
+            <summary>
+            Связанный звуковой ресурс
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.Managers.Sound.Requests.SoundManagerRequestB">
+            <summary>
+            Запрос "сотруднику"-аудио менеджеру с запрашиваемым параметром типа bool
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.Managers.Sound.Requests.SoundManagerRequestB.#ctor(Model.SPCore.Managers.Sound.ESoundManagerRequestType,Model.SPCore.Managers.Sound.Data.AppSoundAsset)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parRequestType">Тип запроса</param>
+            <param name="parSoundAsset">Связанный звуковой ресурс</param>
+        </member>
+        <member name="P:Model.SPCore.Managers.Sound.Requests.SoundManagerRequestB.RequestDataBool">
+            <summary>
+            Запрашиваемый параметр типа bool
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.MGameActions.EGameActionAxis">
+            <summary>
+            Разновидности игровых действий типа "ось"
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionAxis.LeftCursorX">
+            <summary>
+            Левая ось X
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionAxis.LeftCursorY">
+            <summary>
+            Левая ось Y
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionAxis.MouseSpecialX">
+            <summary>
+            Особая ось для поддержки мыши X
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionAxis.MouseSpecialY">
+            <summary>
+            Особая ось для поддержки мыши Y
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.MGameActions.EGameActionButton">
+            <summary>
+            Разновидности игровых действий типа "кнопка"
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionButton.Button_A">
+            <summary>
+            Кнопка A
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionButton.Button_B">
+            <summary>
+            Кнопка B
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionButton.Button_X">
+            <summary>
+            Кнопка X
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionButton.Button_Y">
+            <summary>
+            Кнопка Y
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionButton.Dpad_Menu_Up">
+            <summary>
+            Кнопка крестовины вверх
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionButton.Dpad_Menu_Down">
+            <summary>
+            Кнопка крестовины вниз
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionButton.Dpad_Menu_Left">
+            <summary>
+            Кнопка крестовины влево
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionButton.Dpad_Menu_Right">
+            <summary>
+            Кнопка крестовины вправо
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionButton.Button_Start">
+            <summary>
+            Кнопка Старт
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MGameActions.EGameActionButton.Button_Bumper_Shift">
+            <summary>
+            Кнопка для более точного прицеливания
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.MGameActions.MGameActionAxis">
+            <summary>
+            Игровое действие типа "ось"
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.MGameActions.MGameActionAxis.#ctor(System.Double)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parDefaultValue">Значение оси по умолчанию</param>
+        </member>
+        <member name="E:Model.SPCore.MGameActions.MGameActionAxis.AxisValueChanged">
+            <summary>
+            Событие изменения значения оси
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.MGameActions.MGameActionAxis.SetAxisValue(System.Double)">
+            <summary>
+            Установка нового значения оси. Предназначен для вызоыва из контроллера.
+            </summary>
+            <param name="parNewAxisValue"></param>
+        </member>
+        <member name="P:Model.SPCore.MGameActions.MGameActionAxis.Value">
+            <summary>
+            Значение оси
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.MGameActions.MGameActionAxis.Delta">
+            <summary>
+            Величина изменения значения оси
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.MGameActions.MGameActionButton">
+            <summary>
+            Игровое действие типа "кнопка"
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.MGameActions.MGameActionButton.SetPressedStatus(System.Boolean)">
+            <summary>
+            Call this before every 'fixed' update frame from Contoller
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.MPlayers.EPlayerRoles">
+            <summary>
+            Роли игроков в игре, назначение, тэг
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MPlayers.EPlayerRoles.P1">
+            <summary>
+            Первый игрок
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MPlayers.EPlayerRoles.P2">
+            <summary>
+            Второй игрок
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.MPlayers.MPlayer">
+            <summary>
+            Информация об игроке с точки зрения ввода и прикрепляемых отслеживаемых игровых действий
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MPlayers.MPlayer.GameActionAxises">
+            <summary>
+            Прикрепленные для отслеживания игровые "оси"
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MPlayers.MPlayer.GameActionButtons">
+            <summary>
+            Прикрепленные для отслеживания игровые кнопки
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayer.#ctor(System.String,Model.SPCore.MPlayers.EPlayerRoles)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parPlayerId">Идентификатор игрока</param>
+            <param name="parPlayerRole">Назначенная игроку роль</param>
+        </member>
+        <member name="E:Model.SPCore.MPlayers.MPlayer.PlayerBecomeActive">
+            <summary>
+            Событие, игрок сейчас активен и доступен
+            </summary>
+        </member>
+        <member name="E:Model.SPCore.MPlayers.MPlayer.PlayerBecomeUnavailable">
+            <summary>
+            Событие, игрок перестал быть активным и сейчас недоступен
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayer.SetActive(System.Boolean)">
+            <summary>
+            Установить флаг активации игрока
+            </summary>
+            <param name="parNewValue">Значение флага активации игрока</param>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayer.GetGameActionAxis(Model.SPCore.MGameActions.EGameActionAxis)">
+            <summary>
+            Получить состояние определенной игровой оси
+            </summary>
+            <param name="parId">Тип игровой оси</param>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayer.GetGameActionButton(Model.SPCore.MGameActions.EGameActionButton)">
+            <summary>
+            Получить состояние определенной игровой кнопки
+            </summary>
+            <param name="parId">Тип игровой кнопки</param>
+            <returns></returns>
+        </member>
+        <member name="P:Model.SPCore.MPlayers.MPlayer.PlayerId">
+            <summary>
+            Идентификатор игрока
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.MPlayers.MPlayer.PlayerRole">
+            <summary>
+            Назначенная системная роль игрока
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.MPlayers.MPlayer.IsActive">
+            <summary>
+            Флаг, обозначающий является ли сейчас игрок активным и доступным
+            </summary>
+        </member>
+        <member name="T:Model.SPCore.MPlayers.MPlayersManager">
+            <summary>
+            Менеджер ввода игроков
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MPlayers.MPlayersManager.SPECIAL_BACKSPACE_SIGNATURE">
+            <summary>
+            Специальное обозначение клавиши Backspace для обработки событий ввода текста на клавиатуре
+            </summary>
+        </member>
+        <member name="F:Model.SPCore.MPlayers.MPlayersManager._players">
+            <summary>
+            Текущий список игроков в игре
+            </summary>
+        </member>
+        <member name="E:Model.SPCore.MPlayers.MPlayersManager.OnPlayerAdded">
+            <summary>
+            Событие добавления нового игрока
+            </summary>
+        </member>
+        <member name="E:Model.SPCore.MPlayers.MPlayersManager.OnPlayerRemoved">
+            <summary>
+            Событие удаления игрока из игры
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayersManager.UpdateLastPressedKeyboardKey(System.String)">
+            <summary>
+            Обновление данных о последней нажатой текстовой клавиатурной клавише
+            </summary>
+            <param name="parKey">Строка последней нажатой текстовой клавиатурной клавише (обычно буква или BackSpace)</param>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayersManager.ClearLastPressedKeyboardKey">
+            <summary>
+            Очистка данных о последней нажатой текстовой клавиатурной клавише
+            </summary>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayersManager.AddPlayer(Model.SPCore.MPlayers.MPlayer)">
+            <summary>
+            Добавить игрока
+            </summary>
+            <param name="parNewPlayer">Данные о новом игроке</param>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayersManager.RemovePlayer(System.String)">
+            <summary>
+            Удалить игрока из игры
+            </summary>
+            <param name="parPlayerId">Данные об удаляемом игроке</param>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayersManager.IsPlayerActive(System.String)">
+            <summary>
+            Является ли игрок активным в текущий момент
+            </summary>
+            <param name="parPlayerId">Идентификатор игрока</param>
+            <returns>True, если игрок активен</returns>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayersManager.GetGameActionAxis(System.String,Model.SPCore.MGameActions.EGameActionAxis)">
+            <summary>
+            Получить состояние игровой оси для определенного игрока
+            </summary>
+            <param name="parPlayerId">Идентификатор игрока</param>
+            <param name="parActionId">Тип игровой оси</param>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayersManager.GetGameActionButton(System.String,Model.SPCore.MGameActions.EGameActionButton)">
+            <summary>
+            Получить состояние игровой кнопки для определенного игрока
+            </summary>
+            <param name="parPlayerId">Идентификатор игрока</param>
+            <param name="parActionId">Тип игровой кнопки</param>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayersManager.IsButtonPressed(Model.SPCore.MPlayers.MPlayer,Model.SPCore.MGameActions.EGameActionButton)">
+            <summary>
+            Нажата ли сейчас игровая кнопка игроком? Нажатие кнопки является событие перехода кнопки
+            из состояния "не нажата" в состояние "зажата"
+            </summary>
+            <param name="parPlayerRef">Ссылка на объект информации об игроке</param>
+            <param name="parButtonId">Тип игровой кнопки</param>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayersManager.IsButtonReleased(Model.SPCore.MPlayers.MPlayer,Model.SPCore.MGameActions.EGameActionButton)">
+            <summary>
+            Отпущена ли сейчас игровая кнопка игроком? Отпускание кнопки является событие перехода кнопки
+            из состояния "зажата" в состояние "не нажата"
+            </summary>
+            <param name="parPlayerRef">Ссылка на объект информации об игроке</param>
+            <param name="parButtonId">Тип игровой кнопки</param>
+            <returns></returns>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayersManager.IsButtonHolding(Model.SPCore.MPlayers.MPlayer,Model.SPCore.MGameActions.EGameActionButton)">
+            <summary>
+            Удерживает ли игрок определенную игровую кнопку?
+            </summary>
+            <param name="parPlayerRef">Ссылка на объект информации об игроке</param>
+            <param name="parButtonId">Тип игровой кнопки</param>
+            <returns>True, если удерживает</returns>
+        </member>
+        <member name="M:Model.SPCore.MPlayers.MPlayersManager.IsActionButtonPressed(Model.SPCore.MPlayers.MPlayer)">
+            <summary>
+            Нажата ли хотя бы одна из кнопок, отвечающая за подтверждение или осуществление игрового действия игроком
+            </summary>
+            <param name="parPlayerRef">Ссылка на объект информации об игроке</param>
+            <returns></returns>
+        </member>
+        <member name="P:Model.SPCore.MPlayers.MPlayersManager.Player1">
+            <summary>
+            Текущий первый игрок в системе
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.MPlayers.MPlayersManager.Player2">
+            <summary>
+            Текущий второй игрок в системе
+            </summary>
+        </member>
+        <member name="P:Model.SPCore.MPlayers.MPlayersManager.LastPressedKeyboardKey">
+            <summary>
+            Данные о последней нажатой текстовой клавиатурной клавише
+            </summary>
+        </member>
+    </members>
+</doc>

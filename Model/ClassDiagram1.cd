@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Model.SPCore.GameplayModelDefinition.ObjectModel.GameObject" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAIAAABAABAAgCAAAAAAEAAACAAAAAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\ObjectModel\GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.ComponentModel.Component" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAgAAAAAAABAAQAAAAAAAgAABAACCAAAABAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\ComponentModel\Component.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.GameOverScreenComponent" Collapsed="true">
+    <Position X="3" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAQAACAAAAAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\InGame\ResultScreens\ViewProviders\GameOverScreenComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ResultScreens.ViewProviders.ResultsScreenComponent" Collapsed="true">
+    <Position X="6" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQEAAACACgAAAAAoAAAAAQAAAAAAAAAAQAAiAAAACAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\InGame\ResultScreens\ViewProviders\ResultsScreenComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.InGame.ViewProviders.PocketGameViewProvider" Collapsed="true">
+    <Position X="14" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEAIDECIAkCAAAJCACUmAAEAAAACsAGoAgwSAEQEggA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\InGame\ViewProviders\PocketGameViewProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.InGame.GameSessionControllerComponent" Collapsed="true">
+    <Position X="5.75" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAJSAAAgAgAAEABAEBFAAiACAAAADBAgABAGAAAAiAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\InGame\GameSessionControllerComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Launching.ViewProviders.IntroViewProviderComponent" Collapsed="true">
+    <Position X="8.75" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAACAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Launching\ViewProviders\IntroViewProviderComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Launching.AppStartComponent" Collapsed="true">
+    <Position X="11" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAQAEEAgAAAAAQAAgAIQAEAgAQAAAAAAAQQGAAAAAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Launching\AppStartComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.JukeboxMenuControlComponent" Collapsed="true">
+    <Position X="10.25" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQABAAABEAAQCIAAAAAAAAAAABAQCAAAAAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Menus\MainMenu\JukeboxMenuControlComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.MainMenuControlComponent" Collapsed="true">
+    <Position X="13.5" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAQACAABBwAABJIAAAAAAAAAAQAAAAAAACCEACAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Menus\MainMenu\MainMenuControlComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.OptionsMenuControlComponent" Collapsed="true">
+    <Position X="16.5" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAABAIAQAAEAAAACAAAAACAQCQEAAQAg=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Menus\MainMenu\OptionsMenuControlComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.RecordsMenuControlComponent" Collapsed="true">
+    <Position X="3" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAABAMAQAIAAAAAAABAAAAAQCAAAAAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Menus\MainMenu\RecordsMenuControlComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MainMenu.SinglePlayerLobbyMenuControlComponent" Collapsed="true">
+    <Position X="6.25" Y="6.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAQEQAABAIAQAAAAAAAIAhAAABAQiAAAAAAE=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Menus\MainMenu\SinglePlayerLobbyMenuControlComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Menus.MenuControlComponent" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAABgEAAABACAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Menus\MenuControlComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Menus.StandardMenuControlComponent" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AHAQAAgQAABEAAAAAAAAAAAAAQAgSAAAQAACAAAAAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Menus\StandardMenuControlComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElement" Collapsed="true">
+    <Position X="17" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAABAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Menus\UIElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Menus.UiElementButton" Collapsed="true">
+    <Position X="17" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAACAAAABAAAAAAAAAAAAEQAAAAAAAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Menus\UIElementButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.Universal.KeyListenerComponent" Collapsed="true">
+    <Position X="3" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\Universal\KeyListenerComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderColleague" Collapsed="true">
+    <Position X="14" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\ViewProviderBase\ViewProviderColleague.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderComponent" Collapsed="true">
+    <Position X="8.75" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAABAAAAAAAAAAAAAAAAACAAAAAAI=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\ViewProviderBase\ViewProviderComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.SPCore.GameplayModelDefinition.GameComponents.ViewProviderBase.ViewProviderModelSideStandardColleague" Collapsed="true">
+    <Position X="13.5" Y="2" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>SPCore\GameplayModelDefinition\GameComponents\ViewProviderBase\ViewProviderModelSideStandardColleague.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

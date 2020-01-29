@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Controller.SPCore.AppControllerBase" Collapsed="true">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACYAAAAAAAIBAAAAAAACAAABAIAAAAAJAIAAAxAAI=</HashCode>
+      <FileName>SPCore\AppControllerBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.MInput.MDevices.MDevice" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAACAAAAAAAAAAAAAAAAAAAAggAAAAAAAgggA=</HashCode>
+      <FileName>MInput\MDevices\MDevice.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Controller.MInput.MGameActionBindsToDevices.MGameActionAxisBindToDevice" Collapsed="true">
+    <Position X="7.5" Y="1" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAABAQAAAQAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>MInput\MGameActionBindsToDevices\MGameActionAxisBindToDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.MInput.MGameActionBindsToDevices.MGameActionButtonBindToDevice" Collapsed="true">
+    <Position X="3.5" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAABIAAAAAAAAAAAAAMAAAAAAAAAAAAA=</HashCode>
+      <FileName>MInput\MGameActionBindsToDevices\MGameActionButtonBindToDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.MInput.MPlayerBinds.MPlayerBindsControllerWatchdog" Collapsed="true">
+    <Position X="6.5" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAIABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>MInput\MPlayerBinds\MPlayerBindsControllerWatchdog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Controller.MInput.MPlayerBinds.MPlayerController" Collapsed="true">
+    <Position X="9.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAwAAAAAAAAAAASAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MInput\MPlayerBinds\MPlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

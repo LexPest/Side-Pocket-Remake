@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Controller</name>
+    </assembly>
+    <members>
+        <member name="T:Controller.MInput.MDevices.MDevice">
+            <summary>
+            Базовый класс для представления устройств ввода (в том числе потенциальных виртуальных)
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MDevices.MDevice.#ctor(System.Int64,System.String,System.String)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parDeviceNumId">Числовой идентификатор устройства</param>
+            <param name="parDeviceStrId">Дополнительный строковый идентификатор устройства</param>
+            <param name="parDeviceDescriptor">Строка-описание устройства, обычно содержит имя или идентификационную информацию</param>
+        </member>
+        <member name="P:Controller.MInput.MDevices.MDevice.DeviceNumId">
+            <summary>
+            Числовой идентификатор устройства
+            </summary>
+        </member>
+        <member name="P:Controller.MInput.MDevices.MDevice.DeviceStrId">
+            <summary>
+            Дополнительный строковый идентификатор устройства
+            </summary>
+        </member>
+        <member name="P:Controller.MInput.MDevices.MDevice.DeviceDescriptor">
+            <summary>
+            Строка-описание устройства, обычно содержит имя или идентификационную информацию
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MDevices.MDevice.Dispose">
+            <summary>
+            Стандартный деструктор
+            </summary>
+        </member>
+        <member name="E:Controller.MInput.MDevices.MDevice.OnDisconnected">
+            <summary>
+            Событие для API, будет вызвано при отключении/удалении устройства
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MDevices.MDevice.GetAxisValue(System.String)">
+            <summary>
+            Получение значения оси
+            </summary>
+            <param name="parId">Идентификатор оси</param>
+            <returns>Значение оси</returns>
+        </member>
+        <member name="M:Controller.MInput.MDevices.MDevice.GetButtonValue(System.String)">
+            <summary>
+            Получение состояния кнопки, нажата в данный момент или нет
+            </summary>
+            <param name="parId">Идентификатор кнопки</param>
+            <returns>Значение кнопки</returns>
+        </member>
+        <member name="T:Controller.MInput.MGameActionBindsToDevices.MGameActionAxisBindToDevice">
+            <summary>
+            Класс предназначен для привязки значения игровой оси в модели к конкретному устройству в контроллере
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MGameActionBindsToDevices.MGameActionAxisBindToDevice.#ctor(Controller.MInput.MDevices.MDevice,System.String,Model.SPCore.MGameActions.MGameActionAxis)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parTargetDevice">Идентификатор оси целевого устройства</param>
+            <param name="parDeviceAxisId">Целевое устройство для привязки</param>
+            <param name="parTargetGameActionAxis">Целевая игровая ось на стороне модели для привязки</param>
+        </member>
+        <member name="P:Controller.MInput.MGameActionBindsToDevices.MGameActionAxisBindToDevice.DeviceAxisId">
+            <summary>
+            Идентификатор оси целевого устройства
+            </summary>
+        </member>
+        <member name="P:Controller.MInput.MGameActionBindsToDevices.MGameActionAxisBindToDevice.TargetDevice">
+            <summary>
+            Целевое устройство для привязки
+            </summary>
+        </member>
+        <member name="P:Controller.MInput.MGameActionBindsToDevices.MGameActionAxisBindToDevice.TargetGameActionAxis">
+            <summary>
+            Целевая игровая ось на стороне модели для привязки
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MGameActionBindsToDevices.MGameActionAxisBindToDevice.UpdateGameActionAxis">
+            <summary>
+            Обновить значение игровой оси на стороне модели
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MGameActionBindsToDevices.MGameActionAxisBindToDevice.GetGameActionAxis">
+            <summary>
+            Получить 'сырое' значение игровой оси на стороне контроллера
+            </summary>
+            <returns>'Сырое' значение игровой оси устройства</returns>
+        </member>
+        <member name="T:Controller.MInput.MGameActionBindsToDevices.MGameActionButtonBindToDevice">
+            <summary>
+            Класс предназначен для привязки значения игровой кнопки в модели к конкретному устройству в контроллере
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MGameActionBindsToDevices.MGameActionButtonBindToDevice.#ctor(Controller.MInput.MDevices.MDevice,System.String,Model.SPCore.MGameActions.MGameActionButton)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parTargetDevice">Идентификатор кнопки целевого устройства</param>
+            <param name="parDeviceButtonId">Целевое устройство для привязки</param>
+            <param name="parTargetGameActionButton">Целевая игровая кнопка на стороне модели для привязки</param>
+        </member>
+        <member name="P:Controller.MInput.MGameActionBindsToDevices.MGameActionButtonBindToDevice.DeviceButtonId">
+            <summary>
+            Идентификатор кнопки целевого устройства
+            </summary>
+        </member>
+        <member name="P:Controller.MInput.MGameActionBindsToDevices.MGameActionButtonBindToDevice.TargetDevice">
+            <summary>
+            Целевое устройство для привязки
+            </summary>
+        </member>
+        <member name="P:Controller.MInput.MGameActionBindsToDevices.MGameActionButtonBindToDevice.TargetGameActionButton">
+            <summary>
+            Целевая игровая кнопка на стороне модели для привязки
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MGameActionBindsToDevices.MGameActionButtonBindToDevice.UpdateGameActionButton">
+            <summary>
+            Обновить значение игровой кнопки на стороне модели
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MGameActionBindsToDevices.MGameActionButtonBindToDevice.GetGameActionButton">
+            <summary>
+            Получить 'сырое' значение игровой оси на стороне контроллера
+            </summary>
+            <returns>'Сырое' значение игровой кнопки устройства</returns>
+        </member>
+        <member name="T:Controller.MInput.MPlayerBinds.MPlayerBindsControllerWatchdog">
+            <summary>
+            Наблюдатель за событиями, касающихся игроков модели
+            </summary>
+        </member>
+        <member name="F:Controller.MInput.MPlayerBinds.MPlayerBindsControllerWatchdog._appModel">
+            <summary>
+            Целевая модель приложения
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MPlayerBinds.MPlayerBindsControllerWatchdog.#ctor(Model.SPCore.AppModel)">
+            <summary>
+            Стандартный конструктор, имеет проверку на то, что модель еще не запущена
+            </summary>
+            <param name="parAppModel">Целевая модель приложения</param>
+            <exception cref="T:System.ApplicationException">Модель не должна быть запущена, а только создана</exception>
+        </member>
+        <member name="P:Controller.MInput.MPlayerBinds.MPlayerBindsControllerWatchdog.PlayerControllers">
+            <summary>
+            Динамический массив контроллеров игроков
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MPlayerBinds.MPlayerBindsControllerWatchdog.Finalize">
+            <summary>
+            Стандартный деструктор
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MPlayerBinds.MPlayerBindsControllerWatchdog.OnPlayerAddedHandler(Model.SPCore.MPlayers.MPlayer)">
+            <summary>
+            Обработчик события добавления нового игрока
+            </summary>
+            <param name="parPlayer">Новый игрок</param>
+        </member>
+        <member name="M:Controller.MInput.MPlayerBinds.MPlayerBindsControllerWatchdog.OnPlayerRemovedHandler(Model.SPCore.MPlayers.MPlayer)">
+            <summary>
+            Обработчик события удаления игрока
+            </summary>
+            <param name="parPlayer">Удаленный игрок</param>
+        </member>
+        <member name="T:Controller.MInput.MPlayerBinds.MPlayerController">
+            <summary>
+            Контроллер игрока
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MPlayerBinds.MPlayerController.#ctor(Model.SPCore.MPlayers.MPlayer)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parMPlayerRef">Данные об игроке в модели для привязки</param>
+        </member>
+        <member name="P:Controller.MInput.MPlayerBinds.MPlayerController.MPlayerRef">
+            <summary>
+            Данные об игроке в модели
+            </summary>
+        </member>
+        <member name="P:Controller.MInput.MPlayerBinds.MPlayerController.MGameActionAxisBindToDevices">
+            <summary>
+            Динамический массив, содержащий привязки игровых осей к осям устройств в контроллере
+            </summary>
+        </member>
+        <member name="P:Controller.MInput.MPlayerBinds.MPlayerController.MGameActionButtonBindToDevices">
+            <summary>
+            Динамический массив, содержащий привязки игровых кнопок к кнопкам устройств в контроллере
+            </summary>
+        </member>
+        <member name="M:Controller.MInput.MPlayerBinds.MPlayerController.UpdateInput">
+            <summary>
+            Обновление состояния игровых действий (кнопок и осей) игрока. Необходимо вызывать из главного цикла приложения.
+            </summary>
+        </member>
+        <member name="T:Controller.SPCore.AppControllerBase">
+            <summary>
+            Базовый класс главного контроллера приложения
+            </summary>
+        </member>
+        <member name="F:Controller.SPCore.AppControllerBase._applicationMainThread">
+            <summary>
+            Поток для главного цикла приложения
+            </summary>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.#ctor(Model.SPCore.AppModel)">
+            <summary>
+            Конструктор по умолчанию
+            </summary>
+            <param name="parApp">Модель приложения для привязки</param>
+        </member>
+        <member name="P:Controller.SPCore.AppControllerBase.PlayerBindsControllerWatchdog">
+            <summary>
+            Наблюдатель за привязками игроков в модели к контроллеру
+            </summary>
+        </member>
+        <member name="P:Controller.SPCore.AppControllerBase.App">
+            <summary>
+            Целевое приложение-модель
+            </summary>
+        </member>
+        <member name="P:Controller.SPCore.AppControllerBase.AppView">
+            <summary>
+            Целевое отображение-вид
+            </summary>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.GetConcreteAssetDataBuilder">
+            <summary>
+            Получает строитель для обработки игровых ассетов и ресурсов
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.GetConcreteAssetDatabaseUpdateStrategy">
+            <summary>
+            Получает стратегию для построения базы данных игровых ассетов и ресурсов
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.Run">
+            <summary>
+            Запускает исполнение экзепляра приложения
+            </summary>
+            <exception cref="T:System.ApplicationException">Компонент вида должен быть обязательно объявлен</exception>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.PerformModelBindings">
+            <summary>
+            Осуществление всех необходимых привязок контроллера к модели
+            </summary>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.UpdateLoop">
+            <summary>
+            Запускает исполнение главного цикла приложения
+            </summary>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.InputHandle(System.Double)">
+            <summary>
+            Обработка ввода на стороне контроллера
+            </summary>
+            <param name="parDeltaTime">Время кадра обработки устройств в миллисекундах</param>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.ProcessPlayersInput">
+            <summary>
+            Вызов обработки ввода игроков
+            </summary>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.ModelUpdate(System.Int64)">
+            <summary>
+            Вызов обновления модели
+            </summary>
+            <param name="parDeltaTime">Величина времени кадра в миллисекундах</param>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.ModelFixedUpdate(System.Int64)">
+            <summary>
+            Вызов фиксированного обновления модели (происходит определенное заданное количество раз в секунду)
+            </summary>
+            <param name="parFixedDeltaTime">Величина времени фиксированного обновления в миллисекундах</param>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.ViewUpdate(System.Int64)">
+            <summary>
+            Вызов обновления вида
+            </summary>
+            <param name="parDeltaTime">Величина времени кадра в миллисекундах</param>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.Render">
+            <summary>
+            Вызов отрисовки модели
+            </summary>
+        </member>
+        <member name="M:Controller.SPCore.AppControllerBase.ModelEndOfFrame">
+            <summary>
+            Вызов, оповещающий об окончании кадра модель
+            </summary>
+        </member>
+    </members>
+</doc>

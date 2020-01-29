@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ControllerOpenTK</name>
+    </assembly>
+    <members>
+        <member name="T:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk">
+            <summary>
+            Физическое устройство OpenTK
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.DEFAULT_NONE_ID">
+            <summary>
+            ID для специальных устройств по умолчанию
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.THUMBSTICK_LEFT_X_ID">
+            <summary>
+            Ось X левого стика геймпада
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.THUMBSTICK_LEFT_Y_ID">
+            <summary>
+            Ось Y левого стика геймпада
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.THUMBSTICK_RIGHT_X_ID">
+            <summary>
+            Ось X правого стика геймпада
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.THUMBSTICK_RIGHT_Y_ID">
+            <summary>
+            Ось Y правого стика геймпада
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.MOUSE_X_ID">
+            <summary>
+            Ось мыши X
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.MOUSE_Y_ID">
+            <summary>
+            Ось мыши Y
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.GAMEPAD_BUTTON_BOTTOM_1_ID">
+            <summary>
+            Нижняя кнопка геймпада 1
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.GAMEPAD_BUTTON_BOTTOM_2_ID">
+            <summary>
+            Нижняя кнопка геймпада 2
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.GAMEPAD_BUTTON_TOP_1_ID">
+            <summary>
+            Верхняя кнопка геймпада 1
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.GAMEPAD_BUTTON_TOP_2_ID">
+            <summary>
+            Верхняя кнопка геймпада 2
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.GAMEPAD_BUTTON_DPAD_UP_ID">
+            <summary>
+            Крестовина геймпада вверх
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.GAMEPAD_BUTTON_DPAD_DOWN_ID">
+            <summary>
+            Крестовина геймпада вниз
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.GAMEPAD_BUTTON_DPAD_LEFT_ID">
+            <summary>
+            Крестовина геймпада влево
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.GAMEPAD_BUTTON_DPAD_RIGHT_ID">
+            <summary>
+            Крестовина геймпада вправо
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.GAMEPAD_BUTTON_CENTER_1_ID">
+            <summary>
+            Центральная кнопка геймпада 1
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk._currentGamepadState">
+            <summary>
+            Текущее состояние устройства геймпада
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk._currentKeyboardState">
+            <summary>
+            Текущее состояние устройства клавиатуры
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk._currentMouseState">
+            <summary>
+            Текущее состояние устройства мыши
+            </summary>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.#ctor(System.Int64,System.String,System.String,ViewOpenTK.SPCore.AppViewOpenTk)">
+            <summary>
+            Конструктор по умолчанию
+            </summary>
+            <param name="parDeviceNumId">Идентификатор физического устройства</param>
+            <param name="parDeviceStrId">Дополнительный идентификатор физического устройства</param>
+            <param name="parDeviceDescriptor">Дескриптор-описание физического устройства</param>
+            <param name="parOpenTkView">Вид OpenTK</param>
+        </member>
+        <member name="P:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.OpenTkView">
+            <summary>
+            Связанный компонент вида OpenTK
+            </summary>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.UpdateGamepadState(System.Object)">
+            <summary>
+            Обработчик обновления состояния геймпада
+            </summary>
+            <param name="parState">Объект-состояние геймпада</param>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.RequestDeviceState">
+            <summary>
+            Запрос состояния физического устройства
+            </summary>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.IsDeviceKeyboardAndMouse">
+            <summary>
+            Является ли устройство клавиатурой или мышью
+            </summary>
+            <returns>True, если является клавиатурой или мышью</returns>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.GetAxisValue(System.String)">
+            <summary>
+            Получение 'сырого' значения оси устройства
+            </summary>
+            <param name="parId">Идентификатор оси</param>
+            <returns></returns>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.GetButtonValue(System.String)">
+            <summary>
+            Получение 'сырого' значения кнопки устройства
+            </summary>
+            <param name="parId">Идентификатор кнопки</param>
+            <returns></returns>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDeviceOpenTk.IsJoystickValidAndAvailable">
+            <summary>
+            Является ли геймпад доступным и корректно настроенным
+            </summary>
+            <returns>True, если доступен</returns>
+        </member>
+        <member name="T:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk">
+            <summary>
+            Главной задачей менеджера является опрос-поллинг устройств для добавления и активации новых,
+            а также удаления и деактивации отключенных или находящихся в некорректном состоянии
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.MAX_GAMEPADS_NUMBER">
+            <summary>
+            Максимальное число геймпадов (ограничение OpenTK)
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.KEYBOARD_DEVICE_SPECIAL_ID">
+            <summary>
+            Специальный внутренний идентификатор для устройства клавиатуры
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.KEYBOARD_DEVICE_DESCRIPTOR">
+            <summary>
+            Специальный внутренний дескриптор для устройства клавиатуры
+            </summary>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.#ctor(ViewOpenTK.SPCore.AppViewOpenTk,Model.SPCore.AppModel)">
+            <summary>
+            Стандартный конструктор
+            </summary>
+            <param name="parAppView">Компонент вида OpenTK</param>
+            <param name="parModel">Компонент модели приложения</param>
+        </member>
+        <member name="P:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.AvailableDevices">
+            <summary>
+            Доступные устройства
+            </summary>
+        </member>
+        <member name="P:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.OpenTkAppView">
+            <summary>
+            Компонент вида OpenTK
+            </summary>
+        </member>
+        <member name="P:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.ActualAppModel">
+            <summary>
+            Компонент модели приложения
+            </summary>
+        </member>
+        <member name="E:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.OnBeforeDeviceRemoval">
+            <summary>
+            Событие перед удалением деактивированного устройства
+            </summary>
+        </member>
+        <member name="E:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.OnDeviceAdded">
+            <summary>
+            Событие при добавлении активированного устройства
+            </summary>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.UpdateDevicesStates">
+            <summary>
+            Запрос обновления состояния устройств
+            </summary>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.DeviceAdd(ControllerOpenTK.MInput.MDevices.MDeviceOpenTk)">
+            <summary>
+            Операция добавления устройства
+            </summary>
+            <param name="parDevice">Физическое устройство OpenTK</param>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.DeviceRemove(ControllerOpenTK.MInput.MDevices.MDeviceOpenTk)">
+            <summary>
+            Операция удаления устройства
+            </summary>
+            <param name="parDevice">Физическое устройство OpenTK</param>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.DeviceRemove(System.Int32)">
+            <summary>
+            Операция удаления устройства
+            </summary>
+            <param name="parIndex">Индекс физического устройства OpenTK</param>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.NewLetterKeyPressed(System.String)">
+            <summary>
+            Обработчик нажатия нового символа текстового ввода на клавиатуре
+            </summary>
+            <param name="parLetterKey">Символьная последовательность</param>
+        </member>
+        <member name="M:ControllerOpenTK.MInput.MDevices.MDevicesManagerOpenTk.DevicesCheckPolling">
+            <summary>
+            Осуществляет активный поллинг-опрос,
+            должен вызываться каждый кадр
+            </summary>
+        </member>
+        <member name="T:ControllerOpenTK.SPCore.AppControllerOpenTk">
+            <summary>
+            Контроллер приложения OpenTK
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.SPCore.AppControllerOpenTk._devicesManagerOpenTk">
+            <summary>
+            Менеджер устройств OpenTK
+            </summary>
+        </member>
+        <member name="F:ControllerOpenTK.SPCore.AppControllerOpenTk._mainPlayerRef">
+            <summary>
+            Контроллер-наблюдатель за игроками
+            </summary>
+        </member>
+        <member name="M:ControllerOpenTK.SPCore.AppControllerOpenTk.#ctor(Model.SPCore.AppModel)">
+            <summary>
+             Стандартный конструктор. Создает экземпляр приложения со стандартными настройками.
+            </summary>
+            <param name="parApp">Модель приложения</param>
+        </member>
+        <member name="M:ControllerOpenTK.SPCore.AppControllerOpenTk.#ctor(Model.SPCore.AppModel,System.String)">
+            <summary>
+             Дополнительный конструктор. Создает экземпляр приложения с заданными настройками.
+            </summary>
+            <param name="parApp">Модель приложения</param>
+            <param name="parGraphicsSettingsPath">Путь к файлу с настройками отображения</param>
+        </member>
+        <member name="M:ControllerOpenTK.SPCore.AppControllerOpenTk.CreateView(System.String)">
+            <summary>
+            Создание отображения-вида
+            </summary>
+            <param name="parGraphicsSettingsPath">Путь к файлу с настройками отображения</param>
+        </member>
+        <member name="M:ControllerOpenTK.SPCore.AppControllerOpenTk.InputHandle(System.Double)">
+            <summary>
+            Обработка ввода
+            </summary>
+            <param name="parDeltaTime">Время кадра обработки устройств в миллисекундах</param>
+        </member>
+        <member name="M:ControllerOpenTK.SPCore.AppControllerOpenTk.AssignAllToMainPlayer">
+            <summary>
+            Присвоить владение всеми устройствами главному игроку
+            </summary>
+        </member>
+        <member name="M:ControllerOpenTK.SPCore.AppControllerOpenTk.AssignToMainPlayer(ControllerOpenTK.MInput.MDevices.MDeviceOpenTk)">
+            <summary>
+            Присвоить владение устройством главному игроку
+            </summary>
+            <param name="parDevice">Физическое устройство OpenTK</param>
+        </member>
+        <member name="M:ControllerOpenTK.SPCore.AppControllerOpenTk.DeassignFromAllPlayers(ControllerOpenTK.MInput.MDevices.MDeviceOpenTk)">
+            <summary>
+            Убрать владение устройстом со всех игроков
+            </summary>
+            <param name="parDevice">Физическое устройство OpenTK</param>
+        </member>
+        <member name="M:ControllerOpenTK.SPCore.AppControllerOpenTk.DefineAndPerformStandardAssignToPlayer(Controller.MInput.MPlayerBinds.MPlayerController,ControllerOpenTK.MInput.MDevices.MDeviceOpenTk)">
+            <summary>
+            Определить и назначить стандартное управление для игрока
+            </summary>
+            <param name="parMPlayerController">Контроллер игрока</param>
+            <param name="parAvailableDevice">Доступное физическое устройство OpenTK</param>
+        </member>
+        <member name="M:ControllerOpenTK.SPCore.AppControllerOpenTk.GetConcreteAssetDataBuilder">
+            <summary>
+            Получает строитель для обработки игровых ассетов и ресурсов
+            </summary>
+            <returns>Строитель для обработки игровых ассетов и ресурсов</returns>
+        </member>
+        <member name="M:ControllerOpenTK.SPCore.AppControllerOpenTk.GetConcreteAssetDatabaseUpdateStrategy">
+            <summary>
+            Получает стратегию для построения базы данных игровых ассетов и ресурсов
+            </summary>
+            <returns>Стратегия для построения базы данных игровых ассетов и ресурсов</returns>
+        </member>
+        <member name="M:ControllerOpenTK.SPCore.AppControllerOpenTk.Render">
+            <summary>
+            Вызов отрисовки
+            </summary>
+        </member>
+    </members>
+</doc>

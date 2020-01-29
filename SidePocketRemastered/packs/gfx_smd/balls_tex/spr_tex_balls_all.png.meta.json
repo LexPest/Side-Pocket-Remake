@@ -1,0 +1,362 @@
+{
+  "metadata_type" : "sprite_sheet",
+  "sprites_info" : [
+    {
+      "sprite_name" : "ball_normal_rot_0",
+      "x" : 1,
+      "y" : 1,
+      "width" : 8,
+      "height" : 8
+    },
+    {
+      "sprite_name" : "ball_normal_rot_1",
+      "x" : 9,
+      "y" : 1,
+      "width" : 8,
+      "height" : 8
+    },
+	{
+	  "sprite_name" : "ball_normal_rot_2",
+	  "x" : 17,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_3",
+	  "x" : 25,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_4",
+	  "x" : 33,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_5",
+	  "x" : 41,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_6",
+	  "x" : 49,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_7",
+	  "x" : 57,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_8",
+	  "x" : 65,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_9",
+	  "x" : 73,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_10",
+	  "x" : 81,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_11",
+	  "x" : 89,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_12",
+	  "x" : 97,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_13",
+	  "x" : 105,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_14",
+	  "x" : 113,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_15",
+	  "x" : 121,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_normal_rot_16",
+	  "x" : 129,
+	  "y" : 1,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_0",
+	  "x" : 1,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_1",
+	  "x" : 9,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_2",
+	  "x" : 17,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_3",
+	  "x" : 25,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_4",
+	  "x" : 33,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_5",
+	  "x" : 41,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_6",
+	  "x" : 49,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_7",
+	  "x" : 57,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_8",
+	  "x" : 65,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_9",
+	  "x" : 73,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_10",
+	  "x" : 81,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_11",
+	  "x" : 89,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_12",
+	  "x" : 97,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_13",
+	  "x" : 105,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_14",
+	  "x" : 113,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_15",
+	  "x" : 121,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_player_rot_16",
+	  "x" : 129,
+	  "y" : 9,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_0",
+	  "x" : 1,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_1",
+	  "x" : 9,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_2",
+	  "x" : 17,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_3",
+	  "x" : 25,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_4",
+	  "x" : 33,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_5",
+	  "x" : 41,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_6",
+	  "x" : 49,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_7",
+	  "x" : 57,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_8",
+	  "x" : 65,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_9",
+	  "x" : 73,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_10",
+	  "x" : 81,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_11",
+	  "x" : 89,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_12",
+	  "x" : 97,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_13",
+	  "x" : 105,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_14",
+	  "x" : 113,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_15",
+	  "x" : 121,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	},
+	{
+	  "sprite_name" : "ball_special_rot_16",
+	  "x" : 129,
+	  "y" : 17,
+	  "width" : 8,
+	  "height" : 8
+	}
+  ]
+}
